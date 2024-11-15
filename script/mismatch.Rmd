@@ -1,0 +1,441 @@
+---
+title: "mismatch"
+author: "Blublu"
+date: "2024-11-12"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(fs)
+```
+
+
+```{r}
+load_and_concat_files <- function(filepath) {
+  # Load all .csv file in a folder and merge them together
+  # param  : filepath A string
+  # return : df_raw A tibble
+
+  list_files <- dir_ls(filepath, recurse = TRUE, glob = "*.csv")
+
+  df_raw <- tibble()
+
+  for (i in 1:length(list_files)) {
+    file <- list_files[i]
+    filename <- path_file(file)
+    # print(filename)
+    df_temp <- read.csv(file = file, header = TRUE)
+    df_temp <- df_temp %>%
+      mutate(filename = filename) %>%
+      mutate(participant = as.character(participant)) %>%
+      select(-SESSION_ID) #not useful and caused an error
+    df_raw <- bind_rows(df_raw, df_temp)
+  }
+
+  df_raw
+}
+
+
+directory_df <- data.frame(
+  directory_name = c(
+    "2024-05-16_first_gen_stake",
+    "2024-05-22_second_gen_stake",
+    "2024-05-23_third_gen_stake",
+    "2024-05-24_fourth_gen_stake",
+    "2024-06-17_fifth_gen_stake",
+    "2024-06-18_sixth_gen_stake",
+    "2024-06-19_seventh_gen_stake",
+    "2024-06-24_height_gen_stake",
+    "2024-07-09_ninth_gen_stake",
+    "2024-07-11_tenth_gen_stake"
+  ),
+  generation = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+)
+
+df_raw <- tibble()
+
+for (i in 1:nrow(directory_df)){
+  subfolder <- directory_df$directory_name[i]
+  filepath <- file.path("../raw_data/run", subfolder)
+  df_temp <- load_and_concat_files(filepath)
+  df_raw <- bind_rows(df_raw, df_temp)
+}
+
+df <- read.csv("../output/processed/data_stake.csv", header=TRUE, row.names = 1)
+```
+
+
+MISMATCH
+```{r}
+tall_gnomes <- c(
+  "brown_gnome",
+  "purple_gnome",
+  "pink_gnome",
+  "blue_gnome"
+)
+small_gnomes <- c(
+  "green_gnome",
+  "red_gnome",
+  "yellow_gnome",
+  "orange_gnome"
+)
+
+df_mismatch <- df_raw %>%
+  select(
+    ID = PROLIFIC_PID,
+    t_step1_stimLeft_name,
+    t_step1_stimRight_name
+  ) %>%
+  filter(t_step1_stimLeft_name != "") %>%
+  mutate(
+    size_stimLeft = ifelse(t_step1_stimLeft_name %in% tall_gnomes, 1, 0),
+    size_stimRight = ifelse(t_step1_stimRight_name %in% tall_gnomes, 1, 0),
+  ) %>%
+  mutate(match = size_stimLeft + size_stimRight) %>%
+  mutate(mismatch = ifelse(match != 1, 0, 1)) %>%
+  group_by(ID) %>%
+  summarise(
+    mismatch = mean(mismatch)
+  ) %>%
+  mutate(mismatch = ifelse(mismatch == "0", "All different", ifelse(mismatch == "0.5", "Mixed", "All identical")))
+
+df <- left_join(df, df_mismatch, by = "ID")
+```
+
+
+
+```{r}
+df_plot <- df %>%
+  select(ID, gen, mismatch)
+
+df_plot %>%
+  ggplot(aes(x = as.factor(gen), fill = mismatch)) +
+  geom_bar() +
+  ggtitle("Distribution of gnome size match (tall vs small) per generation") +
+  xlab("generation") +
+  ylab("n") +
+  scale_y_continuous(
+    limits = c(0, 105),
+    breaks = seq(0, 100, by = 25),
+    expand = c(0, 0)
+  ) +
+  theme_minimal() +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_blank(),
+    axis.line = element_line(colour = "black", size = .8),
+    axis.ticks = element_line(colour = "black", size = .8),
+    axis.ticks.length.x = unit(5, "pt"),
+    axis.ticks.length.y = unit(7, "pt"),
+    legend.title = element_blank()
+  )
+```
+
+
+```{r}
+df_plot <- df %>%
+  select(ID, gen, score_corrected, mismatch, pl1_understanding, pl2_understanding) %>%
+  group_by(gen, mismatch) %>%
+  summarize(
+    performance = mean(score_corrected),
+    pair_understanding = mean(pl1_understanding),
+    transition_understanding = mean(pl2_understanding)
+  )
+
+df_plot %>%
+  ggplot(aes(x = as.factor(gen), y = performance, color = mismatch, group = mismatch)) +
+  geom_line(linewidth = 1) +
+  labs(
+    x = "Generation Number",
+    y = "Task Performance",
+    shape = " ",
+    colour = " "
+  ) +
+  ggtitle("Performance per mismatch") +
+  theme_minimal() +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_blank(),
+    axis.line = element_line(colour = "black", size = .8),
+    axis.ticks = element_line(colour = "black", size = .8),
+    axis.ticks.length.x = unit(5, "pt"),
+    axis.ticks.length.y = unit(7, "pt"),
+    legend.title = element_blank()
+  )
+
+df_plot %>%
+  ggplot(aes(x = as.factor(gen), y = pair_understanding, color = mismatch, group = mismatch)) +
+  geom_line(linewidth = 1) +
+  labs(
+    x = "Generation Number",
+    y = "Pair understanding",
+    shape = " ",
+    colour = " "
+  ) +
+  ggtitle("Pair understanding per mismatch") +
+  theme_minimal() +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_blank(),
+    axis.line = element_line(colour = "black", size = .8),
+    axis.ticks = element_line(colour = "black", size = .8),
+    axis.ticks.length.x = unit(5, "pt"),
+    axis.ticks.length.y = unit(7, "pt"),
+    legend.title = element_blank()
+  )
+
+df_plot %>%
+  ggplot(aes(x = as.factor(gen), y = transition_understanding, color = mismatch, group = mismatch)) +
+  geom_line(linewidth = 1) +
+  labs(
+    x = "Generation Number",
+    y = "Transition understanding",
+    shape = " ",
+    colour = " "
+  ) +
+  ggtitle("Transition understanding per mismatch") +
+  theme_minimal() +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_blank(),
+    axis.line = element_line(colour = "black", size = .8),
+    axis.ticks = element_line(colour = "black", size = .8),
+    axis.ticks.length.x = unit(5, "pt"),
+    axis.ticks.length.y = unit(7, "pt"),
+    legend.title = element_blank()
+  )
+```
+Keep in mind that the sampled for non-Mixed is extremely limited
+
+
+
+
+```{r}
+df_plot <- df %>%
+  select(ID, gen, score_corrected, mismatch) %>%
+  filter(gen < 6)
+
+df_plot %>%
+  ggplot( aes(x = mismatch, y = score_corrected)) +
+  geom_boxplot(aes(fill = mismatch)) +
+  geom_jitter(color = "black", size = 0.4, alpha = 0.4) +
+  geom_segment(
+    aes(x = "All identical", xend = "Mixed", y = 3.8, yend = 3.8),
+    size = 1  
+  ) +
+  annotate(
+    "text",
+    x = 2.5,
+    y = 3.85,
+    label = "*",
+    size = 8
+  ) +
+  labs(
+    x = "",
+    y = "Task performance",
+    shape = " ",
+    colour = " "
+  ) +
+  ggtitle("Task performance per gnome size match up to gen 5") +
+  theme_minimal() +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_blank(),
+    axis.line = element_line(colour = "black", size = .8),
+    axis.ticks = element_line(colour = "black", size = .8),
+    axis.ticks.length.x = unit(5, "pt"),
+    axis.ticks.length.y = unit(7, "pt"),
+    legend.title = element_blank()
+  )
+
+t.test(
+  df_plot %>% filter(mismatch == "All different") %>% pull(score_corrected),
+  df_plot %>% filter(mismatch == "All identical") %>% pull(score_corrected)
+)
+
+t.test(
+  df_plot %>% filter(mismatch == "All different") %>% pull(score_corrected),
+  df_plot %>% filter(mismatch == "Mixed") %>% pull(score_corrected)
+)
+
+t.test(
+  df_plot %>% filter(mismatch == "All identical") %>% pull(score_corrected),
+  df_plot %>% filter(mismatch == "Mixed") %>% pull(score_corrected)
+)
+```
+
+```{r}
+df_plot <- df %>%
+  select(ID, gen, mismatch, pl1_understanding) %>%
+  filter(gen < 6)
+
+t.test(
+  df_plot %>% filter(mismatch == "All different") %>% pull(pl1_understanding),
+  df_plot %>% filter(mismatch == "All identical") %>% pull(pl1_understanding)
+)
+
+t.test(
+  df_plot %>% filter(mismatch == "All different") %>% pull(pl1_understanding),
+  df_plot %>% filter(mismatch == "Mixed") %>% pull(pl1_understanding)
+)
+
+t.test(
+  df_plot %>% filter(mismatch == "All identical") %>% pull(pl1_understanding),
+  df_plot %>% filter(mismatch == "Mixed") %>% pull(pl1_understanding)
+)
+
+df_plot %>%
+  ggplot( aes(x = mismatch, y = pl1_understanding)) +
+  geom_boxplot(aes(fill = mismatch)) +
+  geom_jitter(color = "black", size = 0.4, alpha = 0.4) +
+  geom_segment(
+    aes(x = "All different", xend = "All identical", y = 1.15, yend = 1.15),
+    size = 1  
+  ) +
+  annotate(
+    "text",
+    x = 1.5,
+    y = 1.2,
+    label = "*",
+    size = 8
+  ) +
+  geom_segment(
+    aes(x = "All different", xend = "Mixed", y = 1.35, yend = 1.35),
+    size = 1  
+  ) +
+  annotate(
+    "text",
+    x = 2,
+    y = 1.4,
+    label = "*",
+    size = 8
+  ) +
+  labs(
+    x = "",
+    y = "Pair understanding",
+    shape = " ",
+    colour = " "
+  ) +
+  ggtitle("Pair understanding per gnome size match up to gen 5") +
+  theme_minimal() +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_blank(),
+    axis.line = element_line(colour = "black", size = .8),
+    axis.ticks = element_line(colour = "black", size = .8),
+    axis.ticks.length.x = unit(5, "pt"),
+    axis.ticks.length.y = unit(7, "pt"),
+    legend.title = element_blank()
+  )
+```
+
+```{r}
+df_plot <- df %>%
+  select(ID, gen, mismatch, pl2_understanding) %>%
+  filter(gen < 6)
+
+t.test(
+  df_plot %>% filter(mismatch == "All different") %>% pull(pl2_understanding),
+  df_plot %>% filter(mismatch == "All identical") %>% pull(pl2_understanding)
+)
+
+t.test(
+  df_plot %>% filter(mismatch == "All different") %>% pull(pl2_understanding),
+  df_plot %>% filter(mismatch == "Mixed") %>% pull(pl2_understanding)
+)
+
+t.test(
+  df_plot %>% filter(mismatch == "All identical") %>% pull(pl2_understanding),
+  df_plot %>% filter(mismatch == "Mixed") %>% pull(pl2_understanding)
+)
+
+df_plot %>%
+  ggplot( aes(x = mismatch, y = pl2_understanding)) +
+  geom_boxplot(aes(fill = mismatch)) +
+  geom_jitter(color = "black", size = 0.4, alpha = 0.4) +
+  labs(
+    x = "",
+    y = "Transition understanding",
+    shape = " ",
+    colour = " "
+  ) +
+  ggtitle("Transition understanding per gnome size match up to gen 5") +
+  theme_minimal() +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_blank(),
+    axis.line = element_line(colour = "black", size = .8),
+    axis.ticks = element_line(colour = "black", size = .8),
+    axis.ticks.length.x = unit(5, "pt"),
+    axis.ticks.length.y = unit(7, "pt"),
+    legend.title = element_blank()
+  )
+```
+
+
+```{r}
+df_NLP <- read.csv("../output/processed/data_lda_shen.csv", row.names = 1)
+df_NLP <- df_NLP %>%
+  select(ID, Topic_1, Topic_2, Topic_3, Topic_4, Topic_5)
+
+df <- left_join(df, df_NLP, by = "ID")
+```
+
+
+```{r}
+df_plot <- df %>%
+  filter(gen < 6) %>%
+  select(ID, mismatch, Topic_2) %>%
+  mutate(flag_topic2 = ifelse(Topic_2 > 0.5, 1, 0)) %>%
+  group_by(mismatch) %>%
+  summarise(
+    topic2_per_msg = mean(flag_topic2),
+    n_topic2_msg = sum(flag_topic2)  
+  )
+
+df_plot %>%
+  ggplot( aes(x = mismatch, y = topic2_per_msg, fill = mismatch)) +
+  geom_col() +
+  scale_y_continuous(
+    limits = c(0, .3),
+    breaks = seq(0, 0.3, 0.1),
+    expand = c(0, 0)
+  ) +
+  labs(
+    x = "Generatin Number",
+    y = "Topic 2 presence",
+    shape = " ",
+    colour = " "
+  ) +
+  ggtitle("Average message with Topic 2 words per gnome size match") +
+  theme_minimal() +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_blank(),
+    axis.line = element_line(colour = "black", size = .8),
+    axis.ticks = element_line(colour = "black", size = .8),
+    axis.ticks.length.x = unit(5, "pt"),
+    axis.ticks.length.y = unit(7, "pt"),
+    legend.title = element_blank()
+  )
+```
+Note that N All different = 4
+
+
+# TRASH
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

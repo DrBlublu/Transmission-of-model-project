@@ -1,4 +1,195 @@
-```{r}
+---
+title: "test"
+author: "Blublu"
+date: "2024-10-23"
+output: html_document
+---
 
+```{r}
+library(tidyverse)
+library(fs)
+```
+
+```{r}
+extract_parent_ID <- function(df_raw, generation) {
+  # Extract ID of the parent except if gen 1, instead create a fake ID
+  # param  : df_raw A tibble
+  # param  : generation A num
+  # return : df A tibble
+
+  if (generation == 1) {
+    n_id <- length(unique(df_raw$PROLIFIC_PID))
+    df <- data.frame(
+      "ID" = unique(df_raw$PROLIFIC_PID),
+      "parent_ID" = paste("fake", 1:n_id)
+    )
+  } else {
+    df <- df_raw %>%
+      select(parent_PID, PROLIFIC_PID) %>%
+      filter(parent_PID != "") %>%
+      rename(
+        "ID" = "PROLIFIC_PID",
+        "parent_ID" = "parent_PID"
+      )
+  }
+
+  df
+}
+```
+
+
+```{r}
+extract_and_correct_score <- function(df_raw) {
+  # Extract score of each participant and apply the Kool's correction
+  # param  : df_raw A tibble
+  # return : df_score A tibble
+
+  df_score <- df_raw %>%
+    group_by(PROLIFIC_PID) %>%
+    filter(trials.ran == 1) %>%
+    select(
+      PROLIFIC_PID,
+      globa_score,
+      t_mult,
+      t_points,
+      t_step1_stimLeft_reward,
+      t_step1_stimRight_reward
+    ) %>%
+    rename(
+      "ID" = "PROLIFIC_PID",
+      "score" = "globa_score",
+      "rew_choice" = "t_points",
+      "rew_1" = "t_step1_stimLeft_reward",
+      "rew_2" = "t_step1_stimRight_reward"
+    ) %>%
+    mutate(n_trial = 1:n()) %>%
+    mutate(rew_1 = rew_1 * t_mult) %>%
+    mutate(rew_2 = rew_2 * t_mult) %>%
+    mutate(avg_rew = rowMeans(cbind(rew_1, rew_2))) %>%
+    summarise(
+      reward_rate = mean(rew_choice),
+      avg_rew = mean(avg_rew),
+      score_corrected = reward_rate - avg_rew
+    ) %>%
+    mutate(rank = rank(desc(score_corrected), ties.method = "first")) %>%
+    dplyr::select(ID, score_corrected, rank)
+
+  df_score
+}
+```
+
+```{r}
+base_dir <- "../raw_data"
+
+
+directory_df <- data.frame(
+  directory_name = c(
+    "2024-10-01_first_gen_obs",
+    "2024-10-18_second_gen_obs",
+    "2024-10-19_third_gen_obs",
+    "2024-10-21_fourth_gen_obs",
+    "2024-11-05_fifth_gen_obs",
+    "2024-11-07_sixth_gen_obs"
+  ),
+  generation = c(1, 2, 3, 4, 5, 6)
+)
+
+df <- tibble()
+
+for (i in directory_df$generation) {
+  subfolder <- directory_df$directory_name[i]
+  generation <- directory_df$generation[i]
+  
+  
+  files_archived_subfolder <- list.files(
+    path = file.path(base_dir, "archived", "run", subfolder, "not_selected"),
+    pattern = ".csv",
+    recursive = TRUE,
+    full.names = TRUE
+  )
+  
+  files_run_subfolder <- list.files(
+    path = file.path(base_dir, "run", subfolder),
+    pattern = ".csv",
+    full.names = TRUE
+  )
+  
+  files <- c(files_archived_subfolder, files_run_subfolder)
+  df_list <- vector("list", length(files))
+  
+  for (i in seq_along(files)) {
+    df_temp <- read.csv(file = files[i], header = TRUE) %>%
+      select(-SESSION_ID) %>% # cause error
+      mutate(participant = as.character(participant))
+    df_list[[i]] <- df_temp
+  }
+  
+  df_raw <- bind_rows(df_list)
+  df_raw <- as_tibble(df_raw)
+
+  df_id <- extract_parent_ID(df_raw, generation)
+  df_performance <- extract_and_correct_score(df_raw)
+  df_gen <- right_join(df_performance, df_id, by = "ID")
+  df_gen <- df_gen %>% mutate(gen = generation)
+  
+  df <- bind_rows(df, df_gen)
+}
+
+library(scales)
+
+mean_bonus <- 2
+
+df_bonus <- df %>%
+  group_by(gen) %>%
+  mutate(performance_bonus = rescale(score_corrected, to = c(0, mean_bonus))) %>%
+  mutate(children_bonus = 0)
+
+for (i in 1:nrow(df_bonus)) {
+  parent <- df_bonus[i, ]
+  if (sum(df_bonus$parent_ID == parent$ID) != 0) {
+    df_children <- df_bonus %>%
+      filter(parent_ID == parent$ID)
+    children_bonus <- round(mean(df_children$performance_bonus, na.rm = TRUE), 2)
+    df_bonus[i, ]$children_bonus <- children_bonus
+  }
+}
+
+df_bonus <- df_bonus %>%
+  mutate(bonus = round(children_bonus + performance_bonus), 2)
+
+```
+
+
+```{r}
+for (i in 1:nrow(directory_df)) {
+  name <- directory_df$directory_name[i]
+  generation <- directory_df$generation[i]
+  write.table(
+    df_bonus %>%
+      filter(gen == generation) %>% 
+      select(ID, bonus),
+    file = file.path("../output/payment/", paste("data_bonus_", name, ".txt", sep = "")),
+    sep = ",",
+    row.names = FALSE, col.names = FALSE, quote = FALSE
+  )
+}
+```
+
+
+
+### DF RAW IS A FULL GEN DF
+```{r}
+df_choice <- df_raw %>%
+  select(
+    ID = PROLIFIC_PID,
+    t_step1_choice,
+    t_points
+  ) %>%
+  filter(t_step1_choice != "") %>%
+  group_by(ID, t_step1_choice) %>%
+  summarize(
+    n_step1_choice = n(),
+    points = mean(t_points)
+  )
 ```
 
