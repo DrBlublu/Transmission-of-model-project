@@ -5,9 +5,11 @@ Created on Tue Nov 26 18:45:55 2024
 @author: aleblu
 """
 
+from objects import Gnome, Agent
 import random
 import math
 import numpy as np
+import pandas as pd
 
 
 def js_round(value):
@@ -31,7 +33,7 @@ def random_walk(start_val, mu=0, sigma=2, rmin=0, rmax=9):
     return bound_value(new_val, rmin, rmax)
 
 def create_reward_distribution(n_trials, rmin=0, rmax=9):
-    """"Create two reward distributions with gaussian random walk and reflecting boundaries"""
+    """"Create two reward distributions with gaussian random walk and reflecting boundaries."""
     val_high_start = random.randint(math.ceil((rmax+rmin)/2), rmax)
     val_low_start = random.randint(rmin, math.ceil((rmax+rmin)/2))
 
@@ -45,6 +47,25 @@ def create_reward_distribution(n_trials, rmin=0, rmax=9):
         new_val_step2_B = random_walk(L_val_step2_B[-1], rmin, rmax)
         L_val_step2_B.append(new_val_step2_B)
     
-    return (L_val_step2_A, L_val_step2_B)
+    df = pd.DataFrame(
+        {"forest_A" : L_val_step2_A,
+         "forest_B" : L_val_step2_B}
+    )
 
+    return df
 
+def create_gnomes(gnome_colors, gnome_pairs, gnome_forests):
+    """Create a list of gnome object based on a list of colors, pairs and forests."""
+    random.shuffle(gnome_colors)
+    l_gnome = []
+    for i in range(len(gnome_colors)):
+        gnome = Gnome(color = gnome_colors[i],
+                    pair = gnome_pairs[i],
+                    forest = gnome_forests[i],
+                    knowledge = 0)
+        l_gnome.append(gnome)
+    return l_gnome
+
+def create_agent(id, env, reward_distribution, score=0):
+    """Create an Agent object based on id, list of gnomes (env), reward distribution and score"""
+    return Agent(id = id, env = env, reward_dist = reward_distribution, score = score)

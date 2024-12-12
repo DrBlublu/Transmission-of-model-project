@@ -1,0 +1,250 @@
+---
+title: "resulting_advice"
+author: "Blublu"
+date: "2024-11-19"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+library(tidyverse)
+```
+
+
+```{r}
+df_adv_raw <- read.csv("../output/processed/data_stake.csv") %>% select(-X)
+
+
+summary(glm(df_adv_raw$score_corrected ~ df_adv_raw$pl2_understanding * df_adv_raw$gen))
+summary(glm(df_adv_raw$score_corrected ~ df_adv_raw$pl1_understanding * df_adv_raw$gen))
+
+
+# df_adv <- df_adv_raw %>%
+#   filter(gen > 1) %>%
+#   select(
+#     ID,
+#     gen,
+#     parent_score_corrected,
+#     parent_pl1_understanding,
+#     parent_pl2_understanding
+#   )
+
+
+for (i in 1:10) {
+  a <- cor.test(
+      df_adv_raw %>% filter(gen == i) %>% pull(score_corrected),
+      df_adv_raw %>% filter(gen == i) %>% pull(pl2_understanding)
+  )
+  print(a)
+}
+
+for (i in 1:10) {
+  a <- cor.test(
+      df_adv_raw %>% filter(gen == i) %>% pull(score_corrected),
+      df_adv_raw %>% filter(gen == i) %>% pull(pl1_understanding)
+  )
+  print(a)
+}
+
+df_adv_raw %>%
+  ggplot(aes(x = score_corrected, y = pl2_understanding)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  facet_wrap(~gen) +
+  labs(
+    x = "performance",
+    y = "transition knowledge"
+  )
+
+df_adv_raw %>%
+  ggplot(aes(x = score_corrected, y = pl1_understanding)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  facet_wrap(~gen) +
+  labs(
+    x = "performance",
+    y = "pair knowledge"
+  )
+
+```
+
+```{r}
+for (i in 1:10) {
+  cat(i)
+  a <- cor.test(
+      df_adv_raw %>% filter(gen == i) %>% pull(pl2_understanding),
+      df_adv_raw %>% filter(gen == i) %>% pull(pl1_understanding)
+  )
+  print(a)
+}
+
+summary(glm(df_adv_raw$pl1_understanding ~ df_adv_raw$pl2_understanding * df_adv_raw$gen))
+
+df_adv_raw %>%
+  ggplot(aes(x = pl1_understanding, y = pl2_understanding)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  facet_wrap(~gen) +
+  labs(
+    x = "pair knowledge",
+    y = "transition knowledge"
+  )
+
+
+```
+
+```{r}
+summary(lm(data = df, score_corrected ~ parent_pl1_understanding + parent_pl2_understanding))
+summary(lm(data = df, score_corrected ~ parent_pl1_understanding))
+summary(lm(data = df, score_corrected ~ parent_pl2_understanding))
+```
+
+```{r}
+df <- read.csv("../output/processed/data_obs.csv") %>% select(-X)
+
+summary(lm(data = df, score_corrected ~ parent_pl1_understanding + parent_pl2_understanding))
+summary(lm(data = df, score_corrected ~ parent_pl1_understanding))
+summary(lm(data = df, score_corrected ~ parent_pl2_understanding))
+```
+
+
+
+
+# RANK ANALYSIS
+
+avg children rank
+```{r}
+df_raw <- read.csv("../output/processed/data_stake.csv") %>% select(-X)
+
+a <- 7
+
+df <- df_raw %>% filter(gen == a | gen == a+1)
+
+# df <- df_raw
+
+i <- 1
+
+for(id in df$ID) {
+  df_child <- df %>% filter(parent_ID == id)
+  n_child <- nrow(df_child)
+  if(n_child > 0) {
+    avg_rank <- mean(df_child$rank)
+    best_rank <- min(df_child$rank)
+  } else {
+    avg_rank <- NA
+    best_rank <- NA
+  }
+  df[i, "n_child"] = n_child
+  df[i, "avg_child_rank"] = avg_rank
+  df[i, "best_child_rank"] = best_rank
+  i <- i + 1
+}
+
+df_child_rank <- df %>%
+  drop_na(avg_child_rank)
+
+cor.test(
+  df_child_rank$rank,
+  df_child_rank$avg_child_rank
+)
+
+plot(df_child_rank$rank, df_child_rank$avg_child_rank)
+plot(df_child_rank$rank, df_child_rank$best_child_rank)
+cor.test(df_child_rank$rank, df_child_rank$best_child_rank)
+# 
+# df_child_rank <- df_child_rank %>%
+#   mutate(diff_avg_best_child = abs(avg_child_rank - best_child_rank))
+# 
+# plot(df_child_rank$rank, df_child_rank$diff_avg_best_child)
+# cor.test(df_child_rank$rank, df_child_rank$diff_avg_best_child)
+
+summary(lm(data = df_child_rank, avg_child_rank ~ rank))
+summary(lm(data = df_child_rank, best_child_rank ~ rank))
+```
+n parent per gen
+```{r}
+df_raw <- read.csv("../output/processed/data_stake.csv") %>% select(-X)
+
+df <- df_raw %>%
+  filter(gen > 1) %>%
+  group_by(gen) %>%
+  summarise(
+    n_parent = length(unique(parent_ID)),
+    rank_parent = mean(parent_rank),
+    score_parent = mean(parent_score_corrected),
+    pair_understanding_parent = mean(parent_pl1_understanding),
+    transition_understanding_parent = mean(parent_pl2_understanding)
+  )
+```
+
+
+
+
+
+
+```{r}
+df <- read.csv("../output/processed/data_stake.csv") %>% select(-X)
+
+df <- df %>% filter(gen > 1)
+df %>%
+  ggplot( aes(x = factor(gen), y = parent_rank, fill = factor(gen))) +
+  geom_boxplot() +
+  labs(
+    title = "Parent Rank Distributions by Generation ADVICE",
+    x = "Generation",
+    y = "Parent Rank"
+  ) +
+  theme_minimal()
+
+kruskal_test <- kruskal.test(parent_rank ~ gen, data = df)
+print(kruskal_test)
+```
+
+```{r}
+df <- read.csv("../output/processed/data_obs.csv") %>% select(-X)
+
+df <- df %>% filter(gen > 1)
+df %>%
+  ggplot( aes(x = factor(gen), y = parent_rank, fill = factor(gen))) +
+  geom_boxplot() +
+  labs(
+    title = "Parent Rank Distributions by Generation OBSERVATION",
+    x = "Generation",
+    y = "Parent Rank"
+  ) +
+  theme_minimal()
+
+kruskal_test <- kruskal.test(parent_rank ~ gen, data = df)
+print(kruskal_test)
+```
+
+
+```{r}
+library(FSA)
+
+df_obs <- read.csv("../output/processed/data_obs.csv") %>% select(-X) %>%
+  filter(gen > 1) %>%
+  mutate(cond = "OBS") %>%
+  mutate(gen_cond = paste0(gen, cond))
+df_adv <- read.csv("../output/processed/data_stake.csv") %>% select(-X) %>%
+  filter(gen > 1) %>%
+  mutate(cond = "ADV") %>%
+  mutate(gen_cond = paste0(gen, cond))
+df <- bind_rows(df_obs, df_adv)
+
+kruskal_test <- kruskal.test(parent_rank ~ cond, data = df)
+print(kruskal_test)
+dunn_result <- dunnTest(parent_rank ~ cond, data = df, method = "bonferroni")
+print(dunn_result)
+
+kruskal_test <- kruskal.test(parent_rank ~ gen_cond, data = df)
+print(kruskal_test)
+dunn_result <- dunnTest(parent_rank ~ gen_cond, data = df, method = "bonferroni")
+print(dunn_result)
+
+df %>% filter(cond == "ADV") %>% pull(parent_rank) %>% summary()
+df %>% filter(cond == "OBS") %>% pull(parent_rank) %>% summary()
+
+wilcox.test(df_obs$parent_rank, df_adv$parent_rank)
+```
+

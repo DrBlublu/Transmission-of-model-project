@@ -421,21 +421,3 @@ df_plot %>%
   )
 ```
 Note that N All different = 4
-
-
-# TRASH
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -78,6 +78,7 @@ extract_and_correct_score <- function(df_raw) {
 }
 ```
 
+
 ```{r}
 base_dir <- "../raw_data"
 
@@ -193,3 +194,81 @@ df_choice <- df_raw %>%
   )
 ```
 
+
+# TEMP
+
+```{r}
+df_fitness <- df %>%
+  select(
+    ID,
+    gen,
+    score_corrected,
+    pl1_understanding,
+    pl2_understanding,
+    rank
+  )
+
+i <- 1
+
+for (id in df$ID) {
+  df_children <- df %>% filter(parent_ID == id)
+  n_C <- nrow(df_children)
+  n_GC <- 0
+  for (child_id in df_children$ID) {
+    df_grandchildren <- df %>% filter(parent_ID == child_id)
+    n <- nrow(df_grandchildren)
+    n_GC <- n_GC + n
+  }
+  df_fitness[i, "n_C"] <- n_C
+  df_fitness[i, "n_GC"] <- n_GC
+  i <- i + 1
+}
+```
+
+
+```{r}
+cor.test(df_fitness$n_C, df_fitness$n_GC)
+plot(df_fitness$n_C, df_fitness$n_GC)
+
+cor.test(df_fitness$score_corrected, df_fitness$n_GC)
+plot(df_fitness$score_corrected, df_fitness$n_GC)
+
+cor.test(df_fitness$pl1_understanding, df_fitness$n_GC)
+plot(df_fitness$pl1_understanding, df_fitness$n_GC)
+
+cor.test(df_fitness$pl2_understanding, df_fitness$n_GC)
+plot(df_fitness$pl2_understanding, df_fitness$n_GC)
+```
+
+
+PARTICIPANT ABOVE IQR / SD
+```{r}
+for (i in 1:10) {
+  temp <- df %>% filter(gen == i) %>% pull(pl2_understanding)
+  
+  # plot(temp)
+  
+  Q1 <- quantile(temp, 0.25)
+  Q3 <- quantile(temp, 0.75)
+  
+  lower_bound <- Q1 - 1.5 * IQR(temp)
+  upper_bound <- Q3 + 1.5 * IQR(temp)
+  
+  df_temp <- df %>%
+    filter(gen == i) %>%
+    mutate(outliers = ifelse(pl2_understanding > upper_bound, 1, 0))
+  
+  cat(i, "")
+  cat(sum(df_temp$outliers), "\n")
+}
+
+for (i in 1:10) {
+  df_temp <- df %>%
+    filter(gen == i) %>%
+    mutate(outliers = ifelse(pl2_understanding > 0.9, 1, 0))
+  
+  cat(i, "")
+  cat(sum(df_temp$outliers), "\n")
+}
+
+```
