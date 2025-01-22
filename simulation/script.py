@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 from objects import Gnome, Agent
 
-n_trials = 256
+n_trials = 5
 rmin = 0
 rmax = 9
 p_mutation_knowledge = 0.01
@@ -24,4 +24,7 @@ random.shuffle(run_pairs)
 
 reward_distribution = functions.create_reward_distribution(n_trials, rmin, rmax)
 l_gnomes = functions.create_gnomes(gnome_colors, gnome_pairs, gnome_forests)
-jack = functions.create_agent(id = 1, env = l_gnomes, reward_distribution = reward_distribution)
+jack = Agent(id = 1, env = l_gnomes, reward_dist = reward_distribution)
+
+for trial in range(n_trials):
+    trial_pair = run_pairs[trial]

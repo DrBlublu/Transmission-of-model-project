@@ -27,7 +27,7 @@ bound_knowledge <- function(knowledge) {
 
 improve_knowledge <- function(knowledge, p_gain, pop_size) {
   # randomly improve knowledge (vector of float) by p_gain
-  improve <- matrix(runif(pop_size * 8) < p_gain, nrow = pop_size, ncol = 8)
+  improve <- matrix(runif(pop_size * 4) < p_gain, nrow = pop_size, ncol = 4)
   knowledge[improve] <- knowledge[improve] + runif(sum(improve), 0, 0.1)
   knowledge
 }
@@ -68,7 +68,8 @@ df <- tibble(
 )
 
 # l_p_gain <- seq(0.1, 1, by = 0.1)
-l_mu_t <- c(0, -0.01, -0.05, -0.1, -0.15, -0.2)
+# l_mu_t <- c(0, -0.01, -0.05, -0.1, -0.15, -0.2)
+l_mu_t <- c(0, 0, 0, 0, 0)
 
 
 for (mu_t in l_mu_t) {
@@ -169,6 +170,18 @@ plot_knowledge <- df_plot %>%
 
 combined_plot <- plot_knowledge / plot_score
 combined_plot
+
+
+
+
+df %>%
+  ggplot(aes( x = know, y = score)) +
+  geom_point() +
+  labs(
+    x = "knowledge",
+    y = "score"
+  ) +
+  facet_wrap(~gen)
 
 ## plotting
 # df_plot <- df %>%

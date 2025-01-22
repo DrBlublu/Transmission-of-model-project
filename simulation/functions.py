@@ -65,7 +65,3 @@ def create_gnomes(gnome_colors, gnome_pairs, gnome_forests):
                     knowledge = 0)
         l_gnome.append(gnome)
     return l_gnome
-
-def create_agent(id, env, reward_distribution, score=0):
-    """Create an Agent object based on id, list of gnomes (env), reward distribution and score"""
-    return Agent(id = id, env = env, reward_dist = reward_distribution, score = score)
