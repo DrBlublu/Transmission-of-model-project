@@ -1,0 +1,103 @@
+---
+title: "topic_modeling"
+author: "Blublu"
+date: "2025-01-17"
+output: html_document
+---
+
+```{r setup}
+library(tidyverse)
+library(tidytext)
+```
+
+# IMPORT DATA & CREATE DTM
+```{r}
+df <- read.csv("../output/processed/data_advice_lemma.csv")
+
+# count occurences
+word_counts <- df %>%
+  count(doc_id, lemma, sort = TRUE)
+
+# document freq
+doc_freq <- word_counts %>%
+  group_by(lemma) %>%
+  summarize(doc_count = n_distinct(doc_id))
+
+# parameters
+no_below <- 5   # Minimum number of documents a term must appear in
+no_above <- 0.5 # Maximum proportion of documents a term can appear in
+
+# filter using parameters
+total_docs <- n_distinct(df$doc_id)
+filtered_words <- doc_freq %>%
+  filter(doc_count >= no_below & doc_count <= (no_above*total_docs))
+
+# filter original word count
+word_counts <- word_counts %>%
+  filter(lemma %in% filtered_words$lemma)
+
+# create Document-Term Matrix
+dtm <- word_counts %>%
+  cast_dtm(doc_id, lemma, n)
+
+dtm
+```
+
+# FIND BEST N# OF TOPIC (5)
+```{r}
+library(ldatuning)
+
+res <- tibble()
+
+for (i in 1:20){
+  result <- FindTopicsNumber(
+    dtm,
+    topics = seq(2, 20, by = 1),  # Range of k values to test
+    metrics = c("Griffiths2004", "CaoJuan2009", "Arun2010", "Deveaud2014"),
+    method = "Gibbs",
+    # control = list(seed = 1234),
+    mc.cores = 4L,
+    verbose = TRUE
+  )
+  
+  result <- result %>%
+    mutate(sim = i)
+  
+  res <- bind_rows(res, result)
+}
+
+df_k_lda <- res %>%
+  select(-sim) %>%
+  group_by(topics) %>%
+  summarise_all(mean)
+
+FindTopicsNumber_plot(df_k_lda)
+
+# for (i in 1:20){
+#   FindTopicsNumber_plot(res %>% filter(sim == i))
+# }
+```
+```{r}
+write.csv(res, "lda_k_simulation.csv")
+```
+
+
+
+```{r}
+library(topicmodels)
+# Run LDA
+lda <- LDA(dtm, k = 5, control = list(seed = 37), )
+
+# Extract topics
+topics <- tidy(lda, matrix = "beta")
+
+topics %>%
+  group_by(topic) %>%
+  slice_max(beta, n = 10) %>%
+  ungroup() %>%
+  arrange(topic, -beta)
+
+doc_topic <- tidy(lda, matrix = "gamma")
+doc_topic
+```
+

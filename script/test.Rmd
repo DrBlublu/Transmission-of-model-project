@@ -5,10 +5,13 @@ date: "2024-10-23"
 output: html_document
 ---
 
-```{r}
+```{r setup}
 library(tidyverse)
 library(fs)
+library(car)
 ```
+
+# BONUS
 
 ```{r}
 extract_parent_ID <- function(df_raw, generation) {
@@ -272,3 +275,490 @@ for (i in 1:10) {
 }
 
 ```
+
+
+# linear increase of score & understanding
+
+
+preprocess
+```{r}
+df_adv <- read.csv("../output/processed/data_stake.csv", header = TRUE, row.names = 1)
+
+df_adv <- df_adv %>%
+  mutate(gen = gen - 1) %>%
+  mutate(cond = "ADV")
+
+df_obs <- read.csv("../output/processed/data_obs.csv", header = TRUE, row.names = 1)
+
+df_obs <- df_obs %>%
+  mutate(gen = gen - 1) %>%
+  mutate(cond = "OBS")
+
+df <- bind_rows(df_adv, df_obs)
+
+df <- df %>%
+  mutate_at(c(
+    "pl1_understanding",
+    "pl2_understanding",
+    "parent_pl1_understanding",
+    "parent_pl2_understanding"
+  ), scale)
+
+df_W <- read.csv("data_model_advice.csv", row.names = 1)
+df_W <- df_W %>%
+  rename(ID = sub)
+
+df <- left_join(df, df_W, by = "ID")
+```
+
+
+
+```{r}
+library(ggplot2)
+
+ggplot(df, aes(x = parent_pl2_understanding, y = score_corrected, color = cond)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(title = "Interaction between Parent PL2 Understanding and Condition")
+```
+
+
+
+task perf X gen
+```{r}
+res <- lm(data = df %>% filter(cond == "ADV"), score_corrected ~ gen)
+summary(res)
+confint(res)
+
+res <- lm(data = df %>% filter(cond == "OBS"), score_corrected ~ gen)
+summary(res)
+confint(res)
+
+res <- lm(data = df, score_corrected ~ gen * cond)
+summary(res)
+Anova(res)
+```
+
+
+pair understanding x gen
+```{r}
+res <- lm(data = df %>% filter(cond == "ADV"), pl1_understanding ~ gen)
+summary(res)
+confint(res)
+
+res <- lm(data = df %>% filter(cond == "OBS"), pl1_understanding ~ gen)
+summary(res)
+confint(res)
+
+res <- lm(data = df, pl1_understanding ~ gen * cond)
+summary(res)
+Anova(res)
+```
+
+transition understanding
+
+```{r}
+res <- lm(data = df %>% filter(cond == "ADV"), pl2_understanding ~ gen)
+summary(res)
+confint(res)
+
+res <- lm(data = df %>% filter(cond == "OBS"), pl2_understanding ~ gen)
+summary(res)
+confint(res)
+
+res <- lm(data = df, pl2_understanding ~ gen * cond)
+summary(res)
+Anova(res)
+```
+
+
+parent Pu & child perf
+```{r}
+res <- lm(data = df %>% filter(cond == "ADV") %>% filter(gen > 0), score_corrected ~ parent_pl1_understanding)
+summary(res)
+confint(res)
+
+
+res <- lm(data = df %>% filter(cond == "OBS") %>% filter(gen > 0), score_corrected ~ parent_pl1_understanding)
+summary(res)
+confint(res)
+
+res <- lm(data = df %>% filter(gen > 0), score_corrected ~ parent_pl1_understanding * cond)
+summary(res)
+Anova(res)
+```
+
+parent Tu & child perf
+```{r}
+res <- lm(data = df %>% filter(cond == "ADV") %>% filter(gen > 0), score_corrected ~ parent_pl2_understanding)
+summary(res)
+confint(res)
+
+res <- lm(data = df %>% filter(cond == "OBS") %>% filter(gen > 0), score_corrected ~ parent_pl2_understanding)
+summary(res)
+confint(res)
+
+res <- lm(data = df %>% filter(gen > 0), score_corrected ~ parent_pl2_understanding * cond)
+summary(res)
+Anova(res)
+```
+
+
+
+parent perf & child perf
+```{r}
+res <- lm(data = df %>% filter(cond == "ADV") %>% filter(gen > 0), score_corrected ~ parent_score_corrected)
+summary(res)
+confint(res)
+
+res <- lm(data = df %>% filter(cond == "OBS") %>% filter(gen > 0),score_corrected ~ parent_score_corrected)
+summary(res)
+confint(res)
+
+res <- lm(data = df %>% filter(gen > 0), score_corrected ~ parent_score_corrected * cond)
+summary(res)
+Anova(res)
+```
+
+
+Perf ~ P_Transition + P_Pair x cond
+
+```{r}
+res <- lm(formula = score_corrected ~
+  parent_pl1_understanding * cond +
+  parent_pl2_understanding * cond,
+  contrasts = list(cond = contr.sum),
+  data = df %>% filter(gen > 0)
+)
+summary(res)
+Anova(res, type = 3)
+```
+
+```{r}
+df <- df %>%
+  mutate(cond = as.factor(cond))
+
+contrasts(df$cond) <- contr.treatment(2)
+
+res <- lm(formula = score_corrected ~
+  parent_pl1_understanding * cond +
+  parent_pl2_understanding * cond,
+  data = df %>% filter(gen > 1)
+)
+summary(res)
+Anova(res, type = 3)
+```
+
+
+ADV > OBS
+```{r}
+last_3_adv <- df %>% filter(cond == "ADV", gen > 6) %>% pull(score_corrected)
+mean(last_3_adv)
+sd(last_3_adv)
+last_3_obs <- df %>% filter(cond == "OBS", gen > 6) %>% pull(score_corrected)
+mean(last_3_obs)
+sd(last_3_obs)
+
+last_3 <- df %>% filter(gen > 6)
+t.test(score_corrected ~ cond, data = last_3, conf.level = 0.99)
+
+t.test(score_corrected ~ cond, data = df, conf.level = 0.99)
+```
+
+W x gen
+```{r}
+res <- lm(data = df %>% filter(cond == "ADV"), W ~ gen)
+summary(res)
+confint(res)
+
+res <- lm(data = df %>% filter(cond == "OBS"), W ~ gen)
+summary(res)
+confint(res)
+
+res <- lm(data = df, W ~ gen * cond)
+summary(res)
+Anova(res)
+```
+
+
+W x perf
+```{r}
+res <- lm(data = df %>% filter(cond == "ADV"), W ~ score_corrected)
+summary(res)
+confint(res)
+
+res <- lm(data = df %>% filter(cond == "OBS"), W ~ score_corrected)
+summary(res)
+confint(res)
+
+res <- lm(data = df, W ~ score_corrected * cond)
+summary(res)
+Anova(res)
+```
+
+
+
+W x transition
+```{r}
+res <- lm(data = df %>% filter(cond == "ADV"), W ~ pl2_understanding)
+summary(res)
+confint(res)
+
+res <- lm(data = df %>% filter(cond == "OBS"), W ~ pl2_understanding)
+summary(res)
+confint(res)
+
+res <- lm(data = df, W ~ pl2_understanding * cond)
+summary(res)
+Anova(res)
+```
+
+# NLP
+
+```{r}
+df_adv <- read.csv("../output/processed/data_stake.csv", header = TRUE, row.names = 1)
+
+df_adv <- df_adv %>%
+  mutate(gen = gen - 1) %>%
+  mutate(cond = "ADV")
+
+df_obs <- read.csv("../output/processed/data_obs.csv", header = TRUE, row.names = 1)
+
+df_obs <- df_obs %>%
+  mutate(gen = gen - 1) %>%
+  mutate(cond = "OBS")
+
+df <- bind_rows(df_adv, df_obs)
+
+df <- df %>%
+  mutate_at(c(
+    "pl1_understanding",
+    "pl2_understanding",
+    "parent_pl1_understanding",
+    "parent_pl2_understanding"
+  ), scale)
+
+
+df_lda <- read.csv("../output/processed/data_lda_shen.csv", row.names = 1)
+
+df_lda <- df_lda %>%
+  select(
+    ID,
+    Topic_1,
+    Topic_2,
+    Topic_3,
+    Topic_4,
+    Topic_5,
+    Parent_topic1_weight, 
+    Parent_topic2_weight,
+    Parent_topic3_weight,
+    Parent_topic4_weight,
+    Parent_topic5_weight
+  )
+
+df_lda <- left_join(df %>% filter(cond == "ADV"), df_lda, by = "ID")
+
+df_W <- read.csv("data_model_advice.csv", row.names = 1)
+df_W <- df_W %>%
+  rename(ID = sub)
+
+df_lda <- left_join(df_lda, df_W)
+```
+
+
+
+```{r}
+df_plot <- df_lda %>%
+  group_by(gen) %>%
+  summarise(
+    topic_1 = mean(Topic_1),
+    topic_2 = mean(Topic_2),
+    topic_3 = mean(Topic_3),
+    topic_4 = mean(Topic_4),
+    topic_5 = mean(Topic_5)
+  )
+
+df_plot <- df_plot %>% pivot_longer(
+  names_to = "topic",
+  values_to = "weight",
+  cols = c(topic_1, topic_2, topic_3, topic_4, topic_4, topic_5)
+)
+
+df_plot
+```
+
+
+```{r}
+ggplot(df_plot, aes(x = gen, y = weight, group = topic, colour = topic)) +
+  geom_line()
+```
+
+
+```{r}
+
+# postiive sig
+res <- lm(data = df_lda, W ~ Topic_3)
+summary(res)
+confint(res)
+
+# negative sig
+res <- lm(data = df_lda, W ~ Topic_1)
+summary(res)
+confint(res)
+
+# negative sig
+res <- lm(data = df_lda, W ~ Topic_2)
+summary(res)
+confint(res)
+
+# negative sig
+res <- lm(data = df_lda, W ~ Topic_4)
+summary(res)
+confint(res)
+
+# positive sig with very little effect size
+res <- lm(data = df_lda, W ~ Topic_5)
+summary(res)
+confint(res)
+```
+```{r}
+res <- lm(data = df_lda, score_corrected ~ Topic_3)
+summary(res)
+confint(res)
+```
+
+
+## PLOT
+
+# data prep
+```{r}
+df_plot <- df %>%
+  select(ID, score_corrected, pl1_understanding, pl2_understanding, W, gen, cond) %>%
+  mutate(gen = gen + 1)
+
+head(df_plot)
+```
+
+# CI
+```{r}
+df_plot <- df_plot %>%
+  group_by(cond, gen) %>%
+  summarize(
+    mean = mean(W),
+    sd = sd(W),
+    n = n(),
+    error_margin = qt(0.975, df = n-1) * sd / sqrt(n),
+    lower_ci = mean - error_margin,
+    upper_ci = mean + error_margin
+  )
+O
+head(df_plot)
+```
+```{r}
+ggplot(df_plot, aes(x = gen, y = mean, color = cond, group = cond)) +
+  geom_ribbon(aes(ymin = lower_ci, ymax = upper_ci, fill = cond), alpha = 0.2, colour = NA, show.legend = F) +
+  geom_line(linewidth = 1) +
+  geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci), width = 0.2, alpha = 0.9) +
+  geom_point(aes(shape = df_plot$cond), size = 5) +
+  labs(
+    x = "Generation Number",
+    y = "W",
+    shape = " ",
+    colour = " "
+  ) +
+  scale_x_continuous(
+    limits = c(0.5, 10.5),
+    breaks = seq(1, 10, by = 1),
+    expand = c(.001, .001)
+  ) +
+  scale_y_continuous(
+    limits = c(0, 1),
+    breaks = seq(0, 1, by = 0.25),
+    expand = c(.001, .001)
+  ) +
+  guides(shape = guide_legend(override.aes = list(linetype = 0))) +
+  theme_minimal() +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_blank(),
+    axis.line = element_line(colour = "black", size = .8),
+    axis.ticks = element_line(colour = "black", size = .8),
+    axis.ticks.length.x = unit(5, "pt"),
+    axis.ticks.length.y = unit(7, "pt"),
+    axis.text = element_text(family = "Roboto Mono", size = 11, colour = "black"),
+    axis.title.x = element_text(
+      margin = margin(t = 10),
+      size = 16
+    ),
+    axis.title.y = element_text(
+      margin = margin(r = 10),
+      size = 16
+    ),
+    plot.margin = margin(15, 15, 10, 15),
+    legend.position = c(.1, .8),
+    legend.text = element_text(face = "bold", size = 12)
+  )
+
+ggsave("../figures/test/W_test.tiff", bg = "white")
+```
+
+## MODEL
+
+```{r}
+files <- list.files(path = file.path("../../model/data/SHEN/advice_perfect_model"))
+
+df_W <- tibble()
+
+for (file in files){
+  df_raw <- read.csv(file.path("../../model/data/SHEN/advice_perfect_model", file))
+  df <- df_raw %>%
+  group_by(sub) %>%
+  filter(param %in% c("W_HS_sub", "W_LS_sub")) %>%
+  summarise(
+    W = mean(mean)
+  ) 
+  df_W <- bind_rows(df_W, df)
+}
+
+files <- list.files(path = file.path("../../model/data/SHEN/obs_perfect_model"))
+
+
+for (file in files){
+  df_raw <- read.csv(file.path("../../model/data/SHEN/obs_perfect_model", file))
+  df <- df_raw %>%
+  group_by(sub) %>%
+  filter(param %in% c("W_HS_sub", "W_LS_sub")) %>%
+  summarise(
+    W = mean(mean)
+  ) 
+  df_W <- bind_rows(df_W, df)
+}
+
+write.csv(df_W, file = "data_model_advice.csv")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
