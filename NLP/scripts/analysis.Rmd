@@ -1,0 +1,151 @@
+---
+title: "analysis"
+author: "Blublu"
+date: "2025-01-24"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+library(tidyverse)
+library(car)
+library(lme4)
+```
+
+
+```{r}
+df_adv <- read.csv("../../output/processed/data_stake.csv", header = TRUE, row.names = 1)
+
+df_adv <- df_adv %>%
+  mutate(gen = gen - 1) %>%
+  mutate(cond = "ADV")
+
+df_obs <- read.csv("../../output/processed/data_obs.csv", header = TRUE, row.names = 1)
+
+df_obs <- df_obs %>%
+  mutate(gen = gen - 1) %>%
+  mutate(cond = "OBS")
+
+df <- bind_rows(df_adv, df_obs)
+
+df <- df %>%
+  mutate_at(c(
+    "pl1_understanding",
+    "pl2_understanding",
+    "parent_pl1_understanding",
+    "parent_pl2_understanding"
+  ), scale)
+
+df_W <- read.csv("../data/data_model_advice.csv", row.names = 1)
+df_W <- df_W %>%
+  rename(ID = sub)
+
+df <- left_join(df, df_W, by = "ID")
+```
+
+```{r}
+BERTopic_value <- read.csv("../results/BERT_topic_value.csv", header = FALSE)
+
+df_BERT <- df %>%
+  filter(cond == "ADV") %>%
+  mutate(BERTopic = as.factor(BERTopic_value$V1))
+```
+
+
+```{r}
+ggplot(df_BERT, aes(x = BERTopic, y = score_corrected, fill = BERTopic)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(
+    title = "Task performance per topic",
+    x = "Topic number",
+    y = "Task performance"
+  )
+```
+
+```{r}
+# One-way ANOVA
+anova_result <- aov(score_corrected ~ BERTopic, data = df_BERT)
+summary(anova_result)
+
+# Check normality of residuals
+shapiro.test(residuals(anova_result))
+
+# Check homogeneity of variances
+leveneTest(score_corrected ~ BERTopic, data = df_BERT)
+```
+```{r}
+# Kruskal-Wallis test
+kruskal_result <- kruskal.test(score_corrected ~ BERTopic, data = df_BERT)
+print(kruskal_result)
+
+# Pairwise Wilcoxon test
+pairwise.wilcox.test(df_BERT$score_corrected, df_BERT$BERTopic, p.adjust.method = "bonferroni")
+```
+
+```{r}
+model_lmm <- lmer(score_corrected ~ BERTopic + (1 | BERTopic), data = df_BERT)
+summary(model_lmm)
+```
+
+
+```{r}
+ggplot(df_BERT, aes(x = BERTopic, y = pl2_understanding, fill = BERTopic)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(
+    title = "Transition knowledge per topic",
+    x = "Topic number",
+    y = "Transition knowledge"
+  )
+```
+
+```{r}
+#TOPIC0 = TALL TOPIC
+#TOPIC1 = TRANSITION
+#TOPIC2 = GNOME?
+#TOPIC3 = OUTSIDE
+
+df_test <- df_BERT %>%
+  mutate(topic_reduce = ifelse(BERTopic %in% c(7, 6, 10), "TALL",
+    ifelse(BERTopic %in% c(0, 4, 9), "TRANSITION",
+      ifelse(BERTopic %in% c(5, 3, 1, 2, 11), "GNOME",
+        ifelse(BERTopic == 8, "RANDOM", 0)
+      )
+    )
+  ))
+
+ggplot(df_test, aes(x = topic_reduce, y = pl2_understanding, fill = topic_reduce)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(
+    title = "Transition knowledge per topic",
+    x = "Topic",
+    y = "Transition knowledge"
+  )
+
+ggplot(df_test, aes(x = topic_reduce, y = score_corrected, fill = topic_reduce)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(
+    title = "Task performance per topic",
+    x = "Topic",
+    y = "Task performance"
+  )
+
+ggplot(df_test, aes(x = topic_reduce, y = W, fill = topic_reduce)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(
+    title = "Model basedness (W) per topic",
+    x = "Topic",
+    y = "Model basedness (W)"
+  )
+```
+
+
+```{r}
+res <- lm(data = df_BERT, score_corrected ~ BERTopic_value * gen)
+
+```
+
