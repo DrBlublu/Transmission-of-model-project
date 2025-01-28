@@ -145,7 +145,25 @@ ggplot(df_test, aes(x = topic_reduce, y = W, fill = topic_reduce)) +
 
 
 ```{r}
-res <- lm(data = df_BERT, score_corrected ~ BERTopic_value * gen)
+res <- lm(data = df_BERT, score_corrected ~ BERTopic * gen)
+summary(res)
 
+res <- lm(data = df_BERT, pl2_understanding ~ BERTopic * gen)
+summary(res)
+
+res <- lm(data = df_BERT, W ~ BERTopic * gen)
+summary(res)
+```
+
+
+```{r}
+res <- lm(data = df_test, score_corrected ~ topic_reduce * gen)
+summary(res)
+
+res <- lm(data = df_test, pl2_understanding ~ topic_reduce * gen)
+summary(res)
+
+res <- lm(data = df_test, W ~ topic_reduce * gen)
+summary(res)
 ```
 
