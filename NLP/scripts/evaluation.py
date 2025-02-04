@@ -1,41 +1,115 @@
 from octis.evaluation_metrics.diversity_metrics import TopicDiversity
-from octis.evaluation_metrics.coherence_metrics import Coherence
+import numpy as np
+import pandas as pd
+from bertopic import BERTopic
+import gensim.corpora as corpora
+from gensim.models.coherencemodel import CoherenceModel
+from sklearn.metrics import silhouette_score
 
-def evaluate_model(topic_model, docs: list[str], topk: int) -> tuple[float, float]:
+def calculate_topic_diversity(topic_words: list[list[str]], topk: int) -> float:
     """
-    Evaluates a BERTopic model using Topic Diversity and Coherence metrics from the octis library.
+    (from https://github.com/MIND-Lab/OCTIS/issues/61#issuecomment-1135461183)
+    Calculate the diversity of topics in a topic model.
+    This function computes the topic diversity score for a given list of topics
+    by extracting the top words for each topic and then using the TopicDiversity
+    function from octis to calculate the diversity score.
 
     Args:
-        topic_model: A trained BERTopic model.
-        docs: A list of documents (strings).
-        topk: Number of top words per topic to consider (should be the same as top_n_words of the BERTopic model).
+        topic_words (list[list[str]]): A list of topics, where each topic is a list of words.
+        topk (int): The number of top words to consider for each topic when calculating diversity.
+    
+    Returns:
+        t_D (float): The topic diversity score.
+    """
+    topic_diversity = TopicDiversity(topk=topk)
+    t_D = topic_diversity.score({"topics": topic_words})
+    return t_D
+
+ 
+def calculate_coherence(topic_words: list[list[str]], texts: list[str], corpus: list[list[str]], dictionary: str, method: str) -> float:
+    """
+    Calculate the coherence score for a set of topics.
+    This function computes the coherence score using a CoherenceModel from Gensim, 
+    which evaluates the quality of topics based on the specified method.
+
+    Args:
+        topic_words (list[list[str]]): A list of topics, where each topic is a list of words.
+        texts (list[str]): A list of tokenized texts (documents) used to compute coherence.
+        corpus (list[list[str]]): The corpus represented as a list of tokenized words.
+        dictionary (str): A string representing the dictionary, which is the mapping between words and their integer ids.
+        method (str): The method to calculate coherence (e.g., 'c_v', 'u_mass', etc.).
 
     Returns:
-        A tuple containing:
-        - Topic Diversity score (float)
-        - Coherence score (float)
+        float: The coherence score of the topics.
     """
-    # Retrieve topics (top_n_terms) from topic_model
-    dictionary = topic_model.get_topics()
-    top_n_terms = [[word for word, _ in terms] for terms in dictionary.values()]
+    coherence_model = CoherenceModel(topics=topic_words, 
+                                     texts=texts, 
+                                     corpus=corpus,
+                                     dictionary=dictionary, 
+                                     coherence=method)
+    return coherence_model.get_coherence()
 
-    # Prepare model output in OCTIS format
-    model_output = {
-        "topics": top_n_terms,
-        "topic-word-matrix": topic_model.c_tf_idf_,
-        "topic-document-matrix": topic_model.approximate_distribution(docs),
-    }
+def calculate_silhouette(topic_model: BERTopic, topics: list[int], embeddings: np.ndarray) -> float:
+    """
+    (from https://github.com/MaartenGr/BERTopic/issues/428)
+    Calculate the silhouette score of topic clusters.
+    This function computes the silhouette score from a BERTopic model
+    using UMAP by extracting the topics & labels.
 
-    # Tokenize documents
-    tokenizer = topic_model.vectorizer_model.build_tokenizer()
-    tokens = [tokenizer(doc) for doc in docs]
+    Args:
+        topic_model (BERTopic): A trained BERTopic model object.
+        topics (list[int]): A list of topic assignments for each document.
+        embeddings (np.ndarray): The embeddings used to train the topic_model.
+    
+    Returns:
+        (float): The silhouette score.
+    """
+    umap_embeddings = topic_model.umap_model.transform(embeddings)
+    indices = [index for index, topic in enumerate(topics) if topic != -1]
+    X = umap_embeddings[np.array(indices)]
+    labels = [topic for index, topic in enumerate(topics) if topic != -1]
+    return silhouette_score(X, labels)
 
-    # Compute Topic Diversity score
-    topic_diversity = TopicDiversity(topk=topk)
-    topic_diversity_score = topic_diversity.score(model_output)
 
-    # Compute Coherence score
-    coherence = Coherence(texts=tokens, topk=topk, measure="c_npmi")
-    coherence_score = coherence.score(model_output)
+def evaluate_model(topic_model: BERTopic, docs: list[str], topics: list[int], embeddings: np.ndarray, topk: int) -> tuple[float, float, float, float]:
+    """
+    Evaluates the quality of a topic model using various metrics including coherence, diversity, and silhouette score.
 
-    return topic_diversity_score, coherence_score
+    Args:
+        topic_model (BERTopic): The trained BERTopic model.
+        docs (list[str]): A list of documents (strings).
+        topics (list[int]): A list of topic assignments for each document.
+        embeddings (np.ndarray): A numpy array of document embeddings.
+        topk (int): The number of top words to consider when calculating topic diversity.
+
+    Returns:
+        tuple[float, float, float, float]: A tuple containing the coherence scores ('c_v' and 'c_npmi'),
+                                            the topic diversity score, and the silhouette score.
+    """
+    
+    # Preprocess Documents
+    documents = pd.DataFrame({"Document": docs,
+                            "ID": range(len(docs)),
+                            "Topic": topics})
+    documents_per_topic = documents.groupby(['Topic'], as_index=False).agg({'Document': ' '.join})
+    cleaned_docs = topic_model._preprocess_text(documents_per_topic.Document.values)
+
+    # Extract vectorizer and analyzer from BERTopic
+    vectorizer = topic_model.vectorizer_model
+    analyzer = vectorizer.build_analyzer()
+
+    # Extract features for Topic Coherence evaluation
+    words = vectorizer.get_feature_names()
+    tokens = [analyzer(doc) for doc in cleaned_docs]
+    dictionary = corpora.Dictionary(tokens)
+    corpus = [dictionary.doc2bow(token) for token in tokens]
+    topic_words = [[words for words, _ in topic_model.get_topic(topic)] 
+                for topic in range(len(set(topics)) - 1)]
+    
+    # Evaluate
+    c_v = calculate_coherence(topic_words, tokens, corpus, dictionary, method='c_v')
+    c_npmi = calculate_coherence(topic_words, tokens, corpus, dictionary, method='c_npmi')
+    t_D = calculate_topic_diversity(topic_words, topk)
+    silhouette = calculate_silhouette(topic_model, topics, embeddings)
+    
+    return c_v, c_npmi, t_D, silhouette
