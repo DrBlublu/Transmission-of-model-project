@@ -1,0 +1,156 @@
+---
+title: "LDA"
+author: "Blublu"
+date: "2025-02-07"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+```
+
+
+```{r}
+df <- read.csv("../data/data_advice_fulltext.csv", header = TRUE, row.names = 1)
+```
+
+```{r}
+raw_text_df <- tibble(
+  doc_id = df$ID,
+  gen = as.factor(df$gen),
+  text = df$text
+)
+
+tidy_text_df <- raw_text_df %>%
+  unnest_tokens(
+    word,
+    text,
+    token = "regex",
+    pattern = "\\s+|[[:punct:]+\\-><]"
+  )
+
+# count occurences
+word_counts <- tidy_text_df %>%
+  count(doc_id, word, sort = TRUE)
+
+# document freq
+doc_freq <- word_counts %>%
+  group_by(word) %>%
+  summarize(doc_count = n_distinct(doc_id))
+
+# parameters
+no_below <- 10   # Minimum number of documents a term must appear in
+no_above <- 0.5 # Maximum proportion of documents a term can appear in
+
+# filter using parameters
+total_docs <- n_distinct(tidy_text_df$doc_id)
+
+filtered_words <- doc_freq %>%
+  filter(doc_count >= no_below & doc_count <= (no_above*total_docs))
+
+# filter original word count
+word_counts <- word_counts %>%
+  filter(word %in% filtered_words$word)
+
+# create Document-Term Matrix
+dtm <- word_counts %>%
+  cast_dtm(doc_id, word, n)
+
+dtm
+```
+
+
+
+```{r}
+library(ldatuning)
+library(utils)
+
+# Create a list to store results
+results_list <- list()
+nrun = 20
+pb <- txtProgressBar(min = 0, max = nrun, style = 3)
+
+# Loop through 10 different seeds
+for (i in 1:nrun) {
+  set.seed(i)
+  result <- FindTopicsNumber(
+    dtm,  # Your document-term matrix
+    topics = seq(2, 20, by = 1),  # Range of k values to test
+    metrics = c("Griffiths2004", "CaoJuan2009", "Arun2010", "Deveaud2014"),
+    method = "Gibbs",
+    mc.cores = 4L,  # Use multiple cores for faster computation
+    verbose = TRUE
+  )
+  
+  # Store the result in the list
+  results_list[[i]] <- result
+  
+  # Generate and save the plot
+  plot <- FindTopicsNumber_plot(result)
+  ggsave(paste0("topic_number_plot_seed_", i, ".png"), plot, width = 10, height = 8)
+  setTxtProgressBar(pb, i)
+}
+```
+
+```{r}
+results_list
+run = 1
+df_result <- tibble()
+for (i in results_list){
+  i <- i %>% mutate("run" = run)
+  df_result <- bind_rows(df_result, i)
+  run <- run + 1
+}
+
+df_result <- df_result %>%
+  group_by(topics) %>%
+  summarize(
+    Griffiths2004 = mean(Griffiths2004),
+    CaoJuan2009 = mean(CaoJuan2009),
+    Arun2010 = mean(Arun2010),
+    Deveaud2014 = mean(Deveaud2014)
+  )
+
+plot <- FindTopicsNumber_plot(df_result)
+```
+
+
+```{r}
+library(topicmodels)
+library(tm)
+
+# Set the number of topics (k)
+k <- 7
+
+# Run LDA
+lda_model <- LDA(dtm, k = k, method = "VEM")
+
+# Print model summary
+print(lda_model)
+
+# Extract top terms for each topic
+top_terms <- terms(lda_model, 10)
+print(top_terms)
+```
+
+```{r}
+library(LDAvis)
+json_lda <- createJSON(phi = phi, theta = theta, doc.length = doc.length, 
+                       vocab = vocab, term.frequency = term.frequency)
+
+```
+
+
+
+
+```{r}
+phi <- exp(lda_model@beta)
+theta <- posterior(lda_model)$topics
+doc.length <- rowSums(lda_model@documents)
+vocab <- colnames(lda_model@beta)
+term.frequency <- colSums(lda_model@documents)
+```
+
+
+
+
