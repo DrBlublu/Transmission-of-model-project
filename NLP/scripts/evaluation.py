@@ -5,6 +5,7 @@ from bertopic import BERTopic
 import gensim.corpora as corpora
 from gensim.models.coherencemodel import CoherenceModel
 from sklearn.metrics import silhouette_score
+from sklearn.metrics.pairwise import cosine_similarity
 
 def calculate_topic_diversity(topic_words: list[list[str]], topk: int) -> float:
     """
@@ -70,8 +71,31 @@ def calculate_silhouette(topic_model: BERTopic, topics: list[int], embeddings: n
     labels = [topic for index, topic in enumerate(topics) if topic != -1]
     return silhouette_score(X, labels)
 
+def calculate_similarity(topic_model: BERTopic, docs: list[str], topics: list[int]) -> float:
+    """
+    Calculate the similarity score accros topics.
+    This computes the similarity scores of documents in the same topics
+    and then average this score accross all topics.
+    
+    Args:
+        topic_model (BERTopic): The trained BERTopic model.
+        docs (list[str]): A list of documents (strings).
+        topics (list[int]): A list of topic assignments for each document.
+    
+    Returns:
+        float: The average similarity score accross each topics
+    """
+    topic_distr, _ = topic_model.approximate_distribution(docs)
+    global_similarity = []
+    for topic_n in range(len(topic_distr[0,:])):
+        topic_docs = [doc for doc, topic in zip(docs, topics) if topic == topic_n]
+        embeddings = topic_model._extract_embeddings(topic_docs)
+        similarity_matrix = cosine_similarity(embeddings)
+        average_similarity = np.mean(similarity_matrix)
+        global_similarity.append(average_similarity)
+    return np.mean(global_similarity)
 
-def evaluate_model(topic_model: BERTopic, docs: list[str], topics: list[int], embeddings: np.ndarray, topk: int) -> tuple[float, float, float, float]:
+def evaluate_model(topic_model: BERTopic, docs: list[str], topics: list[int], embeddings: np.ndarray, topk: int) -> tuple[float, float, float, float, float]:
     """
     Evaluates the quality of a topic model using various metrics including coherence, diversity, and silhouette score.
 
@@ -83,8 +107,8 @@ def evaluate_model(topic_model: BERTopic, docs: list[str], topics: list[int], em
         topk (int): The number of top words to consider when calculating topic diversity.
 
     Returns:
-        tuple[float, float, float, float]: A tuple containing the coherence scores ('c_v' and 'c_npmi'),
-                                            the topic diversity score, and the silhouette score.
+        tuple[float, float, float, float, float]: A tuple containing the coherence scores ('c_v' and 'c_npmi'),
+                                            the topic diversity score, the silhouette score and the similarity score.
     """
     
     # Preprocess Documents
@@ -111,5 +135,6 @@ def evaluate_model(topic_model: BERTopic, docs: list[str], topics: list[int], em
     c_npmi = calculate_coherence(topic_words, tokens, corpus, dictionary, method='c_npmi')
     t_D = calculate_topic_diversity(topic_words, topk)
     silhouette = calculate_silhouette(topic_model, topics, embeddings)
+    similarity = calculate_similarity(topic_model, docs, topics)
     
-    return c_v, c_npmi, t_D, silhouette
+    return c_v, c_npmi, t_D, silhouette, similarity

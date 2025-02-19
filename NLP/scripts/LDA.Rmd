@@ -1,5 +1,5 @@
 ---
-title: "LDA"
+title: "LDA Analysis Pipeline"
 author: "Blublu"
 date: "2025-02-07"
 output: html_document
@@ -7,12 +7,22 @@ output: html_document
 
 ```{r setup, include=FALSE}
 library(tidyverse)
+library(tidytext)
+library(ldatuning)
+library(topicmodels)
+library(LDAvis)
+library(tm)
+
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 ```
 
+## Data Preparation
 
 ```{r}
 df <- read.csv("../data/data_advice_fulltext.csv", header = TRUE, row.names = 1)
 ```
+
+## Preprocessing
 
 ```{r}
 raw_text_df <- tibble(
@@ -21,16 +31,34 @@ raw_text_df <- tibble(
   text = df$text
 )
 
+# unigram
 tidy_text_df <- raw_text_df %>%
   unnest_tokens(
     word,
     text,
     token = "regex",
-    pattern = "\\s+|[[:punct:]+\\-><]"
+    pattern = "\\s+|[[:punct:]+\\-><]" # remove punctuation
+  ) %>%
+  filter(nchar(word) > 2)
+
+# bigram
+bigrams_df <- raw_text_df %>%
+  unnest_tokens(
+    bigram,
+    text,
+    token = "ngrams",
+    n = 2
   )
 
-# count occurences
-word_counts <- tidy_text_df %>%
+# combine bigram & unigram
+combined_df <- bind_rows(
+  tidy_text_df %>% mutate(term = word),
+  bigrams_df %>% mutate(term = bigram)
+)
+
+# count occurences & remove stopwords
+word_counts <- combined_df %>%
+  anti_join(get_stopwords(language = "en", source = "snowball"), by = c("term" = "word")) %>%
   count(doc_id, word, sort = TRUE)
 
 # document freq
@@ -58,6 +86,146 @@ dtm <- word_counts %>%
 
 dtm
 ```
+
+## LDA Model
+
+```{r}
+alpha_values <- c(0.1, 0.5, 1, 5, 10, 50)
+
+lda_models <- lapply(alpha_values, function(a) {
+  LDA(dtm,
+    k = 5,
+    control = list(
+      alpha = a,
+      estimate.alpha = FALSE,
+      seed = 37
+    )
+  )
+})
+
+perplexities <- sapply(lda_models, perplexity, newdata = dtm)
+
+results <- data.frame(alpha = alpha_values, perplexity = perplexities)
+print(results)
+```
+
+
+## TEST
+
+```{r}
+library(topicmodels)
+library(tidytext)
+library(dplyr)
+library(ggplot2)
+
+# Assuming 'dtm' is your preprocessed document-term matrix
+
+# Function to calculate perplexity
+calc_perplexity <- function(model, test_data) {
+  perplexity(model, newdata = test_data)
+}
+
+# Function to calculate coherence (simplified version)
+calc_coherence <- function(model, dtm) {
+  topics <- tidy(model, matrix = "beta")
+  top_terms <- topics %>%
+    group_by(topic) %>%
+    top_n(10, beta) %>%
+    ungroup()
+  
+  # Calculate pairwise PMI for top terms (simplified)
+  mean(top_terms$beta)
+}
+
+# Function to calculate topic diversity (simplified)
+calc_diversity <- function(model) {
+  topics <- tidy(model, matrix = "beta")
+  unique_words <- topics %>%
+    group_by(topic) %>%
+    top_n(10, beta) %>%
+    ungroup() %>%
+    distinct(term) %>%
+    nrow()
+  
+  unique_words / (10 * max(topics$topic))
+}
+
+# Assuming 'dtm' is your document-term matrix
+set.seed(123)  # for reproducibility
+shuffled_indices <- sample(1:nrow(dtm))
+dtm_shuffled <- dtm[shuffled_indices, ]
+
+# Now split into train and test
+train_size <- floor(0.8 * nrow(dtm_shuffled))
+dtm_train <- dtm_shuffled[1:train_size, ]
+dtm_test <- dtm_shuffled[(train_size+1):nrow(dtm_shuffled), ]
+
+# Parameters to test
+k_values <- c(4, 5, 6, 7, 10)
+alpha_values <- c(0.1, 0.5, 1)
+beta_values <- c(0.1, 0.5, 1)
+
+results <- expand.grid(k = k_values, alpha = alpha_values, beta = beta_values)
+results$perplexity <- NA
+results$coherence <- NA
+results$diversity <- NA
+
+# Run models and collect metrics
+for (i in 1:nrow(results)) {
+  k <- results$k[i]
+  alpha <- results$alpha[i]
+  beta <- results$beta[i]
+  
+  model <- LDA(dtm_train, k = k, method = "Gibbs", 
+               control = list(alpha = alpha, delta = beta, seed = 1234))
+  
+  results$perplexity[i] <- calc_perplexity(model, dtm_test)
+  results$coherence[i] <- calc_coherence(model, dtm_train)
+  results$diversity[i] <- calc_diversity(model)
+  
+  cat("Completed model", i, "of", nrow(results), "\n")
+}
+
+# Visualize results
+ggplot(results, aes(x = k, y = perplexity, color = factor(alpha), linetype = factor(beta))) +
+  geom_line() +
+  labs(title = "Perplexity by Number of Topics",
+       x = "Number of Topics (k)",
+       y = "Perplexity",
+       color = "Alpha",
+       linetype = "Beta")
+
+ggplot(results, aes(x = k, y = coherence, color = factor(alpha), linetype = factor(beta))) +
+  geom_line() +
+  labs(title = "Coherence by Number of Topics",
+       x = "Number of Topics (k)",
+       y = "Coherence",
+       color = "Alpha",
+       linetype = "Beta")
+
+ggplot(results, aes(x = k, y = diversity, color = factor(alpha), linetype = factor(beta))) +
+  geom_line() +
+  labs(title = "Diversity by Number of Topics",
+       x = "Number of Topics (k)",
+       y = "Diversity",
+       color = "Alpha",
+       linetype = "Beta")
+
+# Find optimal model
+optimal_model <- results %>%
+  arrange(perplexity) %>%
+  slice(1)
+
+cat("Optimal model parameters:\n",
+    "k =", optimal_model$k, "\n",
+    "alpha =", optimal_model$alpha, "\n",
+    "beta =", optimal_model$beta, "\n",
+    "Perplexity =", optimal_model$perplexity, "\n",
+    "Coherence =", optimal_model$coherence, "\n",
+    "Diversity =", optimal_model$diversity, "\n")
+
+```
+
 
 
 
@@ -92,6 +260,7 @@ for (i in 1:nrun) {
 }
 ```
 
+
 ```{r}
 results_list
 run = 1
@@ -116,22 +285,74 @@ plot <- FindTopicsNumber_plot(df_result)
 
 
 ```{r}
-library(topicmodels)
-library(tm)
+k <- 5
 
-# Set the number of topics (k)
-k <- 7
-
-# Run LDA
-lda_model <- LDA(dtm, k = k, method = "VEM")
-
-# Print model summary
+lda_model <- LDA(dtm, k = k, method = "Gibbs")
 print(lda_model)
 
 # Extract top terms for each topic
 top_terms <- terms(lda_model, 10)
 print(top_terms)
 ```
+
+```{r}
+posterior_distribution = posterior(lda_model)
+document_topic_probs <- posterior_distribution$topics
+```
+
+
+```{r}
+topic_prob_doc <- tidy(lda_model, matrix = "gamma") %>%
+  rename("ID" = "document") %>%
+  group_by(ID) %>%
+  filter(gamma == max(gamma))
+```
+
+
+```{r}
+df <- read.csv("../../output/processed/data_stake.csv", header = TRUE, row.names = 1)
+
+df_topic <- left_join(df, topic_prob_doc %>% select(-gamma), by = "ID")
+```
+
+
+```{r}
+df_graph <- df_topic %>%
+  group_by(gen) %>%
+  filter(!is.na(topic)) %>%
+  count(topic)
+
+ggplot(df_graph, aes(x = as.factor(gen), y = n, color = as.factor(topic))) +
+  geom_line() +
+  geom_point() +
+  scale_color_discrete(name = "Topic") +
+  labs(x = "Generation", y = "# documents") +
+  theme_minimal()
+  
+```
+
+
+```{r}
+df_stat <- tidy(lda_model, matrix = "gamma") %>%
+  rename("ID" = "document") %>%
+  mutate(topic = paste0("topic_", topic)) %>%
+  pivot_wider(
+    id_cols = ID,
+    names_from = topic,
+    values_from = gamma
+  )
+
+
+df_stat <- left_join(df, df_stat, by = "ID")
+```
+
+
+
+```{r}
+cor.test(df_stat$score_corrected, df_stat$topic_5)
+cor.test(df_stat$score_corrected, df_stat$topic_1)
+```
+
 
 ```{r}
 library(LDAvis)
@@ -143,6 +364,7 @@ json_lda <- createJSON(phi = phi, theta = theta, doc.length = doc.length,
 
 
 
+
 ```{r}
 phi <- exp(lda_model@beta)
 theta <- posterior(lda_model)$topics
@@ -150,6 +372,9 @@ doc.length <- rowSums(lda_model@documents)
 vocab <- colnames(lda_model@beta)
 term.frequency <- colSums(lda_model@documents)
 ```
+
+
+
 
 
 
