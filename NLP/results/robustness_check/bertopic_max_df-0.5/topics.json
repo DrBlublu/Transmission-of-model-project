@@ -2,222 +2,222 @@
   "topic_representations": {
     "-1": [
       [
-        "mushrooms",
-        0.04557804176038395
+        "paired",
+        0.025496555543803943
       ],
       [
-        "gnome",
-        0.04206858104441418
+        "yellow orange blue",
+        0.02184665258193979
       ],
       [
-        "gnomes",
-        0.0405473688978651
+        "gnome pair",
+        0.021691824588724404
       ],
       [
-        "multiplier",
-        0.02666379976345515
+        "1x multiplier",
+        0.019980730036353093
       ],
       [
-        "yellow",
-        0.02632969897094126
+        "yellow gnome",
+        0.01947257099974124
       ]
     ],
     "0": [
       [
-        "gnome",
-        0.05720872794354186
+        "cone",
+        0.02367945972710962
       ],
       [
-        "points",
-        0.050685334061674324
+        "gnome gives",
+        0.021938773097055428
       ],
       [
-        "gnomes",
-        0.0478451518990079
+        "size",
+        0.021023162943556894
       ],
       [
-        "colour",
-        0.029822347330046465
+        "gnome left",
+        0.020067374729807956
       ],
       [
-        "hat",
-        0.028608365851235815
+        "right gnome",
+        0.019131032102934556
       ]
     ],
     "1": [
       [
-        "basket",
-        0.10011978517329147
+        "red basket",
+        0.10067268635448486
       ],
       [
-        "red",
-        0.07059408421874747
+        "basket yellow",
+        0.03535937634417726
       ],
       [
-        "yellow",
-        0.06310651215355204
+        "basket red",
+        0.03423364010285275
       ],
       [
-        "mushrooms",
-        0.05249315698000897
+        "basket colour",
+        0.031949372788120656
       ],
       [
-        "gnomes",
-        0.04863039992168055
+        "gnomes yellow",
+        0.0312932328700262
       ]
     ],
     "2": [
       [
-        "points",
-        0.05821048580173905
+        "knomes",
+        0.04651448150549701
       ],
       [
-        "blue",
-        0.04456528250580084
+        "pick colour",
+        0.039322901512328826
       ],
       [
-        "colours",
-        0.041999602463958105
+        "rarely",
+        0.038761026488025284
       ],
       [
-        "pink",
-        0.04097438745789189
+        "knome",
+        0.03494909530412435
       ],
       [
-        "purple",
-        0.03725063938086725
+        "50",
+        0.034239675876695796
       ]
     ],
     "3": [
       [
-        "mushrooms",
-        0.08536925951218581
+        "gnome gives",
+        0.048928078279933944
       ],
       [
-        "gnome",
-        0.05532198308198528
+        "gnomes mushrooms",
+        0.04071052688335258
       ],
       [
-        "gnomes",
-        0.05124575873715413
+        "higher mushrooms",
+        0.033308612904561205
       ],
       [
-        "colour",
-        0.03510211640286759
+        "shown",
+        0.031113396829074495
       ],
       [
-        "try",
-        0.032430130878735294
+        "try colour",
+        0.027931868148949195
       ]
     ],
     "4": [
       [
-        "basket",
-        0.09050423887024552
+        "red basket",
+        0.074154400298053
       ],
       [
-        "red",
-        0.06104559131644835
+        "colored",
+        0.0453576644066313
       ],
       [
-        "baskets",
-        0.05101845813082794
+        "basket colour",
+        0.04298031412970336
       ],
       [
-        "yellow",
-        0.05083604335286699
+        "red baskets",
+        0.041282595283330906
       ],
       [
-        "points",
-        0.04757386364604342
+        "yellow baskets",
+        0.03918219646667906
       ]
     ],
     "5": [
       [
-        "mushrooms",
-        0.08464850395506433
+        "colours mushrooms",
+        0.10813955679262498
       ],
       [
-        "colours",
-        0.07010106276948143
+        "mushrooms stick",
+        0.06947865203286016
       ],
       [
-        "mushroom",
-        0.051388337222665774
+        "colour gives",
+        0.06007753155145832
       ],
       [
-        "change",
-        0.04030193084405149
+        "better results",
+        0.05693379334123653
       ],
       [
-        "color",
-        0.03997785206469878
+        "colour gives mushrooms",
+        0.05279184083967974
       ]
     ],
     "6": [
       [
-        "hats",
-        0.16700100673012133
+        "tall hats",
+        0.15396564875911908
       ],
       [
-        "hat",
-        0.10116585069728068
+        "tall brown",
+        0.12371482739691518
       ],
       [
-        "tall",
-        0.09829077076278542
+        "brown hat",
+        0.1065226906167233
       ],
       [
-        "short",
-        0.04834051124416489
+        "pointed",
+        0.09712673630212923
       ],
       [
-        "taller",
-        0.047380234409651056
+        "tall hat",
+        0.09228411412940878
       ]
     ],
     "7": [
       [
-        "forest",
-        0.19005059258186643
+        "blue gnomes",
+        0.11571259593109956
       ],
       [
-        "mushrooms",
-        0.0691070639812846
+        "orange blue gnomes",
+        0.09543437505350508
       ],
       [
-        "green",
-        0.05090658271511137
+        "based colours",
+        0.09543437505350508
       ],
       [
-        "gnomes",
-        0.050477804352750844
+        "orange yellow blue",
+        0.08281472325955602
       ],
       [
-        "blue",
-        0.0486231153860507
+        "yellow orange blue",
+        0.07655728856597145
       ]
     ],
     "8": [
       [
-        "hat",
-        0.09194238308956712
+        "tall hats",
+        0.09383705220230334
       ],
       [
-        "mushrooms",
-        0.08369386801585753
+        "gnomes longer",
+        0.09151271934155082
       ],
       [
-        "tall",
-        0.0613245509539606
+        "tall hat",
+        0.0843662463490749
       ],
       [
-        "hats",
-        0.061304561580649265
+        "size",
+        0.08370989050079004
       ],
       [
-        "gnome",
-        0.05641819551035472
+        "blue gnome",
+        0.07037778915172752
       ]
     ]
   },
@@ -1288,16 +1288,16 @@
     ]
   ],
   "topic_labels": {
-    "-1": "-1_mushrooms_gnome_gnomes_multiplier",
-    "0": "0_gnome_points_gnomes_colour",
-    "1": "1_basket_red_yellow_mushrooms",
-    "2": "2_points_blue_colours_pink",
-    "3": "3_mushrooms_gnome_gnomes_colour",
-    "4": "4_basket_red_baskets_yellow",
-    "5": "5_mushrooms_colours_mushroom_change",
-    "6": "6_hats_hat_tall_short",
-    "7": "7_forest_mushrooms_green_gnomes",
-    "8": "8_hat_mushrooms_tall_hats"
+    "-1": "-1_paired_yellow orange blue_gnome pair_1x multiplier",
+    "0": "0_cone_gnome gives_size_gnome left",
+    "1": "1_red basket_basket yellow_basket red_basket colour",
+    "2": "2_knomes_pick colour_rarely_knome",
+    "3": "3_gnome gives_gnomes mushrooms_higher mushrooms_shown",
+    "4": "4_red basket_colored_basket colour_red baskets",
+    "5": "5_colours mushrooms_mushrooms stick_colour gives_better results",
+    "6": "6_tall hats_tall brown_brown hat_pointed",
+    "7": "7_blue gnomes_orange blue gnomes_based colours_orange yellow blue",
+    "8": "8_tall hats_gnomes longer_tall hat_size"
   },
   "custom_labels": null,
   "_outliers": 1,
@@ -1305,296 +1305,296 @@
     "KeyBERT": {
       "-1": [
         [
-          "colour gnome",
-          0.6092303395271301
+          "gnomes mushrooms",
+          0.6304773092269897
         ],
         [
-          "gnomes",
-          0.4944991171360016
+          "gnome mushrooms",
+          0.6216728091239929
         ],
         [
-          "gnome",
-          0.49077409505844116
+          "colored gnomes",
+          0.5781335830688477
         ],
         [
-          "number mushrooms",
-          0.47343143820762634
+          "gnome colours",
+          0.5523665547370911
         ],
         [
-          "colors",
-          0.4068126976490021
+          "yellow gnome",
+          0.5260740518569946
         ],
         [
-          "gnome pair",
-          0.3919967710971832
+          "gnomes green",
+          0.520538866519928
         ],
         [
-          "red basket",
-          0.389604389667511
+          "choose gnome",
+          0.509117841720581
         ],
         [
-          "colours",
-          0.3879428803920746
+          "red gnome",
+          0.5052709579467773
         ],
         [
-          "mushrooms",
-          0.38417455554008484
+          "blue gnome",
+          0.48763397336006165
         ],
         [
-          "mushroom",
-          0.36614271998405457
+          "basket gnomes",
+          0.48553937673568726
         ]
       ],
       "0": [
         [
-          "colour gnomes",
-          0.6671841144561768
+          "points gnomes",
+          0.7032753229141235
         ],
         [
-          "colour gnome",
-          0.6601656079292297
+          "gnomes points",
+          0.6936600804328918
         ],
         [
-          "gnomes",
-          0.49088478088378906
+          "points gnome",
+          0.6809314489364624
         ],
         [
-          "gnome",
-          0.48366156220436096
+          "gnome points",
+          0.6786774396896362
         ],
         [
-          "colours",
-          0.4006923735141754
+          "hat gnomes",
+          0.6458624601364136
         ],
         [
-          "colour",
-          0.37721890211105347
+          "choosing gnomes",
+          0.6373182535171509
         ],
         [
-          "points",
-          0.33220669627189636
+          "gnomes better",
+          0.6298618316650391
         ],
         [
-          "coloured",
-          0.32714414596557617
+          "hat gnome",
+          0.6294872760772705
         ],
         [
-          "red",
-          0.3191896080970764
+          "coloured gnome",
+          0.6200875043869019
         ],
         [
-          "yellow",
-          0.3154275715351105
+          "picking gnome",
+          0.6200575828552246
         ]
       ],
       "1": [
         [
+          "yellow basket gnomes",
+          0.6533167362213135
+        ],
+        [
           "gnomes yellow basket",
-          0.62898850440979
+          0.6473933458328247
+        ],
+        [
+          "red basket gnomes",
+          0.642305850982666
         ],
         [
           "gnomes red basket",
-          0.6194668412208557
+          0.6331109404563904
         ],
         [
           "basket gnomes",
-          0.589250385761261
+          0.5825176239013672
         ],
         [
-          "mushrooms switch",
-          0.5849793553352356
-        ],
-        [
-          "number mushrooms",
-          0.5593667030334473
-        ],
-        [
-          "colour basket",
-          0.5573728680610657
+          "basket gnome",
+          0.5698224306106567
         ],
         [
           "color basket",
-          0.5526084899902344
-        ],
-        [
-          "different coloured gnomes",
-          0.5518644452095032
+          0.5580252408981323
         ],
         [
           "basket colour",
-          0.5453447699546814
+          0.5500174760818481
         ],
         [
-          "coloured gnomes",
-          0.5409755110740662
+          "lots mushrooms",
+          0.5474718809127808
+        ],
+        [
+          "baskets red yellow",
+          0.5472899079322815
         ]
       ],
       "2": [
         [
-          "certain colours",
-          0.5934703946113586
+          "points blue",
+          0.6600123643875122
+        ],
+        [
+          "colours choose",
+          0.6439966559410095
+        ],
+        [
+          "choose colours",
+          0.6131782531738281
+        ],
+        [
+          "colours pick",
+          0.5952456593513489
         ],
         [
           "pick colour",
-          0.5914719700813293
+          0.5702709555625916
         ],
         [
-          "colours",
-          0.5229355096817017
+          "choosing purple",
+          0.5563579797744751
         ],
         [
-          "colors",
-          0.5198075175285339
+          "choose blue",
+          0.5554863810539246
         ],
         [
-          "colour",
-          0.46943408250808716
+          "chose red",
+          0.5122682452201843
         ],
         [
-          "color",
-          0.42436981201171875
+          "choose pink",
+          0.4902089238166809
         ],
         [
-          "blue",
-          0.42343440651893616
-        ],
-        [
-          "red",
-          0.4133199453353882
-        ],
-        [
-          "scores",
-          0.40489521622657776
-        ],
-        [
-          "yellow",
-          0.4034844636917114
+          "pick pink",
+          0.4551664888858795
         ]
       ],
       "3": [
         [
+          "coloured gnomes mushrooms",
+          0.8046604990959167
+        ],
+        [
           "gnomes mushrooms",
-          0.721281886100769
+          0.7352450489997864
         ],
         [
-          "colour gnome",
-          0.6119961738586426
+          "mushrooms gnomes",
+          0.7290129065513611
         ],
         [
-          "number mushrooms",
-          0.588434636592865
+          "gnome mushrooms",
+          0.7281718850135803
         ],
         [
-          "higher mushrooms",
-          0.5842854380607605
+          "mushrooms gnome",
+          0.7144063711166382
         ],
         [
-          "gives mushrooms",
-          0.5601223111152649
+          "colour mushrooms",
+          0.6436965465545654
         ],
         [
-          "giving mushrooms",
-          0.5508661270141602
+          "colored gnomes",
+          0.6415383219718933
         ],
         [
-          "mushrooms",
-          0.5412552356719971
+          "gnome colour",
+          0.593331515789032
         ],
         [
-          "mushroom",
-          0.5026562213897705
+          "picking mushrooms",
+          0.5717537999153137
         ],
         [
-          "mushrooms try",
-          0.4857611060142517
-        ],
-        [
-          "gnomes appear",
-          0.4787948727607727
+          "gnomes shown",
+          0.5649660229682922
         ]
       ],
       "4": [
         [
+          "gnomes red basket",
+          0.6550633311271667
+        ],
+        [
           "gnomes baskets",
-          0.6656854152679443
+          0.6335328221321106
+        ],
+        [
+          "colour baskets",
+          0.6300551891326904
         ],
         [
           "basket colours",
-          0.6220192313194275
+          0.6229170560836792
         ],
         [
-          "colour basket",
-          0.6186335682868958
+          "color basket",
+          0.613333523273468
         ],
         [
           "basket colour",
-          0.6134375929832458
+          0.6132165193557739
         ],
         [
           "baskets red yellow",
-          0.6087906956672668
+          0.6051850318908691
+        ],
+        [
+          "coloured basket",
+          0.5959787964820862
         ],
         [
           "yellow baskets",
-          0.5968677997589111
+          0.5929103493690491
         ],
         [
-          "baskets red",
-          0.5793188810348511
-        ],
-        [
-          "red baskets",
-          0.5764109492301941
-        ],
-        [
-          "colored gnomes",
-          0.574801504611969
-        ],
-        [
-          "basket yellow",
-          0.5578347444534302
+          "red basket yellow",
+          0.5795031189918518
         ]
       ],
       "5": [
         [
           "colour gives mushrooms",
-          0.8275173306465149
+          0.8146123290061951
         ],
         [
           "colours mushrooms",
-          0.8133696913719177
+          0.8123673796653748
         ],
         [
-          "mushrooms change",
-          0.6828499436378479
+          "mushrooms colours",
+          0.8112636804580688
         ],
         [
-          "gives mushrooms",
-          0.6025547385215759
+          "mushroom count",
+          0.667007565498352
         ],
         [
-          "mushrooms use",
-          0.5740227699279785
+          "red mushrooms",
+          0.6575075387954712
         ],
         [
-          "mushrooms",
-          0.5736028552055359
+          "mushrooms certain",
+          0.6300721764564514
         ],
         [
-          "mushrooms stick",
-          0.5633017420768738
+          "lot mushrooms",
+          0.620319128036499
         ],
         [
-          "mushrooms remember",
-          0.5367711782455444
+          "mushrooms try switch",
+          0.6200178265571594
         ],
         [
-          "mushroom",
-          0.5239744186401367
+          "collecting mushrooms",
+          0.6162096261978149
         ],
         [
-          "different colours",
-          0.5136047005653381
+          "giving mushrooms",
+          0.613917887210846
         ]
       ],
       "6": [
@@ -1604,7 +1604,7 @@
         ],
         [
           "tall hats",
-          0.6404703855514526
+          0.6404704451560974
         ],
         [
           "short hat",
@@ -1619,404 +1619,404 @@
           0.6276321411132812
         ],
         [
-          "hats",
-          0.6007692217826843
-        ],
-        [
           "tall hat",
           0.5828918814659119
         ],
         [
           "hat colour",
-          0.5765722393989563
+          0.5765721797943115
+        ],
+        [
+          "yellow hats",
+          0.5483568906784058
         ],
         [
           "brown hat",
           0.5389314889907837
         ],
         [
-          "hat",
-          0.5310705900192261
+          "hat better",
+          0.5235470533370972
         ]
       ],
       "7": [
         [
+          "coloured gnomes mushrooms",
+          0.7745426297187805
+        ],
+        [
+          "forest coloured gnomes",
+          0.7010782957077026
+        ],
+        [
+          "gnomes mushrooms",
+          0.684131383895874
+        ],
+        [
           "mushrooms gnomes",
-          0.6691309809684753
+          0.6748879551887512
         ],
         [
           "mushrooms forest",
-          0.6326552033424377
+          0.6101985573768616
         ],
         [
-          "number mushrooms decrease",
-          0.5847020149230957
+          "mushrooms swap",
+          0.579483151435852
         ],
         [
-          "number mushrooms",
-          0.5731936097145081
+          "orange brown gnomes",
+          0.5763633847236633
         ],
         [
-          "mushrooms decrease",
-          0.5393688678741455
+          "change mushrooms",
+          0.574150562286377
         ],
         [
-          "colour gnomes",
-          0.5299957394599915
-        ],
-        [
-          "mushrooms group",
-          0.5202205777168274
-        ],
-        [
-          "mushrooms",
-          0.5177775621414185
-        ],
-        [
-          "mushrooms start",
-          0.5103250741958618
+          "picking mushrooms",
+          0.5686663389205933
         ],
         [
           "orange blue gnomes",
-          0.5095726251602173
+          0.567098081111908
         ]
       ],
       "8": [
         [
           "gnome mushrooms",
-          0.6524443030357361
+          0.6785062551498413
         ],
         [
           "gnomes earn mushrooms",
-          0.6356035470962524
+          0.6653956174850464
         ],
         [
           "hats gnomes",
-          0.6027495265007019
+          0.614928126335144
         ],
         [
           "gnomes hat",
-          0.5721433758735657
+          0.578682005405426
         ],
         [
           "hat gnome",
-          0.5620156526565552
+          0.5712078809738159
         ],
         [
           "gnome small hat",
-          0.554326057434082
+          0.5568680167198181
+        ],
+        [
+          "hat gnome small",
+          0.5567514300346375
+        ],
+        [
+          "gnomes short hats",
+          0.5540258288383484
+        ],
+        [
+          "hatted gnomes",
+          0.5530571937561035
         ],
         [
           "mushrooms number mushrooms",
-          0.5207798480987549
-        ],
-        [
-          "number mushrooms",
-          0.4895358085632324
-        ],
-        [
-          "mushrooms blue",
-          0.48885205388069153
-        ],
-        [
-          "earn mushrooms",
-          0.48564112186431885
+          0.5316842198371887
         ]
       ]
     },
     "MMR": {
       "-1": [
         [
-          "colour gnome",
-          0.6092303395271301
+          "gnomes mushrooms",
+          0.6304773092269897
         ],
         [
-          "gnomes",
-          0.4944991171360016
+          "gnome colours",
+          0.5523665547370911
         ],
         [
-          "number mushrooms",
-          0.47343143820762634
+          "yellow gnome",
+          0.5260740518569946
         ],
         [
-          "gnome pair",
-          0.3919967710971832
+          "basket gnomes",
+          0.48553937673568726
         ],
         [
-          "colours",
-          0.3879428803920746
+          "gnomes pink",
+          0.4756224453449249
         ],
         [
-          "mushroom",
-          0.36614271998405457
+          "select gnome",
+          0.47477442026138306
         ],
         [
-          "green",
-          0.308992475271225
+          "collecting mushrooms",
+          0.4701998233795166
         ],
         [
-          "basket",
-          0.30436941981315613
+          "gnome gives",
+          0.46809959411621094
         ],
         [
-          "yellow orange blue",
-          0.30158892273902893
+          "groups gnomes",
+          0.4449235200881958
         ],
         [
-          "score",
-          0.30134397745132446
+          "gnomes pairs",
+          0.4342116415500641
         ]
       ],
       "0": [
         [
-          "colour gnomes",
-          0.6671841144561768
+          "points gnomes",
+          0.7032753229141235
         ],
         [
-          "gnome",
-          0.48366156220436096
+          "gnomes points",
+          0.6936600804328918
         ],
         [
-          "colours",
-          0.4006923735141754
+          "hat gnomes",
+          0.6458624601364136
         ],
         [
-          "points",
-          0.33220669627189636
+          "choosing gnomes",
+          0.6373182535171509
         ],
         [
-          "yellow",
-          0.3154275715351105
+          "gnomes better",
+          0.6298618316650391
         ],
         [
-          "pink",
-          0.27663859724998474
+          "gnome colour",
+          0.6031522750854492
         ],
         [
-          "score",
-          0.27483034133911133
+          "pairs gnomes",
+          0.5912458896636963
         ],
         [
-          "choosing",
-          0.27479735016822815
+          "gnomes green",
+          0.5892614126205444
         ],
         [
-          "round",
-          0.26063185930252075
+          "pink gnome",
+          0.5803954005241394
         ],
         [
-          "values",
-          0.2533923089504242
+          "gnome higher",
+          0.5787156224250793
         ]
       ],
       "1": [
         [
-          "gnomes yellow basket",
-          0.62898850440979
+          "yellow basket gnomes",
+          0.6533167362213135
         ],
         [
-          "gnomes red basket",
-          0.6194668412208557
+          "gnomes yellow basket",
+          0.6473933458328247
+        ],
+        [
+          "red basket gnomes",
+          0.642305850982666
         ],
         [
           "basket gnomes",
-          0.589250385761261
-        ],
-        [
-          "mushrooms switch",
-          0.5849793553352356
-        ],
-        [
-          "number mushrooms",
-          0.5593667030334473
-        ],
-        [
-          "different coloured gnomes",
-          0.5518644452095032
+          0.5825176239013672
         ],
         [
           "basket colour",
-          0.5453447699546814
+          0.5500174760818481
         ],
         [
-          "baskets red",
-          0.5075510740280151
+          "baskets red yellow",
+          0.5472899079322815
         ],
         [
-          "gnomes red",
-          0.5055395364761353
+          "different coloured gnomes",
+          0.5433143973350525
         ],
         [
-          "pink gnomes",
-          0.4934074580669403
+          "colour baskets",
+          0.5422263145446777
+        ],
+        [
+          "color gnomes",
+          0.5292530655860901
+        ],
+        [
+          "mushrooms continue",
+          0.5264012813568115
         ]
       ],
       "2": [
         [
-          "certain colours",
-          0.5934703946113586
+          "points blue",
+          0.6600123643875122
         ],
         [
-          "pick colour",
-          0.5914719700813293
+          "choose colours",
+          0.6131782531738281
         ],
         [
-          "colours",
-          0.5229355096817017
+          "choosing purple",
+          0.5563579797744751
         ],
         [
-          "colors",
-          0.5198075175285339
+          "choose blue",
+          0.5554863810539246
         ],
         [
-          "red",
-          0.4133199453353882
+          "chose red",
+          0.5122682452201843
         ],
         [
-          "scores",
-          0.40489521622657776
+          "pick pink",
+          0.4551664888858795
         ],
         [
-          "purple blue",
-          0.39439237117767334
+          "points change",
+          0.453076034784317
         ],
         [
-          "blue green",
-          0.38816606998443604
+          "red blue green",
+          0.44587722420692444
         ],
         [
-          "points",
-          0.38477954268455505
+          "pairs red",
+          0.440496563911438
         ],
         [
-          "yellow green",
-          0.376201868057251
+          "pink purple blue",
+          0.4367842972278595
         ]
       ],
       "3": [
         [
-          "gnomes mushrooms",
-          0.721281886100769
+          "coloured gnomes mushrooms",
+          0.8046604990959167
         ],
         [
-          "colour gnome",
-          0.6119961738586426
+          "mushrooms gnomes",
+          0.7290129065513611
         ],
         [
-          "number mushrooms",
-          0.588434636592865
+          "colour mushrooms",
+          0.6436965465545654
+        ],
+        [
+          "gnome colour",
+          0.593331515789032
+        ],
+        [
+          "picking mushrooms",
+          0.5717537999153137
+        ],
+        [
+          "ones mushrooms",
+          0.5641627311706543
+        ],
+        [
+          "mushrooms certain",
+          0.5615277290344238
         ],
         [
           "higher mushrooms",
-          0.5842854380607605
+          0.5594740509986877
         ],
         [
-          "gives mushrooms",
-          0.5601223111152649
+          "choose gnomes",
+          0.5571651458740234
         ],
         [
-          "mushroom",
-          0.5026562213897705
-        ],
-        [
-          "mushrooms try",
-          0.4857611060142517
-        ],
-        [
-          "gnomes appear",
-          0.4787948727607727
-        ],
-        [
-          "gnomes higher",
-          0.45562267303466797
-        ],
-        [
-          "try colour",
-          0.36592426896095276
+          "gives mushroom",
+          0.5342509150505066
         ]
       ],
       "4": [
         [
+          "gnomes red basket",
+          0.6550633311271667
+        ],
+        [
           "gnomes baskets",
-          0.6656854152679443
+          0.6335328221321106
+        ],
+        [
+          "colour baskets",
+          0.6300551891326904
         ],
         [
           "basket colours",
-          0.6220192313194275
+          0.6229170560836792
         ],
         [
-          "baskets red yellow",
-          0.6087906956672668
+          "yellow baskets",
+          0.5929103493690491
+        ],
+        [
+          "red basket yellow",
+          0.5795031189918518
+        ],
+        [
+          "baskets red",
+          0.5781300067901611
         ],
         [
           "colored gnomes",
-          0.574801504611969
+          0.5638992190361023
         ],
         [
-          "red basket",
-          0.5393250584602356
+          "gnome yellow",
+          0.5249796509742737
         ],
         [
-          "brown gnomes",
-          0.4852789044380188
-        ],
-        [
-          "basket",
-          0.4556844234466553
-        ],
-        [
-          "gnomes",
-          0.41157814860343933
-        ],
-        [
-          "colours",
-          0.39436742663383484
-        ],
-        [
-          "gnomes lead",
-          0.39062339067459106
+          "different coloured gnomes",
+          0.5201610922813416
         ]
       ],
       "5": [
         [
-          "colour gives mushrooms",
-          0.8275173306465149
-        ],
-        [
           "colours mushrooms",
-          0.8133696913719177
+          0.8123673796653748
         ],
         [
-          "mushrooms change",
-          0.6828499436378479
+          "mushroom count",
+          0.667007565498352
+        ],
+        [
+          "mushrooms try switch",
+          0.6200178265571594
+        ],
+        [
+          "giving mushrooms",
+          0.613917887210846
+        ],
+        [
+          "mushrooms use 1x",
+          0.6135221123695374
+        ],
+        [
+          "mushrooms x1",
+          0.5673448443412781
         ],
         [
           "mushrooms remember",
-          0.5367711782455444
+          0.5550393462181091
         ],
         [
-          "different colours",
-          0.5136047005653381
-        ],
-        [
-          "colours better",
-          0.496059387922287
-        ],
-        [
-          "pick colour",
-          0.4727855920791626
+          "mushrooms ignore",
+          0.5495470762252808
         ],
         [
           "colour gives",
-          0.4524015784263611
+          0.4432424306869507
         ],
         [
-          "example red",
-          0.35654303431510925
-        ],
-        [
-          "green",
-          0.3483356237411499
+          "pick colour",
+          0.44219905138015747
         ]
       ],
       "6": [
@@ -2025,124 +2025,124 @@
           0.6659048795700073
         ],
         [
-          "smaller hat",
-          0.6276321411132812
+          "taller hat",
+          0.6281089782714844
         ],
         [
           "hat colour",
-          0.5765722393989563
+          0.5765721797943115
         ],
         [
-          "hat better",
-          0.5235470533370972
+          "yellow hats",
+          0.5483568906784058
         ],
         [
-          "yellow hat",
-          0.5107936263084412
+          "green short",
+          0.3162271976470947
         ],
         [
-          "short yellow",
-          0.3257036507129669
+          "selecting right",
+          0.31277093291282654
         ],
         [
           "tall brown",
           0.2912917733192444
         ],
         [
+          "yellow small",
+          0.28122156858444214
+        ],
+        [
           "start picking",
-          0.2641684114933014
+          0.26416847109794617
         ],
         [
-          "choosing",
-          0.2545259892940521
-        ],
-        [
-          "5x rounds",
-          0.2524135410785675
+          "best start",
+          0.25573092699050903
         ]
       ],
       "7": [
         [
+          "coloured gnomes mushrooms",
+          0.7745426297187805
+        ],
+        [
+          "forest coloured gnomes",
+          0.7010782957077026
+        ],
+        [
           "mushrooms gnomes",
-          0.6691309809684753
+          0.6748879551887512
         ],
         [
           "mushrooms forest",
-          0.6326552033424377
+          0.6101985573768616
+        ],
+        [
+          "mushrooms swap",
+          0.579483151435852
+        ],
+        [
+          "orange brown gnomes",
+          0.5763633847236633
+        ],
+        [
+          "choose gnomes red",
+          0.5538173913955688
         ],
         [
           "number mushrooms decrease",
-          0.5847020149230957
-        ],
-        [
-          "number mushrooms",
-          0.5731936097145081
-        ],
-        [
-          "colour gnomes",
-          0.5299957394599915
+          0.553546130657196
         ],
         [
           "mushrooms group",
-          0.5202205777168274
-        ],
-        [
-          "mushrooms start",
-          0.5103250741958618
+          0.5015692710876465
         ],
         [
           "forest red",
-          0.45571455359458923
-        ],
-        [
-          "gnome group",
-          0.35506513714790344
-        ],
-        [
-          "categories",
-          0.3211980164051056
+          0.4953788220882416
         ]
       ],
       "8": [
         [
           "gnome mushrooms",
-          0.6524443030357361
+          0.6785062551498413
         ],
         [
           "gnomes earn mushrooms",
-          0.6356035470962524
+          0.6653956174850464
         ],
         [
-          "hat gnome",
-          0.5620156526565552
+          "gnomes short hats",
+          0.5540258288383484
         ],
         [
           "mushrooms number mushrooms",
-          0.5207798480987549
+          0.5316842198371887
         ],
         [
           "mushrooms blue",
-          0.48885205388069153
+          0.528971791267395
         ],
         [
-          "mushrooms long",
-          0.4767896831035614
+          "combinations mushrooms",
+          0.5281627178192139
         ],
         [
-          "tall hats",
-          0.4532778859138489
+          "appear mushrooms",
+          0.5097134113311768
         ],
         [
-          "mushrooms example",
-          0.4529629945755005
+          "earn mushrooms",
+          0.49789533019065857
         ],
         [
-          "gnomes longer",
-          0.447407990694046
+          "ones mushrooms",
+          0.49559009075164795
         ],
         [
-          "mushrooms try switch",
-          0.4377799928188324
+          "gnome better",
+          0.49289995431900024
         ]
       ]
     }

@@ -654,6 +654,7 @@ df_plot <- df_plot %>%
 O
 head(df_plot)
 ```
+
 ```{r}
 ggplot(df_plot, aes(x = gen, y = mean, color = cond, group = cond)) +
   geom_ribbon(aes(ymin = lower_ci, ymax = upper_ci, fill = cond), alpha = 0.2, colour = NA, show.legend = F) +

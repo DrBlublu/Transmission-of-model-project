@@ -1,0 +1,183 @@
+---
+title: "plotting"
+author: "Blublu"
+date: "2025-01-25"
+output: html_document
+---
+
+
+```{r setup}
+library(ggplot2)
+library(tidyverse)
+```
+
+Random value
+```{r}
+n <- 7
+
+df <- tibble(
+  run_name = c(
+    "max_df-0.5",
+    "max_df-0.8",
+    "ngram_range-(1, 1)",
+    "ngram_range-(1, 5)",
+    "neighbors-5",
+    "neighbors-30",
+    "base"
+  ),
+  corr = rnorm(n, mean = 0.5, sd = 0.05),
+  similarity = rnorm(n, mean = 0.7, sd = 0.1),
+  n = sample(120:150, n, replace = TRUE),
+  param = str_extract(run_name, "^[^-]+")
+)
+
+
+base_row <- df %>%
+  filter(param == "base") %>%
+  select(-param)
+duplicated_row <- crossing(base_row, param = setdiff(df$param, "base"))
+
+df <- df %>%
+  filter(param != "base") %>%
+  bind_rows(duplicated_row)
+
+df
+```
+
+Real value
+```{r}
+df <- read.csv("../results/robustness_check/results.csv")
+
+df <- df %>%
+  mutate(
+    param = str_extract(run_name, "(?<=bertopic_-?)[^-]+")
+  )
+
+base_row <- df %>%
+  filter(run_name == "base") %>%
+  select(-param)
+duplicated_row <- crossing(base_row, param = setdiff(df$param[!is.na(df$param)], "base"))
+
+df <- df %>%
+  filter(param != "base") %>%
+  bind_rows(duplicated_row)
+
+df
+```
+
+
+
+```{r}
+ggplot(df, aes(x = param, y = corr)) +
+  geom_boxplot() +
+  geom_jitter(aes(color = run_name)) +
+  scale_y_continuous(
+    limits = c(0, 1),
+    breaks = seq(0, 1, by = .2),
+    expand = c(0, 0)
+  ) +
+  theme_minimal() +
+  labs(
+    x = "",
+    y = "Correlation",
+    color = "Hyperparameter value"
+  ) +
+  theme_minimal() +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_blank(),
+    axis.line = element_line(colour = "black", size = .8),
+    axis.ticks = element_line(colour = "black", size = .8),
+    axis.ticks.length.x = unit(5, "pt"),
+    axis.ticks.length.y = unit(7, "pt"),
+    axis.text = element_text(size = 11, colour = "black", angle = 70, hjust = 1),
+    axis.title.x = element_text(
+      margin = margin(t = 10),
+      size = 16
+    ),
+    axis.title.y = element_text(
+      margin = margin(r = 10),
+      size = 16
+    ),
+    plot.margin = margin(15, 15, 10, 15)
+  )
+
+ggsave("../results/fig/robustness_corr.tiff", bg = "white",  width = 12, height = 6)
+```
+
+```{r}
+ggplot(df, aes(x = param, y = similarity)) +
+  geom_boxplot() +
+  geom_jitter(aes(color = run_name)) +
+  scale_y_continuous(
+    limits = c(0, 1),
+    breaks = seq(0, 1, by = .2),
+    expand = c(0, 0)
+  ) +
+  theme_minimal() +
+  labs(
+    x = "",
+    y = "Similarity",
+    color = "Hyperparameter value"
+  ) +
+  theme_minimal() +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_blank(),
+    axis.line = element_line(colour = "black", size = .8),
+    axis.ticks = element_line(colour = "black", size = .8),
+    axis.ticks.length.x = unit(5, "pt"),
+    axis.ticks.length.y = unit(7, "pt"),
+    axis.text = element_text(size = 11, colour = "black", angle = 70, hjust = 1),
+    axis.title.x = element_text(
+      margin = margin(t = 10),
+      size = 16
+    ),
+    axis.title.y = element_text(
+      margin = margin(r = 10),
+      size = 16
+    ),
+    plot.margin = margin(15, 15, 10, 15)
+  )
+
+ggsave("../results/fig/robustness_similarity.tiff", bg = "white",  width = 12)
+```
+
+```{r}
+ggplot(df, aes(x = param, y = n)) +
+  geom_boxplot() +
+  geom_jitter(aes(color = run_name)) +
+  scale_y_continuous(
+    limits = c(80, 160),
+    breaks = seq(80, 200, by = 20),
+    expand = c(0, 0)
+  ) +
+  theme_minimal() +
+  labs(
+    x = "",
+    y = "Number of documents",
+    color = "Hyperparameter value"
+  ) +
+  theme_minimal() +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_blank(),
+    axis.line = element_line(colour = "black", size = .8),
+    axis.ticks = element_line(colour = "black", size = .8),
+    axis.ticks.length.x = unit(5, "pt"),
+    axis.ticks.length.y = unit(7, "pt"),
+    axis.text = element_text(size = 11, colour = "black", angle = 70, hjust = 1),
+    axis.title.x = element_text(
+      margin = margin(t = 10),
+      size = 16
+    ),
+    axis.title.y = element_text(
+      margin = margin(r = 10),
+      size = 16
+    ),
+    plot.margin = margin(15, 15, 10, 15)
+  )
+
+ggsave("../results/fig/robustness_n.tiff", bg = "white",  width = 12, height = 6)
+```
+
