@@ -5,6 +5,13 @@ date: "2025-02-07"
 output: html_document
 ---
 
+
+
+
+
+
+
+
 ```{r setup, include=FALSE}
 library(tidyverse)
 library(tidytext)
@@ -17,6 +24,25 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 ```
 
 ## Data Preparation
+
+
+```{r}
+df <- read.csv("C:/Users/alexb/Dropbox/root/work/projects/2023_transmission_of_model/analysis/NLP/results/BERT_fine_tuning_correct/results.csv", header = FALSE, sep = ";")
+
+df <- df %>%
+  mutate(
+    V3 = as.numeric(V3),
+    V4 = as.numeric(V4),
+    V5 = as.numeric(V5),
+    V6 = as.numeric(V6),
+    V7 = as.numeric(V7),
+    V8 = as.numeric(V8),
+  )
+
+df$V7
+```
+
+
 
 ```{r}
 df <- read.csv("../data/data_advice_fulltext.csv", header = TRUE, row.names = 1)
@@ -161,22 +187,20 @@ dtm_train <- dtm_shuffled[1:train_size, ]
 dtm_test <- dtm_shuffled[(train_size+1):nrow(dtm_shuffled), ]
 
 # Parameters to test
-k_values <- c(4, 5, 6, 7, 10)
 alpha_values <- c(0.1, 0.5, 1)
 beta_values <- c(0.1, 0.5, 1)
 
-results <- expand.grid(k = k_values, alpha = alpha_values, beta = beta_values)
+results <- expand.grid(alpha = alpha_values, beta = beta_values)
 results$perplexity <- NA
 results$coherence <- NA
 results$diversity <- NA
 
 # Run models and collect metrics
 for (i in 1:nrow(results)) {
-  k <- results$k[i]
   alpha <- results$alpha[i]
   beta <- results$beta[i]
   
-  model <- LDA(dtm_train, k = k, method = "Gibbs", 
+  model <- LDA(dtm_train, k = 5, method = "Gibbs", 
                control = list(alpha = alpha, delta = beta, seed = 1234))
   
   results$perplexity[i] <- calc_perplexity(model, dtm_test)
@@ -186,43 +210,32 @@ for (i in 1:nrow(results)) {
   cat("Completed model", i, "of", nrow(results), "\n")
 }
 
-# Visualize results
-ggplot(results, aes(x = k, y = perplexity, color = factor(alpha), linetype = factor(beta))) +
-  geom_line() +
-  labs(title = "Perplexity by Number of Topics",
-       x = "Number of Topics (k)",
-       y = "Perplexity",
-       color = "Alpha",
-       linetype = "Beta")
+# Normalize the metrics
+normalize <- function(x) (x - min(x)) / (max(x) - min(x))
 
-ggplot(results, aes(x = k, y = coherence, color = factor(alpha), linetype = factor(beta))) +
-  geom_line() +
-  labs(title = "Coherence by Number of Topics",
-       x = "Number of Topics (k)",
-       y = "Coherence",
-       color = "Alpha",
-       linetype = "Beta")
+results <- results %>%
+  mutate(
+    perplexity_norm = normalize(perplexity),
+    coherence_norm = normalize(coherence),
+    diversity_norm = normalize(diversity)
+  )
 
-ggplot(results, aes(x = k, y = diversity, color = factor(alpha), linetype = factor(beta))) +
-  geom_line() +
-  labs(title = "Diversity by Number of Topics",
-       x = "Number of Topics (k)",
-       y = "Diversity",
-       color = "Alpha",
-       linetype = "Beta")
+# Calculate combined score (lower is better for perplexity, higher for coherence and diversity)
+results$combined_score <- with(results, -perplexity_norm + coherence_norm + diversity_norm)
 
-# Find optimal model
+# Find optimal model based on combined score
 optimal_model <- results %>%
-  arrange(perplexity) %>%
+  arrange(desc(combined_score)) %>%
   slice(1)
 
+# Print optimal model details
 cat("Optimal model parameters:\n",
-    "k =", optimal_model$k, "\n",
     "alpha =", optimal_model$alpha, "\n",
     "beta =", optimal_model$beta, "\n",
     "Perplexity =", optimal_model$perplexity, "\n",
     "Coherence =", optimal_model$coherence, "\n",
-    "Diversity =", optimal_model$diversity, "\n")
+    "Diversity =", optimal_model$diversity, "\n",
+    "Combined Score =", optimal_model$combined_score, "\n")
 
 ```
 

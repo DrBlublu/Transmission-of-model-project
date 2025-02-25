@@ -29,6 +29,7 @@ def calculate_topic_diversity(topic_words: list[list[str]], topk: int) -> float:
  
 def calculate_coherence(topic_words: list[list[str]], texts: list[str], corpus: list[list[str]], dictionary: str, method: str) -> float:
     """
+    (ressource on coherence https://towardsdatascience.com/understanding-topic-coherence-measures-4aa41339634c/)
     Calculate the coherence score for a set of topics.
     This function computes the coherence score using a CoherenceModel from Gensim, 
     which evaluates the quality of topics based on the specified method.
