@@ -1,18 +1,18 @@
 run_name,corr,n
-base,0.5994243255045324,140
-bertopic_max_df-0.5,0.5826059649406224,140
-bertopic_max_df-0.8,0.5117480135888878,140
-bertopic_min_cluster_size-10,0.615576504292234,126
-bertopic_min_cluster_size-30,0.6076570977074243,140
-bertopic_min_df-0.0,0.5414419650193105,140
-bertopic_min_df-10,0.4522195729043518,140
-bertopic_min_dist-0.1,0.5824194325169568,133
-bertopic_min_dist-0.5,0.5591438436114824,98
-"bertopic_ngram_range-(1, 1)",0.5761344000220402,140
-"bertopic_ngram_range-(1, 5)",0.5992083891439298,140
-bertopic_n_components-15,0.5442296134355042,145
-bertopic_n_components-5,0.6122869782946395,145
-bertopic_n_neighbors-30,0.558216667085823,128
-bertopic_n_neighbors-5,0.5849893924951958,149
-bertopic_top_n_words-10,0.5994243255045324,140
-bertopic_top_n_words-20,0.5994243255045324,140
+base,0.599424326,140
+bertopic_max_df-0.5,0.481481567,144
+bertopic_max_df-0.8,0.497067255,144
+bertopic_min_cluster_size-10,0.599498458,104
+bertopic_min_cluster_size-30,0.606688665,137
+bertopic_min_df-0.0,0.542995929,144
+bertopic_min_df-10,0.585594333,144
+bertopic_min_dist-0.1,0.539785334,133
+bertopic_min_dist-0.5,0.558198744,110
+"bertopic_ngram_range-(1, 1)",0.575478559,144
+"bertopic_ngram_range-(1, 5)",0.605507124,144
+bertopic_n_components-15,0.597511155,140
+bertopic_n_components-5,0.602655259,144
+bertopic_n_neighbors-30,0.541205183,131
+bertopic_n_neighbors-5,0.593927999,139
+bertopic_top_n_words-10,0.604358967,144
+bertopic_top_n_words-20,0.604358967,144
