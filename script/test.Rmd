@@ -762,3 +762,24 @@ write.csv(df_W, file = "data_model_advice.csv")
 
 
 
+
+
+# GRANDCHILDREN
+
+```{r}
+hist(df$grandchildren_count)
+```
+
+
+```{r}
+df <- read.csv("../output/processed/df_grandchildren.csv")
+
+df$condition <- as.factor(df$condition)
+
+df <- df %>% filter(gen < 9)
+
+res <- lm(data = df, grandchildren_count ~ gen + rank * condition)
+summary(res)
+confint(res)
+```
+
