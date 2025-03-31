@@ -3,9 +3,5 @@
 .RData
 .Ruserdata
 
-figures/
-output/
-archived_script/
-tests/
-simulation/
+pilot/
 old/

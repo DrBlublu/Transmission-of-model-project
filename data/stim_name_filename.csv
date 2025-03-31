@@ -1,0 +1,13 @@
+stim_name,stim_filename,stim_deact_filename
+brown_gnome,ressources/step1_stim1.png,ressources/step1_tallGnome_deact.png
+purple_gnome,ressources/step1_stim2.png,ressources/step1_tallGnome_deact.png
+pink_gnome,ressources/step1_stim3.png,ressources/step1_tallGnome_deact.png
+blue_gnome,ressources/step1_stim4.png,ressources/step1_tallGnome_deact.png
+green_gnome,ressources/step1_stim5.png,ressources/step1_smallGnome_deact.png
+red_gnome,ressources/step1_stim6.png,ressources/step1_smallGnome_deact.png
+yellow_gnome,ressources/step1_stim7.png,ressources/step1_smallGnome_deact.png
+orange_gnome,ressources/step1_stim8.png,ressources/step1_smallGnome_deact.png
+bright_forest,ressources/step2_background1.png,ressources/step2_background1_deact.png
+dark_forest,ressources/step2_background2.png,ressources/step2_background2_deact.png
+yellow_basket,ressources/step2_stim1.png,ressources/fail_basket.png
+red_basket,ressources/step2_stim2.png,ressources/fail_basket.png
