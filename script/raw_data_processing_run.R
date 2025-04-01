@@ -1,5 +1,6 @@
+source("script/raw_data_processing_functions.R")
+
 setwd("data")
-source("raw_data_processing_functions.R")
 
 run_name <- "test"
 study_id <- "673c6e3c1bdcd7f14d4497df"
