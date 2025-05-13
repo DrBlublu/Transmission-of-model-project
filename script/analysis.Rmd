@@ -1,0 +1,388 @@
+---
+title: "analysis"
+author: "Blublu"
+date: "2025-04-03"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(ggplot2)
+library(lme4)
+library(lmerTest)
+library(effsize)
+library(lmtest)
+library(sandwich)
+library(performance)
+```
+
+
+Load data
+```{r}
+df <- read.csv("../data/processed/data.csv", header = TRUE, row.names = 1)
+
+df <- tibble(df)
+df$cond <- as.factor(df$cond)
+df_parent <- df %>% filter(gen != 0)
+```
+
+
+# Writing
+
+## Task Performance
+
+overall performance
+```{r}
+t.test(
+  df %>% filter(cond == "ADV") %>% pull(score_corrected),
+  df %>% filter(cond == "OBS") %>% pull(score_corrected),
+  method = "s"
+)
+
+sd(df %>% filter(cond == "OBS") %>% pull(score_corrected))
+sd(df %>% filter(cond == "ADV") %>% pull(score_corrected))
+
+cohen.d(
+  df %>% filter(cond == "ADV") %>% pull(score_corrected),
+  df %>% filter(cond == "OBS") %>% pull(score_corrected)
+)
+```
+
+first 3 vs last 3 performance
+```{r}
+first_gen <- "First 3 gen"
+last_gen <- "Last 3 gen"
+
+# Define groups
+df_stat <- df %>%
+  mutate(group = case_when(
+    gen <= 2 ~ first_gen,
+    gen >= 7 ~ last_gen,
+  ))
+
+# Function to perform t-test and compute standard deviation
+compute_stats <- function(df, condition, group_var) {
+  subset <- df %>% filter(cond == condition, group == group_var) %>% pull(score_corrected)
+  list(
+    t_test = subset,
+    sd = sd(subset)
+  )
+}
+
+# Perform t-tests and compute standard deviations
+adv_first_gen_stats <- compute_stats(df_stat, "ADV", first_gen)
+adv_last_gen_stats <- compute_stats(df_stat, "ADV", last_gen)
+
+obs_first_gen_stats <- compute_stats(df_stat, "OBS", first_gen)
+obs_last_gen_stats <- compute_stats(df_stat, "OBS", last_gen)
+
+# Run t-tests
+t.test(adv_first_gen_stats$t_test, adv_last_gen_stats$t_test, method = "s")
+adv_first_gen_stats$sd
+adv_last_gen_stats$sd
+cohen.d(adv_first_gen_stats$t_test, adv_last_gen_stats$t_test)
+
+t.test(obs_first_gen_stats$t_test, obs_last_gen_stats$t_test, method = "s", var.equal = TRUE)
+obs_first_gen_stats$sd
+obs_last_gen_stats$sd
+cohen.d(obs_first_gen_stats$t_test, obs_last_gen_stats$t_test)
+
+t.test(adv_first_gen_stats$t_test, obs_first_gen_stats$t_test, method = "s")
+cohen.d(adv_first_gen_stats$t_test, obs_first_gen_stats$t_test)
+t.test(adv_last_gen_stats$t_test, obs_last_gen_stats$t_test, method = "s")
+cohen.d(adv_last_gen_stats$t_test, obs_last_gen_stats$t_test)
+```
+
+
+lm
+```{r}
+res <- lm(score_corrected ~ gen * cond, data = df)
+summary(res)
+```
+
+
+
+
+
+## Model Knowledge
+
+overall model knowledge
+```{r}
+t.test(
+  df %>% filter(cond == "ADV") %>% pull(pl2_understanding),
+  df %>% filter(cond == "OBS") %>% pull(pl2_understanding),
+  method = "s"
+)
+
+sd(df %>% filter(cond == "OBS") %>% pull(pl2_understanding))
+sd(df %>% filter(cond == "ADV") %>% pull(pl2_understanding))
+
+cohen.d( 
+  df %>% filter(cond == "ADV") %>% pull(pl2_understanding),
+  df %>% filter(cond == "OBS") %>% pull(pl2_understanding)
+)
+```
+
+first 3 vs last 3 model knowledge
+```{r}
+first_gen <- "First 3 gen"
+last_gen <- "Last 3 gen"
+
+# Define groups
+df_stat <- df %>%
+  mutate(group = case_when(
+    gen <= 2 ~ first_gen,
+    gen >= 7 ~ last_gen,
+  ))
+
+# Function to perform t-test and compute standard deviation
+compute_stats <- function(df, condition, group_var) {
+  subset <- df %>% filter(cond == condition, group == group_var) %>% pull(pl2_understanding)
+  list(
+    t_test = subset,
+    sd = sd(subset)
+  )
+}
+
+# Perform t-tests and compute standard deviations
+adv_first_gen_stats <- compute_stats(df_stat, "ADV", first_gen)
+adv_last_gen_stats <- compute_stats(df_stat, "ADV", last_gen)
+
+obs_first_gen_stats <- compute_stats(df_stat, "OBS", first_gen)
+obs_last_gen_stats <- compute_stats(df_stat, "OBS", last_gen)
+
+# Run t-tests
+t.test(adv_first_gen_stats$t_test, adv_last_gen_stats$t_test, method = "s")
+adv_first_gen_stats$sd
+adv_last_gen_stats$sd
+cohen.d(adv_first_gen_stats$t_test, adv_last_gen_stats$t_test)
+
+t.test(obs_first_gen_stats$t_test, obs_last_gen_stats$t_test, method = "s", var.equal = TRUE)
+obs_first_gen_stats$sd
+obs_last_gen_stats$sd
+cohen.d(obs_first_gen_stats$t_test, obs_last_gen_stats$t_test)
+
+t.test(adv_first_gen_stats$t_test, obs_first_gen_stats$t_test, method = "s")
+cohen.d(adv_first_gen_stats$t_test, obs_first_gen_stats$t_test)
+t.test(adv_last_gen_stats$t_test, obs_last_gen_stats$t_test, method = "s")
+cohen.d(adv_last_gen_stats$t_test, obs_last_gen_stats$t_test)
+```
+
+
+lm
+```{r}
+res <- lm(pl2_understanding ~ gen * cond, data = df)
+summary(res)
+```
+
+
+
+
+
+
+## Correlation Task Performance Model Knowledge
+
+
+PARENT MODEL KNOWLEDGE
+```{r}
+res <- lm(score_corrected ~ parent_pl2_understanding * cond, data = df_parent)
+summary(res)
+confint(res)
+```
+
+
+MODEL KNOWLEDGE
+```{r}
+res <- lm(score_corrected ~ pl2_understanding * cond, data = df)
+summary(res)
+confint(res)
+```
+
+
+MODEL DIAGNOSTIC PARENT
+```{r}
+model <- lm(score_corrected ~ parent_pl2_understanding * cond, data = df_parent)
+
+check_model(model)
+```
+
+
+PARENT TASK PERFORMANCE
+```{r}
+res <- lm(score_corrected ~ parent_score_corrected * cond, data = df_parent)
+summary(res)
+confint(res)
+```
+
+
+
+MODEL DIAGNOSTIC PARENT CHILDREN
+```{r}
+model <- lm(score_corrected ~ pl2_understanding * cond, data = df)
+
+check_model(model)
+```
+
+
+
+## NLP
+
+```{r}
+df_NLP = read.csv("../old/NLP/results/docs_topic_weights.csv")
+df_NLP <- df_NLP %>%
+  mutate(gen = gen -1)
+```
+
+
+```{r}
+data <- df_NLP %>%
+  filter(gen != 0) %>%
+  select(
+    ID,
+    pl2_understanding,
+    gen,
+    parent_topic_0,
+    parent_topic_1,
+    parent_topic_2,
+    parent_topic_3,
+    parent_topic_4,
+    parent_topic_5,
+    parent_topic_6,
+    parent_topic_7,
+    parent_topic_8
+  ) %>%
+  gather(key = "topic_n", value = "prop", -c(ID, pl2_understanding, gen)) %>%
+  mutate(topic_n = factor(topic_n))
+
+model <- lmer(pl2_understanding ~ prop:topic_n + (1 | gen), data = data)
+summary(model)
+```
+
+
+perf
+```{r}
+data <- df_NLP %>%
+  filter(gen != 0) %>%
+  select(
+    ID, score_corrected, gen,
+    parent_topic_0,
+    parent_topic_1,
+    parent_topic_2,
+    parent_topic_3,
+    parent_topic_4,
+    parent_topic_5,
+    parent_topic_6,
+    parent_topic_7,
+    parent_topic_8
+  ) %>%
+  gather(key = "topic_n", value = "prop", -c(ID, score_corrected, gen)) %>%
+  mutate(topic_n = factor(topic_n))
+
+model <- lmer(score_corrected ~ prop:topic_n + (1 | gen), data = data)
+summary(model)
+```
+
+
+topic 2 growth lm
+```{r}
+res <- lm(topic_2 ~ gen, data = df_NLP)
+summary(res)
+```
+
+
+topic 2 growth glm + betareg (ChatGPT)
+```{r}
+library(betareg)
+
+df_betareg <- df_NLP %>%
+  mutate(assigned_topic = factor(assigned_topic))
+
+model_topic2 <- betareg(topic_2 ~ gen, data = df_betareg)
+
+summary(model_topic2)
+
+
+df_betareg$assigned_topic_2 <- as.integer(df_betareg$assigned_topic == 2)
+
+model_assigned_topic2 <- glm(assigned_topic_2 ~ gen, family = binomial, data = df_betareg)
+
+summary(model_assigned_topic2)
+```
+
+
+```{r}
+df_topic2 <- df_NLP %>%
+  filter(assigned_topic == 2)
+df_not_topic2 <- df_NLP %>%
+  filter(assigned_topic != 2)
+
+t.test(df_topic2$score_corrected, df_not_topic2$score_corrected)
+```
+
+
+get parent_assigned_topic
+```{r}
+parent_assigned_topic <- rep(NA, nrow(df_NLP)) # Pre-fill with NAs
+
+for (i in 1:nrow(df_NLP)){
+  parent_ID <- df_NLP[i,]$parent_ID
+  parent <- df_NLP %>% filter(ID == !!parent_ID) 
+  parent_assigned_topic[i] <- ifelse(nrow(parent) > 0, parent$assigned_topic, NA)
+}
+
+df_NLP <- df_NLP %>%
+  mutate(parent_assigned_topic = parent_assigned_topic)
+```
+
+
+```{r}
+df_NLP %>%
+  filter(gen != 0) %>%
+  filter(assigned_topic == 2) %>%
+  ggplot( aes(x = factor(parent_assigned_topic))) +
+  geom_bar(fill = "steelblue", color = "black") +
+  facet_wrap(~ gen) +
+  labs(title = "Distribution of parent_assigned_topic in participant with topic 2",
+       x = "Parent Assigned Topic",
+       y = "Count") +
+  theme_minimal()
+```
+
+
+```{r}
+df_NLP %>%
+  filter(assigned_topic == 2) %>%
+  count(parent_assigned_topic) %>%
+  arrange(desc(n))
+
+100 / nrow(df_NLP %>% filter(assigned_topic == 2))
+```
+
+
+search if participant had children (is_parent)
+```{r}
+is_parent <- rep(NA, nrow(df_NLP)) # Pre-fill with NAs
+n_children <- rep(NA, nrow(df_NLP))
+
+for (i in 1:nrow(df_NLP)){
+  ID <- df_NLP[i, ]$ID
+  children <- df_NLP %>% filter(parent_ID == !!ID)
+  is_parent[i] <- ifelse(nrow(children) > 0, TRUE, FALSE)
+  n_children[i] <- nrow(children)
+}
+
+df_NLP <- df_NLP %>%
+  mutate(is_parent = is_parent) %>%
+  mutate(n_children = n_children)
+``` 
+
+
+```{r}
+model <- glm(is_parent ~ factor(assigned_topic) * factor(gen), data = df_NLP, family = binomial)
+summary(model)
+```
+
+
+
+
+

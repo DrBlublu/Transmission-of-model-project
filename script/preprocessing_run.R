@@ -1,7 +1,18 @@
 source("script/preprocessing_functions.R")
 
 process_data_by_treatment <- function(treatment, filename) {
-  # Choose the appropriate directory dataframe based on treatment
+  # Process data based on the specified treatment type and save results to a CSV file.
+  # This function dynamically selects the appropriate directory structure based on
+  # the treatment type (ADV or OBS), processes data generation by generation, 
+  # and handles differences in processing logic for the two treatments.
+  #
+  # Args:
+  #   treatment: (chr) The type of treatment ("ADV" or "OBS").
+  #   filename: (chr) The output CSV file name to save the processed data.
+  #
+  # Returns:
+  #   None. Writes the processed data to a file.
+
   if (treatment == "ADV") {
     directory_df <- data.frame(
       directory_name = c(
@@ -77,7 +88,19 @@ process_data_by_treatment <- function(treatment, filename) {
   
   # Write the processed data to a CSV file
   write.csv(df, file.path("data", "processed", filename))
+  return(df)
 }
 
-process_data_by_treatment("ADV", "data_adv.csv")
-process_data_by_treatment("OBS", "data_obs.csv")
+df_adv <- process_data_by_treatment("ADV", "data_adv.csv")
+df_adv <- df_adv %>%
+  mutate(gen = gen - 1) %>%
+  mutate(cond = "ADV")
+
+df_obs <- process_data_by_treatment("OBS", "data_obs.csv")
+df_obs <- df_obs %>%
+  mutate(gen = gen - 1) %>%
+  mutate(cond = "OBS")
+
+df <- bind_rows(df_adv, df_obs)
+
+write.csv(df, file.path("data", "processed", "data.csv"))

@@ -2,8 +2,8 @@ source("script/raw_data_processing_functions.R")
 
 setwd("data")
 
-run_name <- "test"
-study_id <- "673c6e3c1bdcd7f14d4497df"
+run_name <- "2024-11-27_tenth_gen_obs"
+study_id <- "67ee8012009700dde3bcc495"
 treatment <- "OBS"
 
 df_filename <- read.csv("stim_name_filename.csv")
