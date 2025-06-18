@@ -1,14 +1,3 @@
-Version: 1.0
-ProjectId: 6d44b226-4fe0-477f-b425-4db6f4345949
-
-RestoreWorkspace: Default
-SaveWorkspace: Default
-AlwaysSaveHistory: Default
-
-EnableCodeIndexing: Yes
-UseSpacesForTab: Yes
-NumSpacesForTab: 2
-Encoding: UTF-8
-
-RnwWeave: Sweave
-LaTeX: pdfLaTeX
+version https://git-lfs.github.com/spec/v1
+oid sha256:ae39c7b0d5eea1fd4a74bd15e00797f616141469e6c0585cd6b00e18a8abb817
+size 253

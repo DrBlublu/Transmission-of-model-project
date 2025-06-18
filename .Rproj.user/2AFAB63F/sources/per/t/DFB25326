@@ -1,0 +1,27 @@
+{
+    "id": "DFB25326",
+    "path": "C:/Users/alexb/Dropbox/root/work/projects/2023_transmission_of_model/analysis/script/analysis.Rmd",
+    "project_path": "script/analysis.Rmd",
+    "type": "r_markdown",
+    "hash": "1150895405",
+    "contents": "",
+    "dirty": false,
+    "created": 1746616407151.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "193,6",
+        "scrollLine": "23",
+        "last_setup_crc32": "d7d6d496cfc90a3e"
+    },
+    "folds": "32|19|106|0|\n107|18|181|0|\n223|5|314|0|\n315|5|369|0|\n",
+    "lastKnownWriteTime": 1746625361,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1746625361176,
+    "read_only": false,
+    "read_only_alternatives": []
+}
