@@ -1,8 +1,0 @@
-digraph {
-	A [label="King Arthur"]
-	B [label="Sir Bedevere the Wise"]
-	C [label="Sir Bzaerzaerezarzaedevere the Wise"]
-	A -> B
-	A -> C
-	B -> C [constraint=false]
-}
