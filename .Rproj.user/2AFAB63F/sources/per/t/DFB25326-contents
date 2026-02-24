@@ -11,7 +11,6 @@ library(ggplot2)
 library(lme4)
 library(lmerTest)
 library(effsize)
-library(MASS)
 library(lmtest)
 library(sandwich)
 library(performance)
@@ -24,7 +23,7 @@ df <- read.csv("../data/processed/data.csv", header = TRUE, row.names = 1)
 
 df <- tibble(df)
 df$cond <- as.factor(df$cond)
-df_parent <- df %>% filter(gen > 0)
+df_parent <- df %>% filter(gen != 0)
 ```
 
 
@@ -188,13 +187,7 @@ PARENT MODEL KNOWLEDGE
 ```{r}
 res <- lm(score_corrected ~ parent_pl2_understanding * cond, data = df_parent)
 summary(res)
-```
-
-With MASS
-```{r}
-res <- rlm(score_corrected ~ parent_pl2_understanding * cond, data = df_parent)
-summary(res)
-coeftest(res, vcov = vcovHC(res, type = "HC0"))
+confint(res)
 ```
 
 
@@ -202,6 +195,7 @@ MODEL KNOWLEDGE
 ```{r}
 res <- lm(score_corrected ~ pl2_understanding * cond, data = df)
 summary(res)
+confint(res)
 ```
 
 
@@ -213,6 +207,15 @@ check_model(model)
 ```
 
 
+PARENT TASK PERFORMANCE
+```{r}
+res <- lm(score_corrected ~ parent_score_corrected * cond, data = df_parent)
+summary(res)
+confint(res)
+```
+
+
+
 MODEL DIAGNOSTIC PARENT CHILDREN
 ```{r}
 model <- lm(score_corrected ~ pl2_understanding * cond, data = df)
@@ -221,110 +224,67 @@ check_model(model)
 ```
 
 
-# old
 
+## NLP
 
-## Task performance
 ```{r}
-res <- lm(data = df, score_corrected ~ gen * cond)
-summary(res)
-
-df$cond <- relevel(factor(df$cond), ref = "OBS")
-
-res <- lm(data = df, score_corrected ~ gen * cond)
-summary(res)
+df_NLP = read.csv("../old/NLP/results/docs_topic_weights.csv")
+df_NLP <- df_NLP %>%
+  mutate(gen = gen -1)
 ```
 
 
+Topic reduction (only topic with > 50 doc)
 ```{r}
-lm_df <- df %>% filter(gen == 0)
-res <- lm(score_corrected ~ -1+cond, data = df)
-summary(res)
-
-t.test(df$score_corrected[df$cond == "OBS"])
-```
-
-
-
-
-pair understanding x gen
-```{r}
-res <- lm(data = df %>% filter(cond == "ADV"), pl1_understanding ~ gen)
-summary(res)
-confint(res)
-
-res <- lm(data = df %>% filter(cond == "OBS"), pl1_understanding ~ gen)
-summary(res)
-confint(res)
-
-res <- lm(data = df, pl1_understanding ~ gen * cond)
-summary(res)
-Anova(res)
-```
-
-
-transition understanding x gen
-```{r}
-res <- lm(data = df %>% filter(cond == "ADV"), pl2_understanding ~ gen)
-summary(res)
-confint(res)
-
-res <- lm(data = df %>% filter(cond == "OBS"), pl2_understanding ~ gen)
-summary(res)
-confint(res)
-
-res <- lm(data = df, pl2_understanding ~ gen * cond)
-summary(res)
-Anova(res)
-```
-
-parent Tu & child perf
-```{r}
-res <- lm(data = df %>% filter(cond == "ADV") %>% filter(gen > 0), score_corrected ~ parent_pl2_understanding)
-summary(res)
-confint(res)
-
-res <- lm(data = df %>% filter(cond == "OBS") %>% filter(gen > 0), score_corrected ~ parent_pl2_understanding)
-summary(res)
-confint(res)
-
-res <- lm(data = df %>% filter(gen > 0), score_corrected ~ parent_pl2_understanding * cond)
-summary(res)
-Anova(res)
-```
-
-
-parent perf & child perf
-```{r}
-res <- lm(data = df %>% filter(cond == "ADV") %>% filter(gen > 0), score_corrected ~ parent_score_corrected)
-summary(res)
-confint(res)
-
-res <- lm(data = df %>% filter(cond == "OBS") %>% filter(gen > 0),score_corrected ~ parent_score_corrected)
-summary(res)
-confint(res)
-
-res <- lm(data = df %>% filter(gen > 0), score_corrected ~ parent_score_corrected * cond)
-summary(res)
-Anova(res)
-```
-
-
-
-
-
-# NLP
-
-```{r}
-df = read.csv("../old/NLP/results/docs_topic_weights.csv")
-```
-
-
-```{r}
-df_EL <- df %>%
-  filter(gen > 1) %>%
+data <- df_NLP %>%
+  filter(gen != 0) %>%
   select(
-    ID, pl2_understanding, gen,
+    ID,
+    pl2_understanding,
+    gen,
+    parent_topic_0,
+    parent_topic_1,
+    parent_topic_2,
+    parent_topic_3,
+    parent_topic_4,
+    parent_topic_5
+  ) %>%
+  gather(key = "topic_n", value = "prop", -c(ID, pl2_understanding, gen)) %>%
+  mutate(topic_n = factor(topic_n))
+
+model <- lmer(pl2_understanding ~ prop:topic_n + (1 | gen), data = data)
+summary(model)
+```
+
+Topic reduction (only topic with > 50 doc)
+```{r}
+data <- df_NLP %>%
+  filter(gen != 0) %>%
+  select(
+    ID,
+    score_corrected,
+    gen,
+    parent_topic_0,
+    parent_topic_1,
+    parent_topic_2,
+    parent_topic_3,
+    parent_topic_4,
+    parent_topic_5
+  ) %>%
+  gather(key = "topic_n", value = "prop", -c(ID, score_corrected, gen)) %>%
+  mutate(topic_n = factor(topic_n))
+
+model <- lmer(score_corrected ~ prop:topic_n + (1 | gen), data = data)
+summary(model)
+```
+
+```{r}
+data <- df_NLP %>%
+  filter(gen != 0) %>%
+  select(
+    ID,
+    pl2_understanding,
+    gen,
     parent_topic_0,
     parent_topic_1,
     parent_topic_2,
@@ -338,14 +298,15 @@ df_EL <- df %>%
   gather(key = "topic_n", value = "prop", -c(ID, pl2_understanding, gen)) %>%
   mutate(topic_n = factor(topic_n))
 
-model <- lmer(pl2_understanding ~ prop:topic_n + (1 | gen), data = df_EL)
+model <- lmer(pl2_understanding ~ prop:topic_n + (1 | gen), data = data)
 summary(model)
 ```
 
+
 perf
 ```{r}
-df_EL <- df %>%
-  filter(gen > 1) %>%
+data <- df_NLP %>%
+  filter(gen != 0) %>%
   select(
     ID, score_corrected, gen,
     parent_topic_0,
@@ -361,8 +322,345 @@ df_EL <- df %>%
   gather(key = "topic_n", value = "prop", -c(ID, score_corrected, gen)) %>%
   mutate(topic_n = factor(topic_n))
 
-model <- lmer(score_corrected ~ prop:topic_n + (1 | gen), data = df_EL)
+model <- lmer(score_corrected ~ prop:topic_n + (1 | gen), data = data)
 summary(model)
+```
+
+
+topic 2 growth lm
+```{r}
+res <- lm(topic_2 ~ gen, data = df_NLP)
+summary(res)
+```
+
+
+topic 2 growth glm + betareg (ChatGPT)
+```{r}
+library(betareg)
+
+df_betareg <- df_NLP %>%
+  mutate(assigned_topic = factor(assigned_topic))
+
+model_topic2 <- betareg(topic_2 ~ gen, data = df_betareg)
+
+summary(model_topic2)
+
+
+df_betareg$assigned_topic_2 <- as.integer(df_betareg$assigned_topic == 2)
+
+model_assigned_topic2 <- glm(assigned_topic_2 ~ gen, family = binomial, data = df_betareg)
+
+summary(model_assigned_topic2)
+```
+
+
+```{r}
+df_topic2 <- df_NLP %>%
+  filter(assigned_topic == 2)
+df_not_topic2 <- df_NLP %>%
+  filter(assigned_topic != 2)
+
+t.test(df_topic2$score_corrected, df_not_topic2$score_corrected)
+```
+
+
+get parent_assigned_topic
+```{r}
+parent_assigned_topic <- rep(NA, nrow(df_NLP)) # Pre-fill with NAs
+
+for (i in 1:nrow(df_NLP)){
+  parent_ID <- df_NLP[i,]$parent_ID
+  parent <- df_NLP %>% filter(ID == !!parent_ID) 
+  parent_assigned_topic[i] <- ifelse(nrow(parent) > 0, parent$assigned_topic, NA)
+}
+
+df_NLP <- df_NLP %>%
+  mutate(parent_assigned_topic = parent_assigned_topic)
+```
+
+
+```{r}
+df_NLP %>%
+  filter(gen != 0) %>%
+  filter(assigned_topic == 2) %>%
+  ggplot( aes(x = factor(parent_assigned_topic))) +
+  geom_bar(fill = "steelblue", color = "black") +
+  # facet_wrap(~ gen) +
+  labs(title = "Distribution of parent_assigned_topic in participant with topic 2",
+       x = "Parent Assigned Topic",
+       y = "Count") +
+  theme_minimal()
+```
+
+
+```{r}
+df_NLP %>%
+  filter(assigned_topic == 2) %>%
+  count(parent_assigned_topic) %>%
+  arrange(desc(n))
+
+100 / nrow(df_NLP %>% filter(assigned_topic == 2))
+```
+
+
+search if participant had children (is_parent)
+```{r}
+is_parent <- rep(NA, nrow(df_NLP)) # Pre-fill with NAs
+n_children <- rep(NA, nrow(df_NLP))
+
+for (i in 1:nrow(df_NLP)){
+  ID <- df_NLP[i, ]$ID
+  children <- df_NLP %>% filter(parent_ID == !!ID)
+  is_parent[i] <- ifelse(nrow(children) > 0, TRUE, FALSE)
+  n_children[i] <- nrow(children)
+}
+
+df_NLP <- df_NLP %>%
+  mutate(is_parent = is_parent) %>%
+  mutate(n_children = n_children)
+``` 
+
+
+```{r}
+model <- glm(is_parent ~ factor(assigned_topic) * factor(gen), data = df_NLP, family = binomial)
+summary(model)
+```
+
+
+
+
+
+
+
+## Adice fidelity
+
+data loading + transformation to get parents' assigned topic
+```{r}
+df_NLP <- read.csv("../old/NLP/results/docs_topic_weights.csv")
+
+df_NLP <- tibble(df_NLP)
+
+parent_assigned_topic <- rep(NA, nrow(df_NLP)) # Pre-fill with NAs
+
+for (i in 1:nrow(df_NLP)){
+  parent_ID <- df_NLP[i,]$parent_ID
+  parent <- df_NLP %>% filter(ID == !!parent_ID) 
+  parent_assigned_topic[i] <- ifelse(nrow(parent) > 0, parent$assigned_topic, NA)
+}
+
+df_NLP <- df_NLP %>%
+  mutate(parent_assigned_topic = parent_assigned_topic)
+```
+
+
+Transmission fidelity
+```{r}
+df_NLP <- df_NLP %>%
+  mutate(same_topic = ifelse(assigned_topic == parent_assigned_topic, TRUE, FALSE))
+
+df_same_topic <- df_NLP %>%
+  filter(gen != 1) %>% #skip first gen with no parents
+  group_by(gen) %>%
+  summarise(count = sum(same_topic))
+
+ggplot(df_same_topic, aes(x = gen, y = count)) +
+  geom_col(fill = "grey") +
+  labs(
+    x = "Generation",
+    y = "n",
+    title = "Children whose advice matches that of their parents"
+  ) +
+  theme_minimal()
+
+df_same_topic
+summary(df_same_topic$count)
+```
+
+
+```{r}
+df_NLP <- df_NLP %>%
+  filter(gen != 1) %>%
+  mutate(model_knowledge_shift = abs(pl2_understanding - parent_pl2_understanding))
+
+t.test(model_knowledge_shift ~ same_topic, data = df_NLP)
+
+ggplot(df_NLP, aes(x = model_knowledge_shift, fill = same_topic)) +
+  geom_density(alpha = 0.5) +
+  facet_wrap(~gen) +
+  labs(title = "Distribution of Model Knowledge Shift",
+       x = "Model Knowledge Shift",
+       y = "Density") +
+  scale_fill_manual(values = c("FALSE" = "red", "TRUE" = "blue")) +
+  theme_minimal()
+```
+
+```{r}
+df_NLP %>%
+  group_by(gen) %>%
+  summarise(avg_shift = mean(model_knowledge_shift)) %>%
+  ggplot( aes(x = as.factor(gen), y = avg_shift)) +
+  geom_col(fill = "grey") +
+  labs(
+    x = "Generation",
+    y = "avg shift",
+    title = "Average knowledge shift per generation"
+  ) +
+  theme_minimal()
+```
+
+
+
+```{r}
+df_NLP %>%
+  group_by(assigned_topic) %>%
+  summarise(avg_shift = mean(model_knowledge_shift)) %>%
+  ggplot( aes(x = as.factor(assigned_topic), y = avg_shift)) +
+  geom_col(fill = "grey") +
+  labs(
+    x = "Generation",
+    y = "avg shift",
+    title = "Average knowledge shift per topic"
+  ) +
+  theme_minimal()
+```
+
+
+```{r}
+df_NLP %>%
+  filter(same_topic == TRUE) %>%
+  group_by(gen) %>%
+  summarise(avg_shift = mean(model_knowledge_shift)) %>%
+  ggplot( aes(x = as.factor(gen), y = avg_shift)) +
+  geom_col(fill = "grey") +
+  labs(
+    x = "Generation",
+    y = "avg shift",
+    title = "Average knowledge shift per generation for same_topic == TRUE"
+  ) +
+  theme_minimal()
+```
+
+
+```{r}
+df_NLP %>%
+  filter(same_topic == FALSE) %>%
+  group_by(gen) %>%
+  summarise(avg_shift = mean(model_knowledge_shift)) %>%
+  ggplot( aes(x = as.factor(gen), y = avg_shift)) +
+  geom_col(fill = "grey") +
+  labs(
+    x = "Generation",
+    y = "avg shift",
+    title = "Average knowledge shift per generation for same_topic == FALSE"
+  ) +
+  theme_minimal()
+```
+
+
+
+```{r}
+df_NLP %>%
+  filter(same_topic == FALSE) %>%
+  group_by(assigned_topic) %>%
+  summarise(avg_shift = mean(model_knowledge_shift)) %>%
+  ggplot( aes(x = as.factor(assigned_topic), y = avg_shift)) +
+  geom_col(fill = "grey") +
+  labs(
+    x = "Generation",
+    y = "avg shift",
+    title = "if you have topic x and your parent has topic y, how much better are you tahn your parent"
+  ) +
+  theme_minimal()
+```
+
+
+```{r}
+df_NLP %>%
+  filter(same_topic == TRUE) %>%
+  group_by(assigned_topic) %>%
+  summarise(avg_shift = mean(model_knowledge_shift)) %>%
+  ggplot( aes(x = as.factor(assigned_topic), y = avg_shift)) +
+  geom_col(fill = "grey") +
+  labs(
+    x = "Generation",
+    y = "avg shift",
+    title = "if you have topic x and your parent also has topic x, how much better are you tahn your parent"
+  ) +
+  theme_minimal()
+```
+
+
+```{r}
+df_NLP <- read.csv("../old/NLP/results/docs_topic_weights.csv")
+
+df_NLP <- tibble(df_NLP)
+
+df_NLP %>%
+  filter(assigned_topic == 2) %>%
+  group_by(gen) %>%
+  summarise(score = mean(pl2_understanding)) %>%
+  ggplot( aes(x = as.factor(gen), y = score)) +
+  geom_col() +
+  labs(x = "generation", y = "model knowledge", title = "Model knowledge per generation of TOPIC 2 participants") +
+  theme_minimal()
+```
+```{r}
+df_NLP <- read.csv("../old/NLP/results/docs_topic_weights.csv")
+
+df_NLP <- tibble(df_NLP)
+
+df_NLP %>%
+  filter(assigned_topic == 2) %>%
+  group_by(gen) %>%
+  summarise(score = n()) %>%
+  ggplot( aes(x = as.factor(gen), y = score)) +
+  geom_col() +
+  labs(x = "generation", y = "n", title = "Number of TOPIC 2 participants per gen") +
+  theme_minimal()
+```
+
+
+
+
+
+# SUPMAT
+
+# NON IN THE PAPER
+
+Correlation between parent n_child & children n_child
+This doesn't work because of the structure of the tree (100x10 forced by design) and the randomness of the selection algorithm
+```{r}
+child_counts <- df %>%
+  group_by(parent_ID) %>%
+  summarise(n_child = n(), .groups = "drop")
+
+
+df_test <- df %>%
+  left_join(child_counts, by = c("ID" = "parent_ID")) %>%
+  mutate(n_child = ifelse(is.na(n_child), 0, n_child))
+
+avg_grandchild_count <- df_test %>%
+  group_by(parent_ID) %>%
+  summarise(avg_n_grandchild = mean(n_child), .groups = "drop")
+
+df_test <- df_test %>%
+  left_join(avg_grandchild_count, by = c("ID" = "parent_ID")) %>%
+  mutate(avg_n_grandchild = ifelse(is.na(avg_n_grandchild), 0, avg_n_grandchild))
+
+df_test <- df_test %>%
+  filter(n_child != 0)
+
+cor.test(
+  df_test %>% filter(cond == "ADV") %>% pull(n_child),
+  df_test %>% filter(cond == "ADV") %>% pull(avg_n_grandchild),
+  method="p"
+)
+
+cor.test(
+  df_test %>% filter(cond == "OBS") %>% pull(n_child),
+  df_test %>% filter(cond == "OBS") %>% pull(avg_n_grandchild),
+  method="s"
+)
 ```
 
 
