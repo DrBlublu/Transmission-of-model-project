@@ -7,6 +7,9 @@ from hdbscan import HDBSCAN
 from sklearn.feature_extraction.text import CountVectorizer
 from bertopic.vectorizers import ClassTfidfTransformer
 
+
+
+
 def run_BERTopic_model(param_dic, docs):
     # Pre-calculate embeddings
     embedding_model = SentenceTransformer(param_dic["embedding_model"], use_auth_token=False)
@@ -21,7 +24,7 @@ def run_BERTopic_model(param_dic, docs):
     # Add all models together to be run in a single `fit`
     representation_model = {
     "KeyBERT": main_representation,
-    "MMR":  aspect_model2 
+    "MMR":  aspect_model2
     }
 
     data = []
