@@ -1,0 +1,1178 @@
+digraph "Fig3J - lineage" {
+	graph [nodesep=2.0 ranksep=40.0]
+	node [fixedsize=true fontsize=14 height=10 width=10]
+	edge [color="#D4AF37" penwidth=80.0]
+	"5da83385e8bf0200113c3c6e" -> "5a598f2b8e6259000175f094"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5da83385e8bf0200113c3c6e" -> "5bdead73ed3acf0001666f03"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5da83385e8bf0200113c3c6e" -> "5fde8fc3c0e40a651914c261"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5a598f2b8e6259000175f094" -> "5a031341728b1b0001ad8bee"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5bdead73ed3acf0001666f03" -> "5ccf41c9bd0d3e001593ce92"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5a598f2b8e6259000175f094" -> "5e28bd32e4254006e204f309"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5a598f2b8e6259000175f094" -> "5e57d38b533eec1818078f0b"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5bdead73ed3acf0001666f03" -> "629f2a9c3effb1dc81c49116"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5bdead73ed3acf0001666f03" -> "62c71e41af2bc57590b548e8"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5bdead73ed3acf0001666f03" -> "640132934d00561d78518c4c"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5a598f2b8e6259000175f094" -> "65cb7b4f9b771b8103c8c0a4"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5bdead73ed3acf0001666f03" -> "6643555f305ea02592fa0ccb"
+	edge [color="#6C5B7B" penwidth=80.0]
+	"5ccf41c9bd0d3e001593ce92" -> "5823c1b185e40e00012f2e68"
+	edge [color="#F4A259" penwidth=80.0]
+	"629f2a9c3effb1dc81c49116" -> "58eb9b26b0ddf800010dc8bd"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5e57d38b533eec1818078f0b" -> "5953668fb2e8430001ea478f"
+	edge [color="#F4A259" penwidth=80.0]
+	"5a031341728b1b0001ad8bee" -> "5a606ae1eedc32000142ea79"
+	edge [color="#6C5B7B" penwidth=80.0]
+	"5ccf41c9bd0d3e001593ce92" -> "5cb1e0ccc9ca1c00181d3e3c"
+	edge [color="#F4A259" penwidth=80.0]
+	"629f2a9c3effb1dc81c49116" -> "5eb561131434b1053a77d85d"
+	edge [color="#BC4B51" penwidth=80.0]
+	"65cb7b4f9b771b8103c8c0a4" -> "613a5cffb2911279076b5709"
+	edge [color="#BC4B51" penwidth=80.0]
+	"65cb7b4f9b771b8103c8c0a4" -> "62fb79136f84975e7d460f8b"
+	edge [color="#BC4B51" penwidth=80.0]
+	"65cb7b4f9b771b8103c8c0a4" -> "64137ab1ba8c23e1b4282140"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5e57d38b533eec1818078f0b" -> "651f8c9561bba4367911484c"
+	edge [color="#BC4B51" penwidth=80.0]
+	"65cb7b4f9b771b8103c8c0a4" -> "654e6ed02fec82d232613bd2"
+	edge [color="#BC4B51" penwidth=80.0]
+	"65cb7b4f9b771b8103c8c0a4" -> "654ffa78185a13c48b109ec7"
+	edge [color="#BC4B51" penwidth=80.0]
+	"65cb7b4f9b771b8103c8c0a4" -> "660426c0c862023fc9832df0"
+	edge [color="#BC4B51" penwidth=80.0]
+	"65cb7b4f9b771b8103c8c0a4" -> "664604da31bc7fa510005366"
+	edge [color="#D4AF37" penwidth=80.0]
+	"62fb79136f84975e7d460f8b" -> "594a481105e73f0001450009"
+	edge [color="#BC4B51" penwidth=80.0]
+	"660426c0c862023fc9832df0" -> "59ff8226ab721b0001ef6e61"
+	edge [color="#BC4B51" penwidth=80.0]
+	"613a5cffb2911279076b5709" -> "5b5e0e86902ad10001cfcc59"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5a606ae1eedc32000142ea79" -> "5b96ded47485e1000175d72d"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"654e6ed02fec82d232613bd2" -> "5bd34c2c4126510001d5dbef"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"654e6ed02fec82d232613bd2" -> "5cefad9ddfb27200019620b2"
+	edge [color="#D4AF37" penwidth=80.0]
+	"62fb79136f84975e7d460f8b" -> "5d1f6e8a79b6870016f803da"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"654e6ed02fec82d232613bd2" -> "5d53be7ddaac02001566b548"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"654e6ed02fec82d232613bd2" -> "5d8cef3c28e183001a335ab0"
+	edge [color="#D4AF37" penwidth=80.0]
+	"664604da31bc7fa510005366" -> "5dbe90f8965e863667a79ca8"
+	edge [color="#BC4B51" penwidth=80.0]
+	"654ffa78185a13c48b109ec7" -> "5e482352020bde2be9b4ded1"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"654e6ed02fec82d232613bd2" -> "5ebac054d63dde03790ceef8"
+	edge [color="#BC4B51" penwidth=80.0]
+	"613a5cffb2911279076b5709" -> "5f3edad9746e76182670cd0d"
+	edge [color="#BC4B51" penwidth=80.0]
+	"613a5cffb2911279076b5709" -> "5f4ac049c374f51158b481ba"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"654e6ed02fec82d232613bd2" -> "5f5aa9f89a3ef61b0778d49a"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5a606ae1eedc32000142ea79" -> "60fec21e36a05990cfa8a715"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5a606ae1eedc32000142ea79" -> "614f571879ee135c5a579e08"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"654e6ed02fec82d232613bd2" -> "62d81f26161631255f0d36bd"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5953668fb2e8430001ea478f" -> "63d40b7d3c7f92ff15ef6b67"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"654e6ed02fec82d232613bd2" -> "659864775dffc3c84fb4f328"
+	edge [color="#F4A259" penwidth=80.0]
+	"5eb561131434b1053a77d85d" -> "65c247a8e76e1786498e63e6"
+	edge [color="#BC4B51" penwidth=80.0]
+	"660426c0c862023fc9832df0" -> "6635db76b0a9ea4ecad2f302"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5a606ae1eedc32000142ea79" -> "6658b2050980b63fc8fdbd13"
+	edge [color="#D4AF37" penwidth=80.0]
+	"62fb79136f84975e7d460f8b" -> "6658b687ab732c38533b24e7"
+	edge [color="#D4AF37" penwidth=80.0]
+	"64137ab1ba8c23e1b4282140" -> "66699ef0d93ccc09d70a1d25"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5f5aa9f89a3ef61b0778d49a" -> "54b19cadfdf99b0b3d806330"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5f5aa9f89a3ef61b0778d49a" -> "558fb997fdf99b7ce292469b"
+	edge [color="#D4AF37" penwidth=80.0]
+	"66699ef0d93ccc09d70a1d25" -> "57d2edf35e9bc90001f76b06"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5ebac054d63dde03790ceef8" -> "594c69ee4b07c400013aa466"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5ebac054d63dde03790ceef8" -> "5987bfb80e411a0001d83837"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5dbe90f8965e863667a79ca8" -> "5a68c8ec63394a000155cbb9"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5ebac054d63dde03790ceef8" -> "5b311fcea8327d0001000777"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5b96ded47485e1000175d72d" -> "5c51d18698b0ff000110da96"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5f5aa9f89a3ef61b0778d49a" -> "5c91fad394f7e600172f9d4a"
+	edge [color="#BC4B51" penwidth=80.0]
+	"6658b687ab732c38533b24e7" -> "5d45d2c3b30ae50001578172"
+	edge [color="#8CB369" penwidth=80.0]
+	"5bd34c2c4126510001d5dbef" -> "5d5e7c716a846b0017760587"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5ebac054d63dde03790ceef8" -> "5dfaafeec0b81f7f32f10709"
+	edge [color="#BC4B51" penwidth=80.0]
+	"65c247a8e76e1786498e63e6" -> "5f3ab128c4b6921312f28237"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5cefad9ddfb27200019620b2" -> "5fb46dd5d9ece50422838e7a"
+	edge [color="#8CB369" penwidth=80.0]
+	"594a481105e73f0001450009" -> "600cc0ed3a7a0744a0699c5b"
+	edge [color="#BC4B51" penwidth=80.0]
+	"65c247a8e76e1786498e63e6" -> "60a4efcabe6d8f29513a5258"
+	edge [color="#D4AF37" penwidth=80.0]
+	"6635db76b0a9ea4ecad2f302" -> "60d03b4be7200f842a86ee33"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5f5aa9f89a3ef61b0778d49a" -> "6124ea99728014c37c9635c7"
+	edge [color="#8CB369" penwidth=80.0]
+	"594a481105e73f0001450009" -> "6131057db82458b8609961c1"
+	edge [color=gray penwidth=80.0]
+	"6658b2050980b63fc8fdbd13" -> "613bae70cab01ced932e5e9f"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"659864775dffc3c84fb4f328" -> "615f0c2cab82bb38958bfd7f"
+	edge [color=gray penwidth=80.0]
+	"6658b2050980b63fc8fdbd13" -> "628d78a2ccf4a41f24c2d2d8"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5dbe90f8965e863667a79ca8" -> "62fb7bd5e0c65f772ce189c8"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5cefad9ddfb27200019620b2" -> "63d000d62878aa92b833c5fc"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5ebac054d63dde03790ceef8" -> "63d17686afe6614ac1f77f9b"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5ebac054d63dde03790ceef8" -> "6447e2e2d1e8e330d23d4057"
+	edge [color="#BC4B51" penwidth=80.0]
+	"65c247a8e76e1786498e63e6" -> "6458fe267afe71c7aa4de260"
+	edge [color="#D4AF37" penwidth=80.0]
+	"66699ef0d93ccc09d70a1d25" -> "66240f6ce1a02cdc40bb666a"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5d1f6e8a79b6870016f803da" -> "6636846a9190727f3132791a"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"659864775dffc3c84fb4f328" -> "663e83a2acfdb0135f470a34"
+	edge [color="#8CB369" penwidth=80.0]
+	"594a481105e73f0001450009" -> "665488225b3bbb3e8317b1bd"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5d1f6e8a79b6870016f803da" -> "66572a95e52bc5d24caedc7b"
+	edge [color=gray penwidth=80.0]
+	"62d81f26161631255f0d36bd" -> "665735c6cfc5aaecdc031a50"
+	edge [color="#D4AF37" penwidth=80.0]
+	"614f571879ee135c5a579e08" -> "6658b13d6a1df274ee633f90"
+	edge [color="#D4AF37" penwidth=80.0]
+	"60fec21e36a05990cfa8a715" -> "6658b3351fbec54d5289350d"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"659864775dffc3c84fb4f328" -> "6658bcfd198f87b4009b05d6"
+	edge [color=gray penwidth=80.0]
+	"62d81f26161631255f0d36bd" -> "665a00d9581153685eceb8d2"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5b96ded47485e1000175d72d" -> "665b23cd7b1fe039854a2f13"
+	edge [color="#BC4B51" penwidth=80.0]
+	"6658b687ab732c38533b24e7" -> "665c050b07508f6c4f8d01e0"
+	edge [color="#D4AF37" penwidth=80.0]
+	"6635db76b0a9ea4ecad2f302" -> "666600547628e9babf3517b2"
+	edge [color="#8CB369" penwidth=80.0]
+	"665735c6cfc5aaecdc031a50" -> "55b95e2ffdf99b469f622883"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"665a00d9581153685eceb8d2" -> "573107ef1efe74000e3088d2"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"63d17686afe6614ac1f77f9b" -> "5766788c3d2d3a000138b0ef"
+	edge [color="#8CB369" penwidth=80.0]
+	"54b19cadfdf99b0b3d806330" -> "57a1e03b8eccbc0001f39c13"
+	edge [color="#BC4B51" penwidth=80.0]
+	"6658b3351fbec54d5289350d" -> "59317b8761bcd8000107cad6"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5a68c8ec63394a000155cbb9" -> "596f2a1f50e2f000016fd93b"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"663e83a2acfdb0135f470a34" -> "59f0f82ce75b450001a699ad"
+	edge [color="#8CB369" penwidth=80.0]
+	"54b19cadfdf99b0b3d806330" -> "5a0d4a205d06850001afff96"
+	edge [color="#8CB369" penwidth=80.0]
+	"600cc0ed3a7a0744a0699c5b" -> "5a6107bb31b87a0001c6c49b"
+	edge [color="#8CB369" penwidth=80.0]
+	"665735c6cfc5aaecdc031a50" -> "5b666901f7798c000182c01c"
+	edge [color="#D4AF37" penwidth=80.0]
+	"594c69ee4b07c400013aa466" -> "5c921106b788a2000170709f"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5a68c8ec63394a000155cbb9" -> "5ceb00125b78dd0015cb4406"
+	edge [color="#8CB369" penwidth=80.0]
+	"54b19cadfdf99b0b3d806330" -> "5ddebe998ed6bfe3cac0174c"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"663e83a2acfdb0135f470a34" -> "5e4dd29b9b6e560e61ee14c7"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5c51d18698b0ff000110da96" -> "5f4143f294d6482bd9689da0"
+	edge [color="#D4AF37" penwidth=80.0]
+	"665b23cd7b1fe039854a2f13" -> "5f58c945b5424a055aad846b"
+	edge [color="#D4AF37" penwidth=80.0]
+	"594c69ee4b07c400013aa466" -> "5f5b466013a22426346e8fba"
+	edge [color="#BC4B51" penwidth=80.0]
+	"665c050b07508f6c4f8d01e0" -> "5f7126de20717c75c0201315"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"63d17686afe6614ac1f77f9b" -> "5f960a9442d5f34e319e3cf7"
+	edge [color="#D4AF37" penwidth=80.0]
+	"57d2edf35e9bc90001f76b06" -> "5f9e03f3517e0d3ad1eab67b"
+	edge [color="#D4AF37" penwidth=80.0]
+	"628d78a2ccf4a41f24c2d2d8" -> "5fbc036099f6c9050e664b2e"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5c51d18698b0ff000110da96" -> "60035a7089252e07b1d4b077"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5c91fad394f7e600172f9d4a" -> "60ad4325e23286e1191e31aa"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5b311fcea8327d0001000777" -> "61088f97759a1199340202e9"
+	edge [color="#8CB369" penwidth=80.0]
+	"665735c6cfc5aaecdc031a50" -> "6109917749b14701436e49f9"
+	edge [color="#8CB369" penwidth=80.0]
+	"6124ea99728014c37c9635c7" -> "6286718faa00d344b74cb609"
+	edge [color="#8CB369" penwidth=80.0]
+	"665735c6cfc5aaecdc031a50" -> "62b33e5e6103ca47d3c8a953"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"663e83a2acfdb0135f470a34" -> "62c612ea71b6cc890bd5ad41"
+	edge [color="#6C5B7B" penwidth=80.0]
+	"5d45d2c3b30ae50001578172" -> "63203d7490bfb5e4b58956a8"
+	edge [color="#D4AF37" penwidth=80.0]
+	"594c69ee4b07c400013aa466" -> "637ffd0ae752c8e33f91798b"
+	edge [color="#8CB369" penwidth=80.0]
+	"54b19cadfdf99b0b3d806330" -> "63f7a2d8acd4b0cead8773e9"
+	edge [color="#8CB369" penwidth=80.0]
+	"54b19cadfdf99b0b3d806330" -> "63f8eaeb261f726a83d65177"
+	edge [color="#D4AF37" penwidth=80.0]
+	"66572a95e52bc5d24caedc7b" -> "6550a9f2fc2fc3a9c2d04180"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5b311fcea8327d0001000777" -> "6552a35b882343af828d859a"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5c91fad394f7e600172f9d4a" -> "6554990ace48275d4017fe99"
+	edge [color=gray penwidth=80.0]
+	"613bae70cab01ced932e5e9f" -> "655d35168909cc0448bcd7b7"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5fb46dd5d9ece50422838e7a" -> "656615b432984a1b0ea3273f"
+	edge [color="#8CB369" penwidth=80.0]
+	"54b19cadfdf99b0b3d806330" -> "656e02962907eb6f11faa71f"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5a68c8ec63394a000155cbb9" -> "65a9239a58dbce6f4fa1d6af"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5c51d18698b0ff000110da96" -> "65e5d439de1a27ed1b7a6a9c"
+	edge [color="#BC4B51" penwidth=80.0]
+	"60a4efcabe6d8f29513a5258" -> "661555d405381d6f17b1471b"
+	edge [color="#6C5B7B" penwidth=80.0]
+	"5d45d2c3b30ae50001578172" -> "661ed12701e9fa042486677a"
+	edge [color="#8CB369" penwidth=80.0]
+	"665735c6cfc5aaecdc031a50" -> "662790ba12f6c8d4d6b4296a"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"63d000d62878aa92b833c5fc" -> "663e1a9538a5d269744692cc"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5c51d18698b0ff000110da96" -> "664f44d2b701a2807787b0c6"
+	edge [color="#8CB369" penwidth=80.0]
+	"6124ea99728014c37c9635c7" -> "6658b25488108e97424af6c2"
+	edge [color="#D4AF37" penwidth=80.0]
+	"57d2edf35e9bc90001f76b06" -> "6658b75b684674803e83e24e"
+	edge [color="#8CB369" penwidth=80.0]
+	"54b19cadfdf99b0b3d806330" -> "6658bff08ce40f13d68d7f65"
+	edge [color="#BC4B51" penwidth=80.0]
+	"665c050b07508f6c4f8d01e0" -> "6659c792c24dfe1ff2040994"
+	edge [color=gray penwidth=80.0]
+	"613bae70cab01ced932e5e9f" -> "665a23747dc3dbf8b0cd8da7"
+	edge [color="#8CB369" penwidth=80.0]
+	"600cc0ed3a7a0744a0699c5b" -> "665f11d091ed0d56483f1227"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"63d17686afe6614ac1f77f9b" -> "6660c05740ab8863f127c405"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5a68c8ec63394a000155cbb9" -> "6662cf12dd16203f37d02d3c"
+	edge [color="#8CB369" penwidth=80.0]
+	"5766788c3d2d3a000138b0ef" -> "55f42b6a32af740005170bd0"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"59f0f82ce75b450001a699ad" -> "59917a2b0675b100014dadb8"
+	edge [color="#8CB369" penwidth=80.0]
+	"63f7a2d8acd4b0cead8773e9" -> "5a91cb166219a30001d2e6ef"
+	edge [color=gray penwidth=80.0]
+	"5ddebe998ed6bfe3cac0174c" -> "5ad0422dfb109b0001a30f35"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"59f0f82ce75b450001a699ad" -> "5c0a29b6c307a400016adb9f"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"59f0f82ce75b450001a699ad" -> "5c4353086ce36f0001205f65"
+	edge [color="#D4AF37" penwidth=80.0]
+	"655d35168909cc0448bcd7b7" -> "5c636bc3302b1e0001e69dce"
+	edge [color="#8CB369" penwidth=80.0]
+	"6109917749b14701436e49f9" -> "5d35989e71b4880017d5cc81"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"663e1a9538a5d269744692cc" -> "5d95dfca33f8930017e85486"
+	edge [color="#F4A259" penwidth=80.0]
+	"5f5b466013a22426346e8fba" -> "5dbf704fa3f5cb40876271fc"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"59f0f82ce75b450001a699ad" -> "5e2c8f69cad44b2bc5ce9a34"
+	edge [color="#8CB369" penwidth=80.0]
+	"57a1e03b8eccbc0001f39c13" -> "5e54c7fc2394ea4c99f88987"
+	edge [color="#8CB369" penwidth=80.0]
+	"6659c792c24dfe1ff2040994" -> "5e7dba4f1d6961436474c8f2"
+	edge [color="#8CB369" penwidth=80.0]
+	"6109917749b14701436e49f9" -> "5ea9e36155624e14a9a64525"
+	edge [color="#8CB369" penwidth=80.0]
+	"57a1e03b8eccbc0001f39c13" -> "5ee693b0822bd24173d86324"
+	edge [color="#F4A259" penwidth=80.0]
+	"596f2a1f50e2f000016fd93b" -> "5eecd2e3a38fd009dd9d1f3d"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"573107ef1efe74000e3088d2" -> "5f1be87fea92af4118e1109e"
+	edge [color="#8CB369" penwidth=80.0]
+	"6659c792c24dfe1ff2040994" -> "5f5834134283933a1c3b42d0"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"663e1a9538a5d269744692cc" -> "5f625539ecec8c13b04d83e3"
+	edge [color="#BC4B51" penwidth=80.0]
+	"65a9239a58dbce6f4fa1d6af" -> "60153f6faf1cb75da820c070"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"59f0f82ce75b450001a699ad" -> "601a3b26e9531b22dc95dd8c"
+	edge [color="#D4AF37" penwidth=80.0]
+	"655d35168909cc0448bcd7b7" -> "6022e90eaccb290e2f1b07a2"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5f58c945b5424a055aad846b" -> "605775ca8da35e75f7b6cb50"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5f58c945b5424a055aad846b" -> "60fde71d08e32b4b5bbdfc38"
+	edge [color="#8CB369" penwidth=80.0]
+	"57a1e03b8eccbc0001f39c13" -> "6100055d33f16a3c21e34bc5"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5ceb00125b78dd0015cb4406" -> "611e8bbe52b050f81208f7ea"
+	edge [color=gray penwidth=80.0]
+	"6552a35b882343af828d859a" -> "612266e2ea3c172619abba50"
+	edge [color="#8CB369" penwidth=80.0]
+	"63f7a2d8acd4b0cead8773e9" -> "62a72693ad239d8873b2d0bc"
+	edge [color="#6C5B7B" penwidth=80.0]
+	"63203d7490bfb5e4b58956a8" -> "62e154f05a9102fd27cdf5fd"
+	edge [color="#6C5B7B" penwidth=80.0]
+	"60035a7089252e07b1d4b077" -> "62e18da43c8a429a0bae6251"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6550a9f2fc2fc3a9c2d04180" -> "62e5284ab84a0999a4fbc14f"
+	edge [color="#D4AF37" penwidth=80.0]
+	"655d35168909cc0448bcd7b7" -> "62eb8d7fddd5727deb1fd0dd"
+	edge [color="#8CB369" penwidth=80.0]
+	"57a1e03b8eccbc0001f39c13" -> "6303b4c05665ebafc44b5f19"
+	edge [color="#BC4B51" penwidth=80.0]
+	"65a9239a58dbce6f4fa1d6af" -> "631745a70c7c585248df1a5d"
+	edge [color="#BC4B51" penwidth=80.0]
+	"65a9239a58dbce6f4fa1d6af" -> "634d7466eeab50ae6cd7258a"
+	edge [color="#D4AF37" penwidth=80.0]
+	"655d35168909cc0448bcd7b7" -> "63d13edbfc31f4ecf0122017"
+	edge [color="#8CB369" penwidth=80.0]
+	"6659c792c24dfe1ff2040994" -> "63d1404712c3f98874867c5c"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5f58c945b5424a055aad846b" -> "63d7bb92ab9685eb344e78f4"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"663e1a9538a5d269744692cc" -> "63f799d2960e7d0495eb1726"
+	edge [color="#8CB369" penwidth=80.0]
+	"63f7a2d8acd4b0cead8773e9" -> "652981dabcaee22f94ef3d9b"
+	edge [color=gray penwidth=80.0]
+	"5ddebe998ed6bfe3cac0174c" -> "653d1a347da5636bc74b4d9c"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6554990ace48275d4017fe99" -> "656b6e1fe07ae01094b87cda"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5e4dd29b9b6e560e61ee14c7" -> "657bbdb26495af184d3f222b"
+	edge [color="#8CB369" penwidth=80.0]
+	"57a1e03b8eccbc0001f39c13" -> "65830055257db95983265d5c"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5e4dd29b9b6e560e61ee14c7" -> "65b6e2068a64315ecc01b3a5"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5e4dd29b9b6e560e61ee14c7" -> "65ca4efd9e492352fb16ca90"
+	edge [color="#D4AF37" penwidth=80.0]
+	"655d35168909cc0448bcd7b7" -> "66155607a7f8c623df21f8ff"
+	edge [color=gray penwidth=80.0]
+	"62b33e5e6103ca47d3c8a953" -> "662d51a9d8d126513b3e7f5f"
+	edge [color="#BC4B51" penwidth=80.0]
+	"65a9239a58dbce6f4fa1d6af" -> "663fa3adb913d930a704bb2f"
+	edge [color="#D4AF37" penwidth=80.0]
+	"662790ba12f6c8d4d6b4296a" -> "66439d7af15ad76099729ca0"
+	edge [color="#8CB369" penwidth=80.0]
+	"57a1e03b8eccbc0001f39c13" -> "664a5be05bc29332beb2fced"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"573107ef1efe74000e3088d2" -> "664defd9cab927cb9a688d57"
+	edge [color="#8CB369" penwidth=80.0]
+	"6109917749b14701436e49f9" -> "664f5f31aa35be7505289bc1"
+	edge [color="#D4AF37" penwidth=80.0]
+	"656615b432984a1b0ea3273f" -> "6650f5030a15563b2658d5a0"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5e4dd29b9b6e560e61ee14c7" -> "6651e1661b8d1a6b23f4e4d1"
+	edge [color="#6C5B7B" penwidth=80.0]
+	"63203d7490bfb5e4b58956a8" -> "6651e2f4da645d7478dab0c1"
+	edge [color="#8CB369" penwidth=80.0]
+	"5766788c3d2d3a000138b0ef" -> "6652a787bc9052c5a91535b9"
+	edge [color="#BC4B51" penwidth=80.0]
+	"65a9239a58dbce6f4fa1d6af" -> "66538dda9f37e7ce5378aa3f"
+	edge [color="#D4AF37" penwidth=80.0]
+	"655d35168909cc0448bcd7b7" -> "6658b94f4552a75abbc1582c"
+	edge [color=gray penwidth=80.0]
+	"5ddebe998ed6bfe3cac0174c" -> "6658cbcb487ff144dc5280d6"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6658bff08ce40f13d68d7f65" -> "6658e4e34f71ba900a44b907"
+	edge [color="#F4A259" penwidth=80.0]
+	"5f5b466013a22426346e8fba" -> "6658f3a2492864458de1a285"
+	edge [color=gray penwidth=80.0]
+	"5ddebe998ed6bfe3cac0174c" -> "6659f778e5822996669dce16"
+	edge [color="#8CB369" penwidth=80.0]
+	"63f7a2d8acd4b0cead8773e9" -> "6659f937e570ab09f05021a3"
+	edge [color=gray penwidth=80.0]
+	"5ddebe998ed6bfe3cac0174c" -> "6659fdebb655a078b9cfce41"
+	edge [color="#F4A259" penwidth=80.0]
+	"5f5b466013a22426346e8fba" -> "66620adc8ed85217ecb07185"
+	edge [color="#8CB369" penwidth=80.0]
+	"5766788c3d2d3a000138b0ef" -> "666218f380e7717867e40fce"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"59f0f82ce75b450001a699ad" -> "66699c70cfae1cfd3b1ba53a"
+	edge [color="#8CB369" penwidth=80.0]
+	"57a1e03b8eccbc0001f39c13" -> "666b35640c6365706716ff4c"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"59f0f82ce75b450001a699ad" -> "666d9127b3793ddb90867fa8"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"55f42b6a32af740005170bd0" -> "597a2ec999bd880001771cb3"
+	edge [color="#8CB369" penwidth=80.0]
+	"63d1404712c3f98874867c5c" -> "59a6aa43b2130b000179d303"
+	edge [color="#8CB369" penwidth=80.0]
+	"5f5834134283933a1c3b42d0" -> "5a9bf9bd89de8200013f0f28"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6652a787bc9052c5a91535b9" -> "5b8011a80a67ca0001cc3f9b"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5dbf704fa3f5cb40876271fc" -> "5c436d365140ec0001030b05"
+	edge [color=gray penwidth=80.0]
+	"664f5f31aa35be7505289bc1" -> "5c6fd0be04b76500015f9db9"
+	edge [color="#D4AF37" penwidth=80.0]
+	"65b6e2068a64315ecc01b3a5" -> "5c9e2e3eaac2b40017e7fd62"
+	edge [color=gray penwidth=80.0]
+	"664f5f31aa35be7505289bc1" -> "5d07ead6a1bdc70001799a94"
+	edge [color=gray penwidth=80.0]
+	"5d35989e71b4880017d5cc81" -> "5d8fd7dea98dad0019f00f2e"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6652a787bc9052c5a91535b9" -> "5dd31d3216d10c341d2d2c7e"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"657bbdb26495af184d3f222b" -> "5dd9bd7bf85b50953fdf003c"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5c4353086ce36f0001205f65" -> "5de325f6df86d334c8894e69"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"55f42b6a32af740005170bd0" -> "5e020766b633b5db8b72c15b"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6659f937e570ab09f05021a3" -> "5ea03f468b35e20642b22a6d"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6658e4e34f71ba900a44b907" -> "5eb08706ca93a41222c8425a"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"656b6e1fe07ae01094b87cda" -> "5ec957b88b62d208f6997476"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"666d9127b3793ddb90867fa8" -> "5f235c88d7c5b4117f9ba2fb"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"601a3b26e9531b22dc95dd8c" -> "5f3c5d4c9168ccad270ddb36"
+	edge [color=gray penwidth=80.0]
+	"63d13edbfc31f4ecf0122017" -> "5f43bbbc0dab3463a47b93e0"
+	edge [color="#8CB369" penwidth=80.0]
+	"63d1404712c3f98874867c5c" -> "5f6bc4a2b9d95312f14c2ca6"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6658e4e34f71ba900a44b907" -> "5fa3dc74fefcb501f909c68a"
+	edge [color=gray penwidth=80.0]
+	"5d35989e71b4880017d5cc81" -> "5fa957563d40800ae541dca3"
+	edge [color=gray penwidth=80.0]
+	"5a91cb166219a30001d2e6ef" -> "6005cbcb8a28b657ee71b852"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5ee693b0822bd24173d86324" -> "604291e4c7cb5419f0cada14"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"601a3b26e9531b22dc95dd8c" -> "6047e372e43e380e0fd2950f"
+	edge [color="#D4AF37" penwidth=80.0]
+	"65b6e2068a64315ecc01b3a5" -> "605b6439f75b7f2bab0597c4"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6651e1661b8d1a6b23f4e4d1" -> "60945dd7d1b9573ef28b8ebe"
+	edge [color=gray penwidth=80.0]
+	"5e54c7fc2394ea4c99f88987" -> "60999a41b0da4306e160c328"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5d95dfca33f8930017e85486" -> "60fd54646fdbd2659fd8c12e"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"657bbdb26495af184d3f222b" -> "61117e542a320e8a3e01c978"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6658e4e34f71ba900a44b907" -> "614964ed4d5b9991b0fd700d"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5f1be87fea92af4118e1109e" -> "6165d21a10257825b4bebfcc"
+	edge [color=gray penwidth=80.0]
+	"5d35989e71b4880017d5cc81" -> "629f2a1f516a323b811b8273"
+	edge [color="#BC4B51" penwidth=80.0]
+	"631745a70c7c585248df1a5d" -> "629f635b502fb63b91605574"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"55f42b6a32af740005170bd0" -> "62b4a72f7bad9f1e3babd277"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"55f42b6a32af740005170bd0" -> "62ebdb0664f37d0e0c7dbcea"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6659f937e570ab09f05021a3" -> "63d2a98baf92a2e09ce707b9"
+	edge [color=gray penwidth=80.0]
+	"5a91cb166219a30001d2e6ef" -> "63ecff90aec925d5a54bc0c0"
+	edge [color=gray penwidth=80.0]
+	"5d35989e71b4880017d5cc81" -> "64109b02854a88a6c4006c9c"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6652a787bc9052c5a91535b9" -> "641a43f78351cc4fefe31190"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"55f42b6a32af740005170bd0" -> "650c4f66a2799732bf17bbbc"
+	edge [color="#D4AF37" penwidth=80.0]
+	"662d51a9d8d126513b3e7f5f" -> "65e209621fce0d5fd8b3265f"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"657bbdb26495af184d3f222b" -> "661f775070e92e0410c20865"
+	edge [color="#8CB369" penwidth=80.0]
+	"666b35640c6365706716ff4c" -> "66486f2866b4d4c82509182e"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5c636bc3302b1e0001e69dce" -> "664b4eabc8402e5be44dec40"
+	edge [color="#8CB369" penwidth=80.0]
+	"652981dabcaee22f94ef3d9b" -> "664f7217d63b2db66feb4333"
+	edge [color=gray penwidth=80.0]
+	"5d35989e71b4880017d5cc81" -> "6654f1a24ff45623af24e3aa"
+	edge [color=gray penwidth=80.0]
+	"5d35989e71b4880017d5cc81" -> "6658c10539f5e53a96a6ad40"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6652a787bc9052c5a91535b9" -> "6658c56f3d9230d99c3e6752"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6659f937e570ab09f05021a3" -> "665996487472103f779bee79"
+	edge [color=gray penwidth=80.0]
+	"5d35989e71b4880017d5cc81" -> "6659cb22b8e889fe11ae56d2"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6651e1661b8d1a6b23f4e4d1" -> "6659f6db8ffcf5f7bbd42cbc"
+	edge [color="#F4A259" penwidth=80.0]
+	"66620adc8ed85217ecb07185" -> "665a2d50f4eec50338c84d30"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"55f42b6a32af740005170bd0" -> "665d7a4b120ee6911f015440"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5dbf704fa3f5cb40876271fc" -> "665ddc38a270e0c579baf993"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5d95dfca33f8930017e85486" -> "665e270715ffc37e9aaaad8d"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"666d9127b3793ddb90867fa8" -> "6663b39d3676132ea478c7c1"
+	edge [color=gray penwidth=80.0]
+	"5d35989e71b4880017d5cc81" -> "666d914f72c39523e014dbb0"
+	edge [color="#D4AF37" penwidth=80.0]
+	"65b6e2068a64315ecc01b3a5" -> "6671adcf4074ec7382ad560e"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"55f42b6a32af740005170bd0" -> "66730795fa560aa138fc5f91"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6651e1661b8d1a6b23f4e4d1" -> "66796ecee964ef59531e3cf3"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"601a3b26e9531b22dc95dd8c" -> "667972f1f7b68474a2a964bf"
+	edge [color="#8CB369" penwidth=80.0]
+	"5e7dba4f1d6961436474c8f2" -> "6682bce828fc657c7d9ebab7"
+	edge [color="#D4AF37" penwidth=80.0]
+	"6303b4c05665ebafc44b5f19" -> "6682c6fe1d3df0cb88cfac1f"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5f625539ecec8c13b04d83e3" -> "6682d2153685f252600eddac"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5ea9e36155624e14a9a64525" -> "6683a217cd77e4dd4c506f6c"
+	edge [color="#D4AF37" penwidth=80.0]
+	"5f625539ecec8c13b04d83e3" -> "6683e9097336723a1012955c"
+	edge [color="#8CB369" penwidth=80.0]
+	"652981dabcaee22f94ef3d9b" -> "66842ddcf6f89acb5d73650b"
+	edge [color="#8CB369" penwidth=80.0]
+	"5c0a29b6c307a400016adb9f" -> "66847038f572324a8043f2a2"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6651e1661b8d1a6b23f4e4d1" -> "66854caca8e9c862c3a141e8"
+	edge [color="#D4AF37" penwidth=80.0]
+	"65b6e2068a64315ecc01b3a5" -> "66858cdf66a635e5c2884492"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"656b6e1fe07ae01094b87cda" -> "6686f9d355c696564b8c1df7"
+	edge [color=gray penwidth=80.0]
+	"664f5f31aa35be7505289bc1" -> "66880aa3c99718a3058f0dda"
+	edge [color="#F4A259" penwidth=80.0]
+	"5eecd2e3a38fd009dd9d1f3d" -> "6689457990fa575c90e0c82a"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5f1be87fea92af4118e1109e" -> "668964d790fa575c90e0cf89"
+	edge [color="#BC4B51" penwidth=80.0]
+	"5d95dfca33f8930017e85486" -> "66899a43c6844e3085106b07"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"657bbdb26495af184d3f222b" -> "668a9224d5812c5acb87aa2b"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"666d9127b3793ddb90867fa8" -> "668ab879c59ae7981bfb3312"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5ee693b0822bd24173d86324" -> "668ac13f677dc562a445d890"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"657bbdb26495af184d3f222b" -> "668bc36024945804c1276ebc"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"666d9127b3793ddb90867fa8" -> "668d371bd614f22c3433ea48"
+	edge [color="#F4A259" penwidth=80.0]
+	"5c6fd0be04b76500015f9db9" -> "559d75befdf99b1e2b2dc522"
+	edge [color="#F4A259" penwidth=80.0]
+	"5c6fd0be04b76500015f9db9" -> "57c4761195a3ea00016e5992"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"66847038f572324a8043f2a2" -> "58f501db575c01000180b65e"
+	edge [color="#8CB369" penwidth=80.0]
+	"6683a217cd77e4dd4c506f6c" -> "5954900d5071bb0001ce99f0"
+	edge [color="#BC4B51" penwidth=80.0]
+	"60fd54646fdbd2659fd8c12e" -> "5999aedebbe8480001796677"
+	edge [color=gray penwidth=80.0]
+	"59a6aa43b2130b000179d303" -> "59b187d0834a170001d607bf"
+	edge [color="#F4A259" penwidth=80.0]
+	"5c6fd0be04b76500015f9db9" -> "5a9bbda1f6dfdd0001ea9639"
+	edge [color=gray penwidth=80.0]
+	"6658c56f3d9230d99c3e6752" -> "5b7924d8338a93000154ad21"
+	edge [color="#8CB369" penwidth=80.0]
+	"66796ecee964ef59531e3cf3" -> "5be742980bedce00010bcf31"
+	edge [color="#8CB369" penwidth=80.0]
+	"63ecff90aec925d5a54bc0c0" -> "5c027a6dc776820001bd652f"
+	edge [color="#D4AF37" penwidth=80.0]
+	"60999a41b0da4306e160c328" -> "5cc8a98dcedf2000172b04ae"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"66730795fa560aa138fc5f91" -> "5cf245d4639b150018eb7351"
+	edge [color=gray penwidth=80.0]
+	"665996487472103f779bee79" -> "5d4de7322bb0fa0001c21257"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6682d2153685f252600eddac" -> "5d867c33964b9b001a96dcb4"
+	edge [color="#D4AF37" penwidth=80.0]
+	"666d914f72c39523e014dbb0" -> "5dc161a2ce6a9d0cf9814d5b"
+	edge [color=gray penwidth=80.0]
+	"665996487472103f779bee79" -> "5e2b36b28ef3f2000d8600c2"
+	edge [color="#BC4B51" penwidth=80.0]
+	"60fd54646fdbd2659fd8c12e" -> "5e2f5e5b49436752b45e0e9e"
+	edge [color="#F4A259" penwidth=80.0]
+	"5c6fd0be04b76500015f9db9" -> "5e7e72de99b9e6553dc28dcf"
+	edge [color=gray penwidth=80.0]
+	"59a6aa43b2130b000179d303" -> "5e907551265410377d898222"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5eb08706ca93a41222c8425a" -> "5ea4cebb8944a8495280db42"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"66847038f572324a8043f2a2" -> "5eaf94ba2b58c169c02785c2"
+	edge [color="#D4AF37" penwidth=80.0]
+	"6682bce828fc657c7d9ebab7" -> "5eb53b2fd978b13c38744dfa"
+	edge [color="#8CB369" penwidth=80.0]
+	"664f7217d63b2db66feb4333" -> "5ed1288955ecd90325cb727c"
+	edge [color=gray penwidth=80.0]
+	"5d8fd7dea98dad0019f00f2e" -> "5edd5b6d419dc20c161b4e9e"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5fa3dc74fefcb501f909c68a" -> "5f4fc59aab8e460ca4a9a8b0"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5a9bf9bd89de8200013f0f28" -> "5f57be602095072bb238a7ab"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"668bc36024945804c1276ebc" -> "5f69a3c91c1e25193e3f9c7b"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5f6bc4a2b9d95312f14c2ca6" -> "5fe09680a60b5b9d945ca235"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6047e372e43e380e0fd2950f" -> "60650e72f3359295eb889c0f"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"62b4a72f7bad9f1e3babd277" -> "60cf0d251a90eb823bc9b740"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5f6bc4a2b9d95312f14c2ca6" -> "60ec1784273ae579b9a2a530"
+	edge [color=gray penwidth=80.0]
+	"6654f1a24ff45623af24e3aa" -> "60f58103f23bca812b229dbb"
+	edge [color="#F4A259" penwidth=80.0]
+	"5c6fd0be04b76500015f9db9" -> "6112dc9fe0bbeb6fca8fc014"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5f43bbbc0dab3463a47b93e0" -> "612198f856c9f4f2f02f7046"
+	edge [color=gray penwidth=80.0]
+	"59a6aa43b2130b000179d303" -> "61698720ea3862e067c47c73"
+	edge [color=gray penwidth=80.0]
+	"6654f1a24ff45623af24e3aa" -> "62348a6d578faf950d112cd3"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6047e372e43e380e0fd2950f" -> "6277dd39dea28b8907aeef70"
+	edge [color=gray penwidth=80.0]
+	"5d8fd7dea98dad0019f00f2e" -> "629625e303590ce5fcbcc825"
+	edge [color="#D4AF37" penwidth=80.0]
+	"665a2d50f4eec50338c84d30" -> "62a1d848cc2237ff6738870f"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"668d371bd614f22c3433ea48" -> "62e0289b12d76830eadddf64"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5f6bc4a2b9d95312f14c2ca6" -> "631a0092b31ed67abaac9a02"
+	edge [color=gray penwidth=80.0]
+	"5d8fd7dea98dad0019f00f2e" -> "6329cf9aff421956acd033e9"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6047e372e43e380e0fd2950f" -> "63471036ea4370051841008b"
+	edge [color=gray penwidth=80.0]
+	"5d8fd7dea98dad0019f00f2e" -> "634d7250f674c11a71d1b88e"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6659f6db8ffcf5f7bbd42cbc" -> "6383b7d918eb0bcaf1047eed"
+	edge [color="#8CB369" penwidth=80.0]
+	"597a2ec999bd880001771cb3" -> "63862402dfdb1803712bccc2"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6682d2153685f252600eddac" -> "63d79c1136770259780aac5b"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6682d2153685f252600eddac" -> "63eb2becc8df9ebd3464ee30"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5f6bc4a2b9d95312f14c2ca6" -> "63fe92b28adbbeb199f72bce"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5f6bc4a2b9d95312f14c2ca6" -> "657b1ac8f219aa9a6748e296"
+	edge [color="#F4A259" penwidth=80.0]
+	"5d07ead6a1bdc70001799a94" -> "6582f4957f9dd146c22f5133"
+	edge [color="#BC4B51" penwidth=80.0]
+	"60fd54646fdbd2659fd8c12e" -> "65ae789d505b83fbae83d2d9"
+	edge [color="#D4AF37" penwidth=80.0]
+	"666d914f72c39523e014dbb0" -> "660c14adf5c4fa1a37266dfb"
+	edge [color="#F4A259" penwidth=80.0]
+	"5c436d365140ec0001030b05" -> "660f0517a5411a6b75167dbb"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"66854caca8e9c862c3a141e8" -> "661c4c59aff03b32a5c33f00"
+	edge [color="#8CB369" penwidth=80.0]
+	"66796ecee964ef59531e3cf3" -> "6630ee67299e21042731c4bd"
+	edge [color="#D4AF37" penwidth=80.0]
+	"6682bce828fc657c7d9ebab7" -> "66463bf72e59172adcc8984d"
+	edge [color=gray penwidth=80.0]
+	"59a6aa43b2130b000179d303" -> "664ca5ef9be114327005411b"
+	edge [color="#F4A259" penwidth=80.0]
+	"5c6fd0be04b76500015f9db9" -> "6658b14998569e477b21cd80"
+	edge [color=gray penwidth=80.0]
+	"5d8fd7dea98dad0019f00f2e" -> "6658b182bb57e6360147f2f5"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5f43bbbc0dab3463a47b93e0" -> "6658b1949fc464b37f912b54"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5f6bc4a2b9d95312f14c2ca6" -> "6658b407522b5c7e897529d5"
+	edge [color=gray penwidth=80.0]
+	"6659cb22b8e889fe11ae56d2" -> "6658bd742faf93a3722865ec"
+	edge [color="#8CB369" penwidth=80.0]
+	"6683a217cd77e4dd4c506f6c" -> "6658d5bd37eb0f2c12697272"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"668d371bd614f22c3433ea48" -> "66598d6e838231ffe9e1613b"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"641a43f78351cc4fefe31190" -> "6659c96903fd81f8cb8f28b3"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"62b4a72f7bad9f1e3babd277" -> "665b45af7b1fe039854a384a"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5e020766b633b5db8b72c15b" -> "665c19cbf05490e862a35c11"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"62b4a72f7bad9f1e3babd277" -> "66621953106bcfd2a341c0c0"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"61117e542a320e8a3e01c978" -> "66621a2d9fa233fcc827b7ae"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5f3c5d4c9168ccad270ddb36" -> "6665aa62523e75dac0aa67a4"
+	edge [color=gray penwidth=80.0]
+	"6659cb22b8e889fe11ae56d2" -> "6666c8e64388bb611a6b0360"
+	edge [color="#D4AF37" penwidth=80.0]
+	"668a9224d5812c5acb87aa2b" -> "667026a378d84c75e1cf8cd0"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5e020766b633b5db8b72c15b" -> "667188c0df62cb2dc8136a1a"
+	edge [color="#D4AF37" penwidth=80.0]
+	"665a2d50f4eec50338c84d30" -> "66735eb3b7a2b7865029fd0e"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6047e372e43e380e0fd2950f" -> "66738faa84ab2350369ce05f"
+	edge [color="#D4AF37" penwidth=80.0]
+	"666d914f72c39523e014dbb0" -> "6676e112cb8e96df168a93a1"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"66847038f572324a8043f2a2" -> "667784373f153eea5dcb4a37"
+	edge [color="#F4A259" penwidth=80.0]
+	"5c6fd0be04b76500015f9db9" -> "667970d8a01336cee143d871"
+	edge [color="#F4A259" penwidth=80.0]
+	"5c436d365140ec0001030b05" -> "66798d6e51f5bcf4c0a8d2fc"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"668d371bd614f22c3433ea48" -> "6679f1569f882aa303fa49bb"
+	edge [color="#8CB369" penwidth=80.0]
+	"66796ecee964ef59531e3cf3" -> "667b24c6c25f7a12d08d9ab6"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5e020766b633b5db8b72c15b" -> "667c11cd9bfcad443af6584f"
+	edge [color=gray penwidth=80.0]
+	"629f2a1f516a323b811b8273" -> "66804ea629a042a9477fc387"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6682d2153685f252600eddac" -> "6682c4822f75bd26637c1cad"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5f6bc4a2b9d95312f14c2ca6" -> "6683c48e031b35373bd3ff0c"
+	edge [color=gray penwidth=80.0]
+	"6654f1a24ff45623af24e3aa" -> "66859537f8fee40f342c2d6d"
+	edge [color="#D4AF37" penwidth=80.0]
+	"668a9224d5812c5acb87aa2b" -> "6686006e69071d83fee5c816"
+	edge [color=gray penwidth=80.0]
+	"59a6aa43b2130b000179d303" -> "66862fbfcf8f9b001caadb69"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"6165d21a10257825b4bebfcc" -> "6687ef9f1e15a5d201ba3b3f"
+	edge [color="#D4AF37" penwidth=80.0]
+	"666d914f72c39523e014dbb0" -> "6687f3edcee793fc3d6185ee"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5f43bbbc0dab3463a47b93e0" -> "668a935e677dc562a445cd03"
+	edge [color=gray penwidth=80.0]
+	"6658c10539f5e53a96a6ad40" -> "668bb99e5fa8b9ebb3c428ac"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"5a9bf9bd89de8200013f0f28" -> "668bfbcbfd735b6652c60f20"
+	edge [color="#F4A259" penwidth=80.0]
+	"5c436d365140ec0001030b05" -> "668d5331aa58b7e75ff160d7"
+	edge [color="#5B8E7D" penwidth=80.0]
+	"66730795fa560aa138fc5f91" -> "668d822d705c807ed4664ae1"
+	"5da83385e8bf0200113c3c6e" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5a598f2b8e6259000175f094" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5bdead73ed3acf0001666f03" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5fde8fc3c0e40a651914c261" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5a031341728b1b0001ad8bee" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"5ccf41c9bd0d3e001593ce92" [label="" color="#6C5B7B" fillcolor="#6C5B7B" penwidth=20 shape=diamond style=filled]
+	"5e28bd32e4254006e204f309" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"5e57d38b533eec1818078f0b" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"629f2a9c3effb1dc81c49116" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"62c71e41af2bc57590b548e8" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"640132934d00561d78518c4c" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"65cb7b4f9b771b8103c8c0a4" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"6643555f305ea02592fa0ccb" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"5823c1b185e40e00012f2e68" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"58eb9b26b0ddf800010dc8bd" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"5953668fb2e8430001ea478f" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5a606ae1eedc32000142ea79" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5cb1e0ccc9ca1c00181d3e3c" [label="" color="#6C5B7B" fillcolor="#6C5B7B" penwidth=20 shape=diamond style=filled]
+	"5eb561131434b1053a77d85d" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"613a5cffb2911279076b5709" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"62fb79136f84975e7d460f8b" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"64137ab1ba8c23e1b4282140" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"651f8c9561bba4367911484c" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"654e6ed02fec82d232613bd2" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"654ffa78185a13c48b109ec7" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"660426c0c862023fc9832df0" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"664604da31bc7fa510005366" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"594a481105e73f0001450009" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"59ff8226ab721b0001ef6e61" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"5b5e0e86902ad10001cfcc59" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"5b96ded47485e1000175d72d" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"5bd34c2c4126510001d5dbef" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"5cefad9ddfb27200019620b2" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5d1f6e8a79b6870016f803da" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5d53be7ddaac02001566b548" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"5d8cef3c28e183001a335ab0" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"5dbe90f8965e863667a79ca8" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"5e482352020bde2be9b4ded1" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"5ebac054d63dde03790ceef8" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5f3edad9746e76182670cd0d" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"5f4ac049c374f51158b481ba" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"5f5aa9f89a3ef61b0778d49a" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"60fec21e36a05990cfa8a715" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"614f571879ee135c5a579e08" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"62d81f26161631255f0d36bd" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"63d40b7d3c7f92ff15ef6b67" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"659864775dffc3c84fb4f328" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"65c247a8e76e1786498e63e6" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"6635db76b0a9ea4ecad2f302" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"6658b2050980b63fc8fdbd13" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"6658b687ab732c38533b24e7" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"66699ef0d93ccc09d70a1d25" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"54b19cadfdf99b0b3d806330" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"558fb997fdf99b7ce292469b" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"57d2edf35e9bc90001f76b06" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"594c69ee4b07c400013aa466" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5987bfb80e411a0001d83837" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"5a68c8ec63394a000155cbb9" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"5b311fcea8327d0001000777" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5c51d18698b0ff000110da96" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"5c91fad394f7e600172f9d4a" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5d45d2c3b30ae50001578172" [label="" color="#6C5B7B" fillcolor="#6C5B7B" penwidth=20 shape=diamond style=filled]
+	"5d5e7c716a846b0017760587" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5dfaafeec0b81f7f32f10709" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"5f3ab128c4b6921312f28237" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5fb46dd5d9ece50422838e7a" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"600cc0ed3a7a0744a0699c5b" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"60a4efcabe6d8f29513a5258" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"60d03b4be7200f842a86ee33" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"6124ea99728014c37c9635c7" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"6131057db82458b8609961c1" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"613bae70cab01ced932e5e9f" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"615f0c2cab82bb38958bfd7f" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"628d78a2ccf4a41f24c2d2d8" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"62fb7bd5e0c65f772ce189c8" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"63d000d62878aa92b833c5fc" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"63d17686afe6614ac1f77f9b" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6447e2e2d1e8e330d23d4057" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6458fe267afe71c7aa4de260" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"66240f6ce1a02cdc40bb666a" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"6636846a9190727f3132791a" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"663e83a2acfdb0135f470a34" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"665488225b3bbb3e8317b1bd" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"66572a95e52bc5d24caedc7b" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"665735c6cfc5aaecdc031a50" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"6658b13d6a1df274ee633f90" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"6658b3351fbec54d5289350d" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"6658bcfd198f87b4009b05d6" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"665a00d9581153685eceb8d2" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"665b23cd7b1fe039854a2f13" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"665c050b07508f6c4f8d01e0" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"666600547628e9babf3517b2" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"55b95e2ffdf99b469f622883" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"573107ef1efe74000e3088d2" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5766788c3d2d3a000138b0ef" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"57a1e03b8eccbc0001f39c13" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"59317b8761bcd8000107cad6" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"596f2a1f50e2f000016fd93b" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"59f0f82ce75b450001a699ad" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5a0d4a205d06850001afff96" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"5a6107bb31b87a0001c6c49b" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"5b666901f7798c000182c01c" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5c921106b788a2000170709f" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5ceb00125b78dd0015cb4406" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"5ddebe998ed6bfe3cac0174c" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"5e4dd29b9b6e560e61ee14c7" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5f4143f294d6482bd9689da0" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"5f58c945b5424a055aad846b" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"5f5b466013a22426346e8fba" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"5f7126de20717c75c0201315" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"5f960a9442d5f34e319e3cf7" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"5f9e03f3517e0d3ad1eab67b" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5fbc036099f6c9050e664b2e" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"60035a7089252e07b1d4b077" [label="" color="#6C5B7B" fillcolor="#6C5B7B" penwidth=20 shape=diamond style=filled]
+	"60ad4325e23286e1191e31aa" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"61088f97759a1199340202e9" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"6109917749b14701436e49f9" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"6286718faa00d344b74cb609" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"62b33e5e6103ca47d3c8a953" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"62c612ea71b6cc890bd5ad41" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"63203d7490bfb5e4b58956a8" [label="" color="#6C5B7B" fillcolor="#6C5B7B" penwidth=20 shape=diamond style=filled]
+	"637ffd0ae752c8e33f91798b" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"63f7a2d8acd4b0cead8773e9" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"63f8eaeb261f726a83d65177" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"6550a9f2fc2fc3a9c2d04180" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6552a35b882343af828d859a" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"6554990ace48275d4017fe99" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"655d35168909cc0448bcd7b7" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"656615b432984a1b0ea3273f" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"656e02962907eb6f11faa71f" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"65a9239a58dbce6f4fa1d6af" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"65e5d439de1a27ed1b7a6a9c" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"661555d405381d6f17b1471b" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"661ed12701e9fa042486677a" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"662790ba12f6c8d4d6b4296a" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"663e1a9538a5d269744692cc" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"664f44d2b701a2807787b0c6" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"6658b25488108e97424af6c2" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"6658b75b684674803e83e24e" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"6658bff08ce40f13d68d7f65" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6659c792c24dfe1ff2040994" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"665a23747dc3dbf8b0cd8da7" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"665f11d091ed0d56483f1227" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6660c05740ab8863f127c405" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"6662cf12dd16203f37d02d3c" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"55f42b6a32af740005170bd0" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"59917a2b0675b100014dadb8" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5a91cb166219a30001d2e6ef" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"5ad0422dfb109b0001a30f35" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"5c0a29b6c307a400016adb9f" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"5c4353086ce36f0001205f65" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5c636bc3302b1e0001e69dce" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"5d35989e71b4880017d5cc81" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"5d95dfca33f8930017e85486" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"5dbf704fa3f5cb40876271fc" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"5e2c8f69cad44b2bc5ce9a34" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5e54c7fc2394ea4c99f88987" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"5e7dba4f1d6961436474c8f2" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"5ea9e36155624e14a9a64525" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5ee693b0822bd24173d86324" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5eecd2e3a38fd009dd9d1f3d" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"5f1be87fea92af4118e1109e" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5f5834134283933a1c3b42d0" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"5f625539ecec8c13b04d83e3" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"60153f6faf1cb75da820c070" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"601a3b26e9531b22dc95dd8c" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6022e90eaccb290e2f1b07a2" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"605775ca8da35e75f7b6cb50" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"60fde71d08e32b4b5bbdfc38" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"6100055d33f16a3c21e34bc5" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"611e8bbe52b050f81208f7ea" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"612266e2ea3c172619abba50" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"62a72693ad239d8873b2d0bc" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"62e154f05a9102fd27cdf5fd" [label="" color="#6C5B7B" fillcolor="#6C5B7B" penwidth=20 shape=diamond style=filled]
+	"62e18da43c8a429a0bae6251" [label="" color="#6C5B7B" fillcolor="#6C5B7B" penwidth=20 shape=diamond style=filled]
+	"62e5284ab84a0999a4fbc14f" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"62eb8d7fddd5727deb1fd0dd" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"6303b4c05665ebafc44b5f19" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"631745a70c7c585248df1a5d" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"634d7466eeab50ae6cd7258a" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"63d13edbfc31f4ecf0122017" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"63d1404712c3f98874867c5c" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"63d7bb92ab9685eb344e78f4" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"63f799d2960e7d0495eb1726" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"652981dabcaee22f94ef3d9b" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"653d1a347da5636bc74b4d9c" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"656b6e1fe07ae01094b87cda" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"657bbdb26495af184d3f222b" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"65830055257db95983265d5c" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"65b6e2068a64315ecc01b3a5" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"65ca4efd9e492352fb16ca90" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"66155607a7f8c623df21f8ff" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"662d51a9d8d126513b3e7f5f" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"663fa3adb913d930a704bb2f" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"66439d7af15ad76099729ca0" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"664a5be05bc29332beb2fced" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"664defd9cab927cb9a688d57" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"664f5f31aa35be7505289bc1" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"6650f5030a15563b2658d5a0" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"6651e1661b8d1a6b23f4e4d1" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6651e2f4da645d7478dab0c1" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"6652a787bc9052c5a91535b9" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"66538dda9f37e7ce5378aa3f" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"6658b94f4552a75abbc1582c" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"6658cbcb487ff144dc5280d6" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6658e4e34f71ba900a44b907" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6658f3a2492864458de1a285" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"6659f778e5822996669dce16" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"6659f937e570ab09f05021a3" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6659fdebb655a078b9cfce41" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"66620adc8ed85217ecb07185" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"666218f380e7717867e40fce" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"66699c70cfae1cfd3b1ba53a" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"666b35640c6365706716ff4c" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"666d9127b3793ddb90867fa8" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"597a2ec999bd880001771cb3" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"59a6aa43b2130b000179d303" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"5a9bf9bd89de8200013f0f28" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5b8011a80a67ca0001cc3f9b" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"5c436d365140ec0001030b05" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"5c6fd0be04b76500015f9db9" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"5c9e2e3eaac2b40017e7fd62" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5d07ead6a1bdc70001799a94" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"5d8fd7dea98dad0019f00f2e" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"5dd31d3216d10c341d2d2c7e" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5dd9bd7bf85b50953fdf003c" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5de325f6df86d334c8894e69" [label="" color="#6C5B7B" fillcolor="#6C5B7B" penwidth=20 shape=diamond style=filled]
+	"5e020766b633b5db8b72c15b" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5ea03f468b35e20642b22a6d" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5eb08706ca93a41222c8425a" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5ec957b88b62d208f6997476" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"5f235c88d7c5b4117f9ba2fb" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5f3c5d4c9168ccad270ddb36" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5f43bbbc0dab3463a47b93e0" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5f6bc4a2b9d95312f14c2ca6" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5fa3dc74fefcb501f909c68a" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5fa957563d40800ae541dca3" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"6005cbcb8a28b657ee71b852" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"604291e4c7cb5419f0cada14" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6047e372e43e380e0fd2950f" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"605b6439f75b7f2bab0597c4" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"60945dd7d1b9573ef28b8ebe" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"60999a41b0da4306e160c328" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"60fd54646fdbd2659fd8c12e" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"61117e542a320e8a3e01c978" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"614964ed4d5b9991b0fd700d" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6165d21a10257825b4bebfcc" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"629f2a1f516a323b811b8273" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"629f635b502fb63b91605574" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"62b4a72f7bad9f1e3babd277" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"62ebdb0664f37d0e0c7dbcea" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"63d2a98baf92a2e09ce707b9" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"63ecff90aec925d5a54bc0c0" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"64109b02854a88a6c4006c9c" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"641a43f78351cc4fefe31190" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"650c4f66a2799732bf17bbbc" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"65e209621fce0d5fd8b3265f" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"661f775070e92e0410c20865" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"66486f2866b4d4c82509182e" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"664b4eabc8402e5be44dec40" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"664f7217d63b2db66feb4333" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"6654f1a24ff45623af24e3aa" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"6658c10539f5e53a96a6ad40" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"6658c56f3d9230d99c3e6752" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"665996487472103f779bee79" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"6659cb22b8e889fe11ae56d2" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"6659f6db8ffcf5f7bbd42cbc" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"665a2d50f4eec50338c84d30" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"665d7a4b120ee6911f015440" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"665ddc38a270e0c579baf993" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"665e270715ffc37e9aaaad8d" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"6663b39d3676132ea478c7c1" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"666d914f72c39523e014dbb0" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"6671adcf4074ec7382ad560e" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"66730795fa560aa138fc5f91" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"66796ecee964ef59531e3cf3" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"667972f1f7b68474a2a964bf" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6682bce828fc657c7d9ebab7" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"6682c6fe1d3df0cb88cfac1f" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"6682d2153685f252600eddac" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6683a217cd77e4dd4c506f6c" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"6683e9097336723a1012955c" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"66842ddcf6f89acb5d73650b" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"66847038f572324a8043f2a2" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"66854caca8e9c862c3a141e8" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"66858cdf66a635e5c2884492" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"6686f9d355c696564b8c1df7" [label="" color="#6C5B7B" fillcolor="#6C5B7B" penwidth=20 shape=diamond style=filled]
+	"66880aa3c99718a3058f0dda" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"6689457990fa575c90e0c82a" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"668964d790fa575c90e0cf89" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"66899a43c6844e3085106b07" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"668a9224d5812c5acb87aa2b" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"668ab879c59ae7981bfb3312" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"668ac13f677dc562a445d890" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"668bc36024945804c1276ebc" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"668d371bd614f22c3433ea48" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"559d75befdf99b1e2b2dc522" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"57c4761195a3ea00016e5992" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"58f501db575c01000180b65e" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5954900d5071bb0001ce99f0" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5999aedebbe8480001796677" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"59b187d0834a170001d607bf" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5a9bbda1f6dfdd0001ea9639" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"5b7924d8338a93000154ad21" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"5be742980bedce00010bcf31" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"5c027a6dc776820001bd652f" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"5cc8a98dcedf2000172b04ae" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5cf245d4639b150018eb7351" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"5d4de7322bb0fa0001c21257" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5d867c33964b9b001a96dcb4" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"5dc161a2ce6a9d0cf9814d5b" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"5e2b36b28ef3f2000d8600c2" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"5e2f5e5b49436752b45e0e9e" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"5e7e72de99b9e6553dc28dcf" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5e907551265410377d898222" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5ea4cebb8944a8495280db42" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5eaf94ba2b58c169c02785c2" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5eb53b2fd978b13c38744dfa" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5ed1288955ecd90325cb727c" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5edd5b6d419dc20c161b4e9e" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"5f4fc59aab8e460ca4a9a8b0" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5f57be602095072bb238a7ab" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5f69a3c91c1e25193e3f9c7b" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"5fe09680a60b5b9d945ca235" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"60650e72f3359295eb889c0f" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"60cf0d251a90eb823bc9b740" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"60ec1784273ae579b9a2a530" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"60f58103f23bca812b229dbb" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"6112dc9fe0bbeb6fca8fc014" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"612198f856c9f4f2f02f7046" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"61698720ea3862e067c47c73" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"62348a6d578faf950d112cd3" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"6277dd39dea28b8907aeef70" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"629625e303590ce5fcbcc825" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"62a1d848cc2237ff6738870f" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"62e0289b12d76830eadddf64" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"631a0092b31ed67abaac9a02" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"6329cf9aff421956acd033e9" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"63471036ea4370051841008b" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"634d7250f674c11a71d1b88e" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"6383b7d918eb0bcaf1047eed" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"63862402dfdb1803712bccc2" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"63d79c1136770259780aac5b" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"63eb2becc8df9ebd3464ee30" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"63fe92b28adbbeb199f72bce" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"657b1ac8f219aa9a6748e296" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6582f4957f9dd146c22f5133" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"65ae789d505b83fbae83d2d9" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"660c14adf5c4fa1a37266dfb" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"660f0517a5411a6b75167dbb" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"661c4c59aff03b32a5c33f00" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6630ee67299e21042731c4bd" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"66463bf72e59172adcc8984d" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"664ca5ef9be114327005411b" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6658b14998569e477b21cd80" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"6658b182bb57e6360147f2f5" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"6658b1949fc464b37f912b54" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"6658b407522b5c7e897529d5" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6658bd742faf93a3722865ec" [label="" color="#BC4B51" fillcolor="#BC4B51" penwidth=20 shape=circle style=filled]
+	"6658d5bd37eb0f2c12697272" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"66598d6e838231ffe9e1613b" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"6659c96903fd81f8cb8f28b3" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"665b45af7b1fe039854a384a" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"665c19cbf05490e862a35c11" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"66621953106bcfd2a341c0c0" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"66621a2d9fa233fcc827b7ae" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6665aa62523e75dac0aa67a4" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"6666c8e64388bb611a6b0360" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"667026a378d84c75e1cf8cd0" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"667188c0df62cb2dc8136a1a" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"66735eb3b7a2b7865029fd0e" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"66738faa84ab2350369ce05f" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6676e112cb8e96df168a93a1" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"667784373f153eea5dcb4a37" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"667970d8a01336cee143d871" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"66798d6e51f5bcf4c0a8d2fc" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"6679f1569f882aa303fa49bb" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"667b24c6c25f7a12d08d9ab6" [label="" color="#8CB369" fillcolor="#8CB369" penwidth=20 shape=hexagon style=filled]
+	"667c11cd9bfcad443af6584f" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"66804ea629a042a9477fc387" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"6682c4822f75bd26637c1cad" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"6683c48e031b35373bd3ff0c" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"66859537f8fee40f342c2d6d" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"6686006e69071d83fee5c816" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"66862fbfcf8f9b001caadb69" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6687ef9f1e15a5d201ba3b3f" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"6687f3edcee793fc3d6185ee" [label="" color="#D4AF37" fillcolor="#D4AF37" penwidth=20 shape=triangle style=filled]
+	"668a935e677dc562a445cd03" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"668bb99e5fa8b9ebb3c428ac" [label="" color=gray fillcolor=gray penwidth=20 shape=circle style=filled]
+	"668bfbcbfd735b6652c60f20" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+	"668d5331aa58b7e75ff160d7" [label="" color="#F4A259" fillcolor="#F4A259" penwidth=20 shape=square style=filled]
+	"668d822d705c807ed4664ae1" [label="" color="#5B8E7D" fillcolor="#5B8E7D" penwidth=20 shape=pentagon style=filled]
+}
