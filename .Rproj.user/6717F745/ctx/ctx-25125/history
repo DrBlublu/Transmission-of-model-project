@@ -1,0 +1,512 @@
+geom_line(data = df_plot_topic2, aes(x = gen, y = n_word_mean), color = "red") +
+scale_x_continuous(limits = c(1, 10.5), breaks = seq(1, 10, by = 1), expand = c(0.001, 0.001)) +
+scale_y_continuous(limits = c(20, 70), breaks = seq(20, 70, by = 20)) +
+labs(
+title = "Number of world per advice through generations",
+y = "Number of word",
+x = "Generation"
+) +
+theme_minimal() +
+theme(
+panel.grid.minor = element_blank(),
+panel.grid.major = element_blank(),
+axis.line = element_line(colour = "black", size = .8),
+axis.ticks = element_line(colour = "black", size = .8),
+axis.ticks.length.x = unit(5, "pt"),
+axis.ticks.length.y = unit(7, "pt"),
+axis.text = element_text(size = 14, colour = "black"),
+axis.title.x = element_text(margin = margin(t = 10), size = 18),
+axis.title.y = element_text(margin = margin(r = 10), size = 18),
+plot.margin = margin(15, 15, 20, 15),
+legend.text = element_text(size = 14),
+legend.title = element_text(size = 18)
+)
+ggplot(df_adv_size, aes(x = as.numeric(gen), y = n_word)) +
+geom_boxplot(aes(group = gen), fill = "grey", alpha = 0.7, outlier.shape = NA) +
+stat_summary(fun = mean, geom = "point", color = "black", size = 2) +
+labs(
+title = "Advice Length Across Generations",
+x = "Generation",
+y = "Number of Words"
+) +
+scale_x_continuous(breaks = seq(1, 10, 1)) +
+theme_minimal() +
+theme(
+panel.grid.minor = element_blank(),
+panel.grid.major = element_blank(),
+axis.line = element_line(colour = "black", size = .8),
+axis.ticks = element_line(colour = "black", size = .8),
+axis.ticks.length.x = unit(5, "pt"),
+axis.ticks.length.y = unit(7, "pt"),
+axis.text = element_text(size = 14, colour = "black"),
+axis.title.x = element_text(margin = margin(t = 10), size = 18),
+axis.title.y = element_text(margin = margin(r = 10), size = 18),
+plot.margin = margin(15, 15, 20, 15)
+)
+df_topic2 <- df_adv_size %>%
+filter(assigned_topic == 2)
+ggplot(df_topic2, aes(x = as.numeric(gen), y = n_word)) +
+geom_boxplot(aes(group = gen), fill = "#d73027", alpha = 0.7, outlier.shape = NA) +
+stat_summary(fun = mean, geom = "point", color = "black", size = 2) +
+labs(
+title = "Advice Length for Topic 2 Across Generations",
+x = "Generation",
+y = "Number of Words"
+) +
+scale_x_continuous(breaks = seq(1, 10, 1)) +
+theme_minimal() +
+theme(
+panel.grid.minor = element_blank(),
+panel.grid.major = element_blank(),
+axis.line = element_line(colour = "black", size = .8),
+axis.ticks = element_line(colour = "black", size = .8),
+axis.ticks.length.x = unit(5, "pt"),
+axis.ticks.length.y = unit(7, "pt"),
+axis.text = element_text(size = 14, colour = "black"),
+axis.title.x = element_text(margin = margin(t = 10), size = 18),
+axis.title.y = element_text(margin = margin(r = 10), size = 18),
+plot.margin = margin(15, 15, 20, 15)
+)
+library(tidytext)
+df_NLP <- read.csv("../old/NLP/results/docs_topic_weights.csv")
+text_df <- tibble(
+ID = df_NLP$ID,
+gen = as.factor(df_NLP$gen),
+text = df_NLP$ADVICE
+)
+tidy_text_df <- text_df %>%
+unnest_tokens(
+word,
+text,
+token = "regex",
+pattern = "\\s+|[[:punct:]+\\-><]"
+) %>%
+anti_join(get_stopwords(language = "en", source = "snowball")) %>%
+# remove token that are 1 chr or purely number
+filter(!str_detect(word, "$[0-9]+$")) %>%
+filter(nchar(word) > 1)
+count_text_df <- tidy_text_df %>%
+group_by(ID) %>%
+summarize(
+n = n(),
+gen = unique(gen)
+)
+df_count <- right_join(df_NLP, count_text_df %>% select(-gen), by = "ID") %>%
+rename(n_word = n)
+df_adv_size <- df_count %>%
+select(
+ID,
+gen,
+ADVICE,
+n_word,
+assigned_topic
+) %>%
+rowwise() %>%
+mutate(n_chr = nchar(ADVICE))
+ggplot(df_adv_size, aes(x = as.numeric(gen), y = n_word)) +
+geom_boxplot(aes(group = gen), fill = "grey", alpha = 0.7, outlier.shape = NA) +
+stat_summary(fun = mean, geom = "point", color = "black", size = 2) +
+labs(
+title = "Advice Length Across Generations",
+x = "Generation",
+y = "Number of Words"
+) +
+scale_x_continuous(breaks = seq(1, 10, 1)) +
+theme_minimal() +
+theme(
+panel.grid.minor = element_blank(),
+panel.grid.major = element_blank(),
+axis.line = element_line(colour = "black", size = .8),
+axis.ticks = element_line(colour = "black", size = .8),
+axis.ticks.length.x = unit(5, "pt"),
+axis.ticks.length.y = unit(7, "pt"),
+axis.text = element_text(size = 14, colour = "black"),
+axis.title.x = element_text(margin = margin(t = 10), size = 18),
+axis.title.y = element_text(margin = margin(r = 10), size = 18),
+plot.margin = margin(15, 15, 20, 15)
+)
+df_topic2 <- df_adv_size %>%
+filter(assigned_topic == 2)
+ggplot(df_topic2, aes(x = as.numeric(gen), y = n_word)) +
+geom_boxplot(aes(group = gen), fill = "#d73027", alpha = 0.7, outlier.shape = NA) +
+stat_summary(fun = mean, geom = "point", color = "black", size = 2) +
+labs(
+title = "Advice Length for Topic 2 Across Generations",
+x = "Generation",
+y = "Number of Words"
+) +
+scale_x_continuous(breaks = seq(1, 10, 1)) +
+theme_minimal() +
+theme(
+panel.grid.minor = element_blank(),
+panel.grid.major = element_blank(),
+axis.line = element_line(colour = "black", size = .8),
+axis.ticks = element_line(colour = "black", size = .8),
+axis.ticks.length.x = unit(5, "pt"),
+axis.ticks.length.y = unit(7, "pt"),
+axis.text = element_text(size = 14, colour = "black"),
+axis.title.x = element_text(margin = margin(t = 10), size = 18),
+axis.title.y = element_text(margin = margin(r = 10), size = 18),
+plot.margin = margin(15, 15, 20, 15)
+)
+t.test(
+df_adv_size %>% filter(gen <= 3) %>% pull(n_word),
+df_adv_size %>% filter(gen >= 8) %>% pull(n_word),
+method = "s"
+)
+res <- lm(n_word ~ gen, data = df_adv_size)
+summary(res)
+first_gen <- "First 3 gen"
+last_gen <- "Last 3 gen"
+# Define groups
+df_stat <- df %>%
+mutate(group = case_when(
+gen <= 2 ~ first_gen,
+gen >= 7 ~ last_gen,
+))
+# Function to perform t-test and compute standard deviation
+compute_stats <- function(df, condition, group_var) {
+subset <- df %>% filter(cond == condition, group == group_var) %>% pull(score_corrected)
+list(
+t_test = subset,
+sd = sd(subset)
+)
+}
+# Perform t-tests and compute standard deviations
+adv_first_gen_stats <- compute_stats(df_stat, "ADV", first_gen)
+adv_last_gen_stats <- compute_stats(df_stat, "ADV", last_gen)
+obs_first_gen_stats <- compute_stats(df_stat, "OBS", first_gen)
+obs_last_gen_stats <- compute_stats(df_stat, "OBS", last_gen)
+# Run t-tests
+t.test(adv_first_gen_stats$t_test, adv_last_gen_stats$t_test, method = "s")
+adv_first_gen_stats$sd
+adv_last_gen_stats$sd
+cohen.d(adv_first_gen_stats$t_test, adv_last_gen_stats$t_test)
+t.test(obs_first_gen_stats$t_test, obs_last_gen_stats$t_test, method = "s", var.equal = TRUE)
+obs_first_gen_stats$sd
+obs_last_gen_stats$sd
+cohen.d(obs_first_gen_stats$t_test, obs_last_gen_stats$t_test)
+t.test(adv_first_gen_stats$t_test, obs_first_gen_stats$t_test, method = "s")
+cohen.d(adv_first_gen_stats$t_test, obs_first_gen_stats$t_test)
+t.test(adv_last_gen_stats$t_test, obs_last_gen_stats$t_test, method = "s")
+cohen.d(adv_last_gen_stats$t_test, obs_last_gen_stats$t_test)
+t.test(
+df_adv_size %>% filter(gen <= 3) %>% pull(n_word),
+df_adv_size %>% filter(gen >= 8) %>% pull(n_word),
+method = "s"
+)
+sd(df_adv_size %>% filter(gen <= 3) %>% pull(n_word))
+sd(df_adv_size %>% filter(gen >= 8) %>% pull(n_word))
+cohen.d(df_adv_size %>% filter(gen <= 3) %>% pull(n_word),
+df_adv_size %>% filter(gen >= 8) %>% pull(n_word))
+res <- lm(n_word ~ gen, data = df_adv_size)
+summary(res)
+t.test(
+df_adv_size %>% filter(assigned_topic == 2) %>% filter(gen <= 3) %>% pull(n_word),
+df_adv_size %>% filter(assigned_topic == 2) %>% filter(gen >= 8) %>% pull(n_word),
+method = "s"
+)
+sd(df_adv_size %>% filter(assigned_topic == 2) %>% filter(gen <= 3) %>% pull(n_word))
+sd(df_adv_size %>% filter(assigned_topic == 2) %>% filter(gen >= 8) %>% pull(n_word))
+cohen.d(df_adv_size %>% filter(assigned_topic == 2) %>% filter(gen <= 3) %>% pull(n_word),
+df_adv_size %>% filter(assigned_topic == 2) %>% filter(gen >= 8) %>% pull(n_word))
+res <- lm(n_word ~ gen, data = df_adv_size %>% filter(assigned_topic == 2))
+summary(res)
+library(knitr)
+knitr::opts_chunk$set(echo = TRUE)
+opts_knit$set(root.dir = setwd(".."))
+library(tidyverse)
+library(fs)
+library(hrbrthemes)
+library(colorspace)
+library(reshape2)
+df <- read.csv("../output/processed/similarity_matrix.csv", header = FALSE)
+df_name <- read.csv("../output/processed/data_stakes_fitting.csv") %>%
+select(ID)
+rownames(df) <- df_name$ID
+colnames(df) <- df_name$ID
+df_similarity <- melt(df, variable.name = "s1") %>%
+mutate(s2 = rep(df_name$ID, 1000)) %>%
+mutate(s1_gen = rep(c(1:10), each = 100000)) %>%
+mutate(s2_gen = rep(c(1:10), each = 100, 1000))
+df_similarity_gen <- df_similarity %>%
+mutate(gen = ifelse(s1_gen == s2_gen, s1_gen, 0)) %>%
+filter(gen != 0) %>%
+select(-s1_gen, -s2_gen) %>%
+group_by(gen) %>%
+summarise(similarity = mean(value))
+gc()
+library(reshape2)
+df <- read.csv("../output/processed/similarity_matrix.csv", header = FALSE)
+df_name <- read.csv("../output/processed/data_stakes_fitting.csv") %>%
+select(ID)
+rownames(df) <- df_name$ID
+colnames(df) <- df_name$ID
+df_similarity <- melt(df, variable.name = "s1") %>%
+mutate(s2 = rep(df_name$ID, 1000)) %>%
+mutate(s1_gen = rep(c(1:10), each = 100000)) %>%
+mutate(s2_gen = rep(c(1:10), each = 100, 1000))
+df_similarity_gen <- df_similarity %>%
+mutate(gen = ifelse(s1_gen == s2_gen, s1_gen, 0)) %>%
+filter(gen != 0) %>%
+select(-s1_gen, -s2_gen) %>%
+group_by(gen) %>%
+summarise(similarity = mean(value))
+View(df_similarity_gen)
+View(df)
+split_numbers <- function(x) {
+numbers <- c(10, 1:9)
+result <- str_extract_all(x, paste(numbers, collapse = "|"))[[1]]
+result
+}
+df_plot <- df_similarity %>%
+mutate(gen = paste0(as.character(s1_gen), as.character(s2_gen))) %>%
+group_by(gen) %>%
+summarise(similarity = mean(value)) %>%
+mutate(split = map(gen, split_numbers)) %>%
+unnest(split) %>%
+select(-gen) %>%
+mutate(group = rep(1:(n()/2), each = 2)) %>%
+group_by(group) %>%
+mutate(pair_id = row_number()) %>%
+pivot_wider(names_from = pair_id, values_from = split, names_prefix = "s") %>%
+ungroup() %>%
+select(similarity, s1 = s1, s2 = s2) %>%
+mutate(s1 = factor(s1, levels = c(1:10))) %>%
+mutate(s2 = factor(s2, levels = c(1:10)))
+plot <- df_plot %>%
+ggplot(aes(x = s1, y = s2, fill = similarity)) +
+geom_tile() +
+labs(
+title = "Similarity between generation",
+x = "Generation",
+y = "Generation"
+)
+plot
+color_palette <- c("#FFEDA0", "#FED976", "#FECC5A", "#FEB24C", "#FD8D3C", "#FC4E2A", "#E31A1C", "#BD0026", "#800026", "#4C001A")
+plot <- df_similarity_gen %>%
+mutate(gen = as.factor(gen)) %>%
+ggplot(aes(x = gen, y = similarity)) +
+geom_col(
+aes(color = gen, fill = after_scale(lighten(color, 0.5))),
+linewidth = 1.2
+) +
+scale_color_manual(values = color_palette) +
+scale_fill_manual(values = color_palette, guide = "none") +
+scale_y_continuous(expand = c(.001, .001)) +
+theme_minimal() +
+theme(
+panel.grid.minor = element_blank(),
+panel.grid.major = element_blank(),
+axis.line = element_line(colour = "black", size = .8),
+axis.ticks = element_line(colour = "black", size = .8),
+legend.position = "none",
+axis.title.x = element_text(margin = margin(t = 8), size = 12),
+axis.title.y = element_text(margin = margin(r = 8), size = 12)
+) +
+labs(
+title = "Similarity within generation",
+x = "Generation",
+y = "Similarity"
+)
+plot
+# ggsave("../figures/clean/fig6_similarity_within_generation.tiff", bg = "white")
+# ggsave("../figures/clean/fig6_similarity_within_generation.svg", bg = "white", device = "svg")
+View(df_similarity)
+library(reshape2)
+similarity_matrix <- read.csv("../data/processed/similarity_matrix.csv", header = FALSE)
+df_name <- read.csv("../data/processed/data_adv.csv") %>%
+select(ID)
+rownames(df) <- df_name$ID
+colnames(df) <- df_name$ID
+df_similarity <- melt(similarity_matrix, variable.name = "s1") %>%
+mutate(s2 = rep(df_name$ID, 1000)) %>%
+mutate(s1_gen = rep(c(1:10), each = 100000)) %>%
+mutate(s2_gen = rep(c(1:10), each = 100, 1000))
+View(df_similarity)
+library(reshape2)
+similarity_matrix <- read.csv("../data/processed/similarity_matrix.csv", header = FALSE)
+df_name <- read.csv("../data/processed/data_adv.csv") %>%
+select(ID)
+rownames(similarity_matrix) <- df_name$ID
+colnames(similarity_matrix) <- df_name$ID
+df_similarity <- melt(similarity_matrix, variable.name = "s1") %>%
+mutate(s2 = rep(df_name$ID, 1000)) %>%
+mutate(s1_gen = rep(c(1:10), each = 100000)) %>%
+mutate(s2_gen = rep(c(1:10), each = 100, 1000))
+View(similarity_matrix)
+View(df_similarity)
+View(similarity_matrix)
+split_numbers <- function(x) {
+numbers <- c(10, 1:9)
+result <- str_extract_all(x, paste(numbers, collapse = "|"))[[1]]
+result
+}
+df_similarity %>%
+mutate(gen = paste0(as.character(s1_gen), as.character(s2_gen)))
+df_similarity %>%
+mutate(gen = paste0(as.character(s1_gen), as.character(s2_gen))) %>%
+group_by(gen) %>%
+summarise(similarity = mean(value))
+df_similarity %>%
+mutate(gen = paste0(as.character(s1_gen), as.character(s2_gen))) %>%
+group_by(gen) %>%
+summarise(similarity = mean(value)) %>%
+mutate(split = map(gen, split_numbers))
+df_similarity %>%
+mutate(gen = paste0(as.character(s1_gen), as.character(s2_gen))) %>%
+group_by(gen) %>%
+summarise(similarity = mean(value)) %>%
+mutate(split = map(gen, split_numbers)) %>%
+unnest(split)
+df_similarity %>%
+mutate(gen = paste0(as.character(s1_gen), as.character(s2_gen))) %>%
+group_by(gen) %>%
+summarise(similarity = mean(value)) %>%
+mutate(split = map(gen, split_numbers)) %>%
+unnest(split) %>%
+select(-gen)
+df_similarity %>%
+mutate(gen = paste0(as.character(s1_gen), as.character(s2_gen))) %>%
+group_by(gen) %>%
+summarise(similarity = mean(value)) %>%
+mutate(split = map(gen, split_numbers)) %>%
+unnest(split) %>%
+select(-gen) %>%
+mutate(group = rep(1:(n()/2), each = 2))
+df_similarity %>%
+mutate(gen = paste0(as.character(s1_gen), as.character(s2_gen))) %>%
+group_by(gen) %>%
+summarise(similarity = mean(value)) %>%
+mutate(split = map(gen, split_numbers)) %>%
+unnest(split) %>%
+select(-gen) %>%
+mutate(group = rep(1:(n()/2), each = 2)) %>%
+group_by(group) %>%
+mutate(pair_id = row_number())
+df_similarity %>%
+mutate(gen = paste0(as.character(s1_gen), as.character(s2_gen))) %>%
+group_by(gen) %>%
+summarise(similarity = mean(value)) %>%
+mutate(split = map(gen, split_numbers)) %>%
+unnest(split) %>%
+select(-gen) %>%
+mutate(group = rep(1:(n()/2), each = 2)) %>%
+group_by(group) %>%
+mutate(pair_id = row_number()) %>%
+pivot_wider(names_from = pair_id, values_from = split, names_prefix = "s")
+df_similarity %>%
+mutate(gen = paste0(as.character(s1_gen), as.character(s2_gen))) %>%
+group_by(gen) %>%
+summarise(similarity = mean(value)) %>%
+mutate(split = map(gen, split_numbers)) %>%
+unnest(split) %>%
+select(-gen) %>%
+mutate(group = rep(1:(n()/2), each = 2)) %>%
+group_by(group) %>%
+mutate(pair_id = row_number()) %>%
+pivot_wider(names_from = pair_id, values_from = split, names_prefix = "s") %>%
+ungroup() %>%
+select(similarity, s1 = s1, s2 = s2)
+df_similarity %>%
+mutate(gen = paste0(as.character(s1_gen), as.character(s2_gen))) %>%
+group_by(gen) %>%
+summarise(similarity = mean(value)) %>%
+mutate(split = map(gen, split_numbers)) %>%
+unnest(split) %>%
+select(-gen) %>%
+mutate(group = rep(1:(n()/2), each = 2)) %>%
+group_by(group) %>%
+mutate(pair_id = row_number()) %>%
+pivot_wider(names_from = pair_id, values_from = split, names_prefix = "s") %>%
+ungroup() %>%
+select(similarity, s1 = s1, s2 = s2) %>%
+mutate(s1 = factor(s1, levels = c(1:10)))
+df_similarity %>%
+mutate(gen = paste0(as.character(s1_gen), as.character(s2_gen))) %>%
+group_by(gen) %>%
+summarise(similarity = mean(value)) %>%
+mutate(split = map(gen, split_numbers)) %>%
+unnest(split) %>%
+select(-gen) %>%
+mutate(group = rep(1:(n()/2), each = 2)) %>%
+group_by(group) %>%
+mutate(pair_id = row_number()) %>%
+pivot_wider(names_from = pair_id, values_from = split, names_prefix = "s") %>%
+ungroup() %>%
+select(similarity, s1 = s1, s2 = s2) %>%
+mutate(s1 = factor(s1, levels = c(1:10))) %>%
+mutate(s2 = factor(s2, levels = c(1:10)))
+plot <- df_plot %>%
+ggplot(aes(x = s1, y = s2, fill = similarity)) +
+geom_tile() +
+labs(
+title = "Similarity between generation",
+x = "Generation",
+y = "Generation"
+)
+plot
+library(hunspell)
+library(spacyr)
+library(reticulate)
+library(wordcloud)
+# use_python("C:/Users/alexb/anaconda3/python.exe") # uncomment if python trouble
+spacy_initialize()
+library(hunspell)
+library(spacyr)
+library(reticulate)
+library(wordcloud)
+use_python("C:/Users/alexb/anaconda3/python.exe") # uncomment if python trouble
+spacy_initialize()
+spacy_install()
+library(hunspell)
+library(spacyr)
+library(reticulate)
+library(wordcloud)
+# use_python("C:/Users/alexb/anaconda3/python.exe") # uncomment if python trouble
+spacy_install()
+library(hunspell)
+library(spacyr)
+library(reticulate)
+library(wordcloud)
+# use_python("C:/Users/alexb/anaconda3/python.exe") # uncomment if python trouble
+# spacy_install()
+spacy_initialize()
+library(hunspell)
+library(spacyr)
+library(reticulate)
+library(wordcloud)
+# use_python("C:/Users/alexb/anaconda3/python.exe") # uncomment if python trouble
+spacy_install()
+library(hunspell)
+library(spacyr)
+library(reticulate)
+library(wordcloud)
+use_python("C:/Users/alexb/anaconda3/python.exe") # uncomment if python trouble
+library(hunspell)
+library(spacyr)
+library(reticulate)
+library(wordcloud)
+# use_python("C:/Users/alexb/anaconda3/python.exe") # uncomment if python trouble
+# spacy_install()
+spacy_initialize()
+file.exists("C:/Users/alexb/anaconda3/python.exe")
+use_python("C:/Users/aleblu/AppData/Local/miniconda3/python.exe") # uncomment if python trouble
+# spacy_install()
+spacy_initialize()
+py_config()
+spacy_install()
+library(hunspell)
+library(spacyr)
+library(reticulate)
+library(wordcloud)
+use_python("C:/Users/aleblu/AppData/Local/miniconda3/python.exe") # uncomment if python trouble
+py_config()
+spacy_install()
+library(hunspell)
+library(reticulate)
+library(wordcloud)
+library(reticulate)
+use_python("C:/Users/aleblu/AppData/Local/miniconda3/python.exe")
+library(spacyr)
+spacy_install()

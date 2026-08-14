@@ -1,0 +1,27 @@
+{
+    "id": "D57EFADF",
+    "path": "C:/Users/alexb/Dropbox/root/work/projects/2023_transmission_of_model/analysis/script/plotting.Rmd",
+    "project_path": "script/plotting.Rmd",
+    "type": "r_markdown",
+    "hash": "2229053302",
+    "contents": "",
+    "dirty": false,
+    "created": 1750765582619.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "642,42",
+        "scrollLine": "266",
+        "last_setup_crc32": ""
+    },
+    "folds": "280|31|534|0|\n539|6|618|0|\n692|6|759|0|\n838|6|906|0|\n937|9|1267|0|\n1268|14|3300|0|\n3301|6|3598|0|\n3599|13|4094|0|\n4095|9|4332|3|\n",
+    "lastKnownWriteTime": 1750768368,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1752659181365,
+    "read_only": false,
+    "read_only_alternatives": []
+}

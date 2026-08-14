@@ -1,0 +1,54 @@
+---
+title: "lineage"
+author: "Blublu"
+date: "2025-07-22"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(ggplot2)
+```
+
+
+import data
+```{r}
+df <- tibble(read.csv("../data/processed/data.csv", header = TRUE, row.names = 1))
+head(df)
+```
+
+
+Build path string
+```{r}
+library(data.tree)
+library(ape)
+
+df_lineage <- df %>%
+  mutate(parent_ID = ifelse(gen == 0, NA, parent_ID))
+
+get_path <- function(id, data) {
+  parent <- data %>% filter(ID == id) %>% pull(parent_ID)
+  # print(parent)
+  if (is.na(parent)) {
+    return(c("Forest", id))
+  } else {
+    return(c(get_path(parent, data), id))
+  }
+}
+
+df_lineage <- df_lineage %>%
+  mutate(path_string = map_chr(ID, ~paste(get_path(.x, df_lineage), collapse = "/")))
+```
+
+
+```{r}
+library(ggtree)
+
+tree <- as.Node(df_lineage)
+phylo_tree <- as.phylo(tree)
+
+
+ggtree(phylo_tree) +
+  geom_tiplab(size = 2)
+```
+
