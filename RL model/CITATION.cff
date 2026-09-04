@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the associated paper."
+title: "Cultural evolution of mental models — reproducibility repository"
+type: software
+version: 0.1.0
+
+# TODO before release: complete the author list, in manuscript order, with ORCIDs.
+authors:
+  - given-names: Shen
+    family-names: Tian
+    affiliation: Karolinska Institutet
+    email: shen.tian@ki.se
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+
+# TODO before release: fill in once the manuscript has a DOI, and mint a Zenodo DOI
+# for the repository itself by linking the GitHub release.
+preferred-citation:
+  type: article
+  title: "Experimental evidence for language-driven cultural evolution of mental models"
+  authors:
+    - given-names: Shen
+      family-names: Tian
+  year: 2026
+  # journal: ""
+  # doi: ""

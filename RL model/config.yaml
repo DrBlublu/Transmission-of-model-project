@@ -1,0 +1,129 @@
+# Configuration for the reproducibility repository.
+# Paths are resolved relative to the repository root unless absolute.
+
+# ---------------------------------------------------------------------------
+# De-identification (scripts/00_deidentify.py)
+# ---------------------------------------------------------------------------
+deidentify:
+  # Private source tree holding the original, identifiable data.
+  # This directory is NOT part of the repository and is never shipped.
+  source_root: ".."
+
+  # Where the Prolific-ID -> surrogate-ID mapping is written.
+  # MUST live outside the repository. Never commit this file.
+  id_map_path: "../../.private/ctm_id_map.csv"
+
+  # Prefix and zero-padding for surrogate participant IDs (S0001, S0002, ...).
+  surrogate_prefix: "S"
+  surrogate_digits: 4
+
+  # Columns dropped from every shipped file because they are quasi-identifiers
+  # (session numbers, wall-clock timestamps of participation).
+  drop_columns:
+    - filename
+    - parent_filename
+
+  # Files copied from source_root into data/raw/, de-identified in transit.
+  # Add a row here when a new figure needs a raw input that is not yet shipped.
+  files:
+    # Trial-by-trial behaviour, kept as one file per generation per condition
+    # (20 files) exactly as collected, rather than pre-concatenated.
+    - source_glob: "data/model_data_transition_matrices_new/*_gen_stake.csv"
+      dest_dir: "trials/language"
+      description: "Trial-level behaviour, language condition, one file per generation."
+
+    - source_glob: "data/model_data_observation/*_gen_obs.csv"
+      dest_dir: "trials/observation"
+      description: "Trial-level behaviour, observation condition, one file per generation."
+
+    # Available in the source tree but not required by any registered figure.
+    # Uncomment when a figure needs them, and add a section to docs/data_dictionary.md.
+    #
+    # - source: "data/df_obs.csv"
+    #   dest: "observation_participants.csv"
+    #   description: "Participant-level records and chain structure, observation condition."
+    #
+    # - source: "data/data_advice_fulltext.csv"
+    #   dest: "advice_fulltext.csv"
+    #   description: "Free-text advice written by each participant for their successor."
+
+    # Maximum-likelihood fits of the arbitration model: 100 random restarts per
+    # participant. Shipped in full so that the restart-aggregation step (mean
+    # across restarts) is reproducible rather than asserted.
+    #
+    # The source tree holds two parallel language fit variants, `normalize_reward`
+    # and `raw_reward`. Only `normalize_reward` is behind the published figures;
+    # `raw_reward` is a superseded analysis and must not be substituted.
+    - source_glob: "results/maxLL_model_fitting/language/normalize_reward/df_params_sim*.csv"
+      dest: "arbitration_restarts_language.csv.gz"
+      description: "Arbitration-model fit restarts, language condition (100 per participant)."
+
+    - source_glob: "results/maxLL_model_fitting/observation/df_params_sim*.csv"
+      dest: "arbitration_restarts_observation.csv.gz"
+      description: "Arbitration-model fit restarts, observation condition (100 per participant)."
+
+    # Hierarchical Bayesian fits of the FIXED model-basedness model, for Figure S15.
+    #
+    # This is the 5-parameter variant (W_HS, W_LS, alpha, beta, lambda), which is the
+    # one the published SI figure reports. An 8-parameter variant exists in the source
+    # tree under objective/8_param; it is a different model (alpha split by stake, plus
+    # choice_bias and pi) and does NOT reproduce the published values.
+    #
+    # See docs/figure_manifest.md for the convergence caveat on these fits.
+    - source_glob: "results/hierarchical_model_fitting/objective/5_param/Generation-*_parameter_estimates_language.csv"
+      dest: "hierarchical_5param_language.csv"
+      keep_columns: ["sub", "generation", "param", "mean", "sd", "r_hat", "ess_bulk"]
+      description: "Fixed-model (5-parameter) posterior summaries, language condition."
+
+    - source_glob: "results/hierarchical_model_fitting/objective/5_param/Generation-*_parameter_estimates_observation.csv"
+      dest: "hierarchical_5param_observation.csv"
+      keep_columns: ["sub", "generation", "param", "mean", "sd", "r_hat", "ess_bulk"]
+      description: "Fixed-model (5-parameter) posterior summaries, observation condition."
+
+    # Cognitive-map ratings, for Figure S7. Participants rated how related each pair of
+    # gnomes is, and which forest each gnome leads to; these become a 10x10 behavioural
+    # similarity matrix per participant.
+    - source_glob: "data/cognitive_map/knowledge_matrice_pair_2024-*.csv"
+      dest: "cognitive_map/pair_language.csv"
+      keep_columns: ["ID", "generation", "score", "stim1_pair", "stim1_num", "stim2_pair", "stim2_num"]
+      description: "Pairwise gnome-similarity ratings, language condition."
+
+    - source_glob: "data/cognitive_map/knowledge_matrice_transition_2024-*.csv"
+      dest: "cognitive_map/transition_language.csv"
+      keep_columns: ["ID", "generation", "score", "gnome_pair", "gnomme_num", "state2"]
+      description: "Gnome-to-forest transition ratings, language condition."
+
+    - source: "data/cognitive_map/knowledge_matrice_pair_OBSERVATION.csv"
+      dest: "cognitive_map/pair_observation.csv"
+      keep_columns: ["ID", "gen", "score", "stim1_pair", "stim1_num", "stim2_pair", "stim2_num"]
+      description: "Pairwise gnome-similarity ratings, observation condition."
+
+    # The observation transition export repeats every measurement ~50 times
+    # (808,000 rows for 16,000 distinct ratings). Deduplicating loses nothing and is
+    # what the published analysis does before using it.
+    #
+    # Its `gen` column is dropped: it is a merge artifact (98.9% missing, and a single
+    # participant carries rows labelled with all ten generations). Generation comes
+    # from the pair file, which has exactly one generation per participant.
+    - source: "data/cognitive_map/knowledge_matrice_transition_OBSERVATION.csv"
+      dest: "cognitive_map/transition_observation.csv"
+      keep_columns: ["ID", "score", "gnome_pair", "gnomme_num", "state2"]
+      deduplicate_on: ["ID", "gnome_pair", "gnomme_num", "state2"]
+      description: "Gnome-to-forest transition ratings, observation condition."
+
+    # Empirical (measured) task knowledge, for Figure S13. The source table carries
+    # 27 columns including free-text advice and session filenames; only the three
+    # columns the figure needs are shipped.
+    - source: "data_whole.csv"
+      dest: "task_knowledge_scores.csv"
+      keep_columns: ["ID", "cond", "understanding_score"]
+      description: "Post-task measured task-knowledge score, one row per participant."
+
+# ---------------------------------------------------------------------------
+# Analysis parameters shared across scripts.
+# Anything a reviewer might want to vary belongs here, not hard-coded in a script.
+# ---------------------------------------------------------------------------
+analysis:
+  n_generations: 10
+  n_trials_per_participant: 256
+  random_seed: 20240516

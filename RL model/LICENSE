@@ -1,0 +1,24 @@
+LICENSE NOT YET CHOSEN — THIS REPOSITORY IS NOT YET LICENSED FOR REUSE.
+
+Without an explicit license, default copyright applies and no one may legally reuse
+this material, which defeats the purpose of publishing it. A license must be agreed
+by all co-authors before release.
+
+Recommended, and the usual choice for this kind of artefact:
+
+  Code  ->  MIT (permissive, one paragraph, no attribution burden on reusers)
+            or Apache-2.0 if an explicit patent grant is wanted.
+
+  Data  ->  CC-BY-4.0 (attribution required) or CC0-1.0 (public domain dedication).
+            Licensed separately from the code; state the data license in README.md
+            and in the repository metadata.
+
+To finalise:
+  1. Confirm the choice with all co-authors and with Karolinska Institutet's
+     research data / legal office if institutional policy applies.
+  2. Replace the entire contents of this file with the chosen license text
+     (https://choosealicense.com supplies canonical copies).
+  3. Record the data license separately in README.md.
+  4. Check that the ethics approval and participant consent forms permit public
+     release of the de-identified data at all — this is a prerequisite, not a
+     formality, and it governs what may be shipped in data/raw/.
