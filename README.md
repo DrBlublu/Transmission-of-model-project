@@ -1,6 +1,6 @@
 # Language enables the cumulative cultural evolution of mental models
 
-Code and data for **[Language enables the cumulative cultural evolution of mental models]** ([A. Bluet et. al.], [2026])
+Code and data for **Language enables the cumulative cultural evolution of mental models** (A. Bluet et. al., 2026)
 Archived version: https://doi.org/10.5281/zenodo.23973977
 
 This repository contains the data, analysis R code, plotting R code, Reinforcement Learning python code, BERTopic python code and NLP R code required to reproduced all the analysis of the paper.
@@ -41,7 +41,7 @@ All preprocessed data is in the `data\` folder. All raw data is located in the `
 
 ## Reproducing the experiment
 
-Follow the instructions in the `README.md` file in the `Experiment\` folder.
+All necesssary file & code is in the `experiment\` folder. For more details, please contact me.
 
 ## Results
 All results from the paper (tables, figures) can be found in the `results\` folder.
